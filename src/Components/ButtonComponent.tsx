@@ -1,38 +1,45 @@
-import React, { type ReactNode } from 'react'
+import React, { type ReactNode, type FC } from 'react'
 
-interface ButtonComponentprops {
+interface ButtonComponentProps {
   children: ReactNode
   onClick: () => void
+  backgroundColor?: string
+  width?: string
+  border?: string
+  radius?: string
+  height?: string
+  fontSize?: string
   color?: string
-  size?: 'small' | 'medium' | 'large'
+
 }
 
-const DynamicButton: React.FC<ButtonComponentprops> = ({
+const ButtonComponent: FC<ButtonComponentProps> = ({
   children,
   onClick,
-  color = 'blue',
-  size = 'medium'
+  backgroundColor = 'green',
+  width = '100% ',
+  border = '1px solid red',
+  radius = '10px',
+  height = '40px',
+  fontSize = '20px',
+  color = 'white'
 }) => {
-  const buttonSizeClasses = {
-    small: 'px-4 py-2 text-sm',
-    medium: 'px-6 py-3 text-base',
-    large: 'px-8 py-4 text-lg'
-  }
-
-  const buttonColorClasses = {
-    blue: 'bg-blue-500 hover:bg-blue-700 text-white',
-    green: 'bg-green-500 hover:bg-green-700 text-white',
-    red: 'bg-red-500 hover:bg-red-700 text-white'
-  }
-
-  const buttonClasses = `rounded-full focus:outline-none focus:ring-2 focus:ring-${color}-300 
-                        ${buttonSizeClasses[size]} ${buttonColorClasses[color]}`
-
   return (
-    <button className={buttonClasses} onClick={onClick}>
+    <button onClick={onClick}
+    style={{
+      backgroundColor,
+      border,
+      borderRadius: radius,
+      height,
+      width,
+      fontSize,
+      color,
+      cursor: 'pointer'
+    }}
+     >
       {children}
     </button>
   )
 }
 
-export default DynamicButton
+export default ButtonComponent
