@@ -39,6 +39,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   height = '40px',
   fontSize = '20px',
   color = 'white'
+
 }) => {
   return (
     <button onClick={onClick}
