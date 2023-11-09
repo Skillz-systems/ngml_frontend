@@ -92,7 +92,7 @@ const TextInput: React.FC<TextInputProps> = ({
           ? (
             <span
               className="absolute right-3 top-1 bg-green-200 rounded-full p-2"
-              style={{ pointerEvents: 'none', right: `calc(${width} - 45px)` }}
+              style={{ pointerEvents: 'none' }}
             >
               {iconRight}
             </span>
