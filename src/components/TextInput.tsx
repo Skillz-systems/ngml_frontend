@@ -1,6 +1,57 @@
 import React from 'react'
 import type { ChangeEvent } from 'react'
 
+/**
+ * @component TextInput
+ * @description
+ * The `TextInput` component is a React functional component designed to render an input field with customizable features,
+ * including type, label, value, name, placeholder, error handling, and optional icons.
+ *
+ * @props
+ * @property {string} type - Type of the input field. Accepts either `'text'` or `'password'`.
+ * @property {string} label - A string representing the label for the input field.
+ * @property {string} value - The current value of the input field.
+ * @property {string} name - The name attribute of the input field.
+ * @property {string} placeholder - The placeholder text for the input field.
+ * @property {boolean} error - A boolean indicating whether an error is present in the input field.
+ * @property {(e: ChangeEvent<HTMLInputElement>) => void} onChange - A function that handles the change event of the input field.
+ * @property {React.ReactNode} icon - A React node representing the left icon of the input field.
+ * @property {React.ReactNode} iconRight - A React node representing the right icon of the input field. This is required only when `type` is set to `'password'`.
+ * @property {string} [width] - The width of the input field. Defaults to `'100%'` for type `'password'`, otherwise, can be customized.
+ * @property {string} [height] - The height of the input field. Defaults to `'2.5rem'` for type `'password'`, otherwise, can be customized.
+ *
+ * @example
+ * ```jsx
+ * import React from 'react';
+ * import type { ChangeEvent } from 'react';
+ * import TextInput from './TextInput';
+ *
+ * const MyForm = () => {
+ *   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+ *     // Handle input change logic here
+ *   };
+ *
+ *   return (
+ *     <TextInput
+ *       type="text"
+ *       label="Username"
+ *       value=""
+ *       name="username"
+ *       placeholder="Enter your username"
+ *       error={false}
+ *       onChange={handleChange}
+ *       icon={<YourIconComponent />}
+ *       iconRight={<YourRightIconComponent />}
+ *       width="300px"
+ *       height="40px"
+ *     />
+ *   );
+ * };
+ *
+ * export default MyForm;
+ * ```
+ */
+
 interface TextInputProps {
   type: 'text' | 'password'
   label: string
@@ -11,6 +62,8 @@ interface TextInputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   icon: React.ReactNode
   iconRight: React.ReactNode
+  width?: string
+  height?: string
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -22,11 +75,12 @@ const TextInput: React.FC<TextInputProps> = ({
   error,
   onChange,
   icon,
-  iconRight
+  iconRight,
+  width = '100%',
+  height = '2.5rem'
 }) => {
   return (
-    <div className="mb-4 p-2 bg-primary rounded-lg shadow-custom">
-       <div className="px-6 py-2 bg-xanthic shadow-custom">
+    <div className="mb-4 p-2">
        <div className="relative">
         <span
           className="absolute left-3 top-1 bg-green-200 rounded-full p-2"
@@ -38,7 +92,7 @@ const TextInput: React.FC<TextInputProps> = ({
           ? (
             <span
               className="absolute right-3 top-1 bg-green-200 rounded-full p-2"
-              style={{ pointerEvents: 'none' }}
+              style={{ pointerEvents: 'none', right: `calc(${width} - 45px)` }}
             >
               {iconRight}
             </span>
@@ -52,9 +106,9 @@ const TextInput: React.FC<TextInputProps> = ({
         value={value}
         onChange={onChange}
         className={`w-full bg-gray-100 py-2 px-3 pl-[55px] rounded-[50px] border ${error ? 'border-red-500' : 'border-gray-300'}`}
+        style={{ width, height }}
       />
        </div>
-      </div>
       {error && (
         <p className="text-red-500 text-sm mt-2" >Input field can&apos; be empty!</p>
       )}
