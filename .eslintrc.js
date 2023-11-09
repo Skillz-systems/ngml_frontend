@@ -1,36 +1,30 @@
 module.exports = {
-    //Ignore Eslint in .eslintrc.js
+    // Ignore ESLint in .eslintrc.js
     ignorePatterns: [".eslintrc.js"],
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint', 'react'],
-    "env": {
-        "browser": true,
-        "es2021": true
+    env: {
+      browser: true,
+      es2021: true,
     },
-    "extends": [
-        "standard-with-typescript",
-        "plugin:react/recommended"
+    extends: [
+      'standard-with-typescript',
+      'plugin:react/recommended',
     ],
-    "overrides": [
-        {
-            "env": {
-                "node": true
-            },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
-        }
+    overrides: [
+      {
+        env: {
+          node: true,
+        },
+        files: ['.eslintrc.{js,cjs}'],
+        parserOptions: {
+          sourceType: 'script',
+        },
+      },
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    parserOptions: {
+      ecmaVersion: 2021, // Set a specific ECMAScript version
+      sourceType: 'module',
     },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-    }
-}
+    rules: {},
+  };
