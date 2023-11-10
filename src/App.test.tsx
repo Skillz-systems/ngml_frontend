@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import ButtonComponent from './Components/ButtonComponent'
+import ButtonComponent from './components/ButtonComponent'
 
 describe('ButtonComponent', () => {
   it('renders children and calls onClick when clicked', () => {
