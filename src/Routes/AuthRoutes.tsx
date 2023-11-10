@@ -1,4 +1,4 @@
-import StaffLoginPage from 'src/Pages/StaffLoginPage'
+import StaffLoginPage from '../Pages/StaffLoginPage'
 
 export const AuthRoutes = [
   {
