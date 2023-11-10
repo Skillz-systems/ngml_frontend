@@ -9,7 +9,6 @@ import ButtonComponent from 'src/components/ButtonComponent'
 const StaffLoginPage: React.FC = () => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     console.log(event.target.value)
-    // alert('kskkskksks')
   }
 
   const handleClick = (): void => {
