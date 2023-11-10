@@ -60,10 +60,14 @@ interface TextInputProps {
   placeholder: string
   error: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  icon: React.ReactNode
-  iconRight: React.ReactNode
+  icon?: React.ReactNode
+  iconRight?: React.ReactNode
   width?: string
   height?: string
+  children?: string
+  iconHeight?: string
+  iconWidth?: string
+  backgroundColor?: string
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -77,37 +81,41 @@ const TextInput: React.FC<TextInputProps> = ({
   icon,
   iconRight,
   width = '100%',
-  height = '2.5rem'
+  height = '2.5rem',
+  children,
+  iconHeight = '12px',
+  iconWidth = '10px',
+  backgroundColor
 }) => {
   return (
-    <div className="mb-4 p-2">
-       <div className="relative">
+    <div className="mb-2 p-4">
+       <div className="relative flex">
         <span
-          className="absolute left-3 top-1 bg-green-200 rounded-full p-2"
-          style={{ pointerEvents: 'none' }}
+          className="absolute left-2 top-2 bg-green-200 rounded-full p-4  "
+          style={{ pointerEvents: 'none', height: iconHeight, width: iconWidth, backgroundColor }}
         >
           {icon}
         </span>
-        {type === 'password'
-          ? (
-            <span
-              className="absolute right-3 top-1 bg-green-200 rounded-full p-2"
-              style={{ pointerEvents: 'none' }}
-            >
-              {iconRight}
-            </span>
-            )
-          : null}
-      <input
+        <input
         type={type}
         id={name}
         name={name}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={`w-full bg-gray-100 py-2 px-3 pl-[55px] rounded-[50px] border ${error ? 'border-red-500' : 'border-gray-300'}`}
-        style={{ width, height }}
+        className={`w-full bg-gray-100 sm:w-[100%] pl-[80px] rounded-[50px] border ${error ? 'border-red-500' : 'border-gray-300'}`}
+        style={{ width, height, fontStyle: 'italic', color: '#828DA9', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       />
+        {type === 'password'
+          ? (
+            <span
+              className="absolute right-7 top-1 p-4"
+              style={{ pointerEvents: 'none' }}
+            >
+              {iconRight}
+            </span>
+            )
+          : null}
        </div>
       {error && (
         <p className="text-red-500 text-sm mt-2" >Input field can&apos; be empty!</p>

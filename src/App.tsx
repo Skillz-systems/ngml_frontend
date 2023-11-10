@@ -1,10 +1,21 @@
 import React from 'react'
-import Footer from './components/Footer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { routes } from './Routes/Index'
+import './App.css'
 
 function App (): JSX.Element {
+  // routes without layouts
+  const authRoutes = routes.AuthRoutes.map(({ path, component: Component }) => (
+    <Route key={path} path={path} element={<Component />} />
+  ))
+
   return (
-    <div>
-     <Footer />
+    <div className="App">
+     <BrowserRouter>
+        <Routes>
+          {authRoutes}
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

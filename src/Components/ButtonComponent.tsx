@@ -39,9 +39,11 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   height = '40px',
   fontSize = '20px',
   color = 'white'
+
 }) => {
   return (
     <button onClick={onClick}
+    className='sm:w-[100%]'
     style={{
       backgroundColor,
       border,
@@ -50,7 +52,9 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
       width,
       fontSize,
       color,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      marginRight: '16px',
+      fontFamily: 'Mulish'
     }}
      >
       {children}
