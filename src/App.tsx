@@ -1,10 +1,13 @@
 import React from 'react'
-import Footer from './components/Footer'
+// import Footer from './Components/Footer'
+import SignupStaff from './pages/authentication/staff/SignupStaff'
 
-function App (): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/space-before-function-paren
+function App(): JSX.Element {
   return (
-    <div>
-     <Footer />
+    <div className='overflow-hidden'>
+      <SignupStaff />
+      {/* <Footer /> */}
     </div>
   )
 }
