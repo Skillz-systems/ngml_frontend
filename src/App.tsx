@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { routes } from './Routes/Index'
 import './App.css'
 
-function App (): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/space-before-function-paren
+function App(): JSX.Element {
   // routes without layouts
   const authRoutes = routes.AuthRoutes.map(({ path, component: Component }) => (
     <Route key={path} path={path} element={<Component />} />
@@ -11,7 +12,7 @@ function App (): JSX.Element {
 
   return (
     <div className="App">
-     <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           {authRoutes}
         </Routes>
