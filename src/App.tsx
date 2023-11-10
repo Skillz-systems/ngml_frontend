@@ -1,14 +1,21 @@
 import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { routes } from './Routes/Index'
 import './App.css'
-import StaffLoginPage from './Pages/StaffLoginPage'
 
 function App (): JSX.Element {
+  // routes without layouts
+  const authRoutes = routes.AuthRoutes.map(({ path, component: Component }) => (
+    <Route key={path} path={path} element={<Component />} />
+  ))
+
   return (
     <div className="App">
-     <Routes>
-     <Route path="staffloginpage" element={<StaffLoginPage />} />
-     </Routes>
+     <BrowserRouter>
+        <Routes>
+          {authRoutes}
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
