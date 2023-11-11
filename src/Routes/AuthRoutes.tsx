@@ -1,5 +1,6 @@
+import CustomerSelfRevistration from '../pages/authentication/client/CustomerSelfRevistration'
 import StaffLoginPage from '../pages/StaffLoginPage'
-import SignupStaff from 'src/pages/authentication/staff/SignupStaff'
+import SignupStaff from '../pages/authentication/staff/SignupStaff'
 
 export const AuthRoutes = [
   {
@@ -11,5 +12,10 @@ export const AuthRoutes = [
     title: 'signupstaff',
     path: '/app/signupstaff',
     component: SignupStaff
+  },
+  {
+    title: 'customerselfregistration',
+    path: '/app/customerselfregistration',
+    component: CustomerSelfRevistration
   }
 ]
