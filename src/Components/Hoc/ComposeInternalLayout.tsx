@@ -10,7 +10,7 @@ import InternalLayout from '../Layout/InternalLayout'
  */
 
 // eslint-disable-next-line react/display-name
-const ComposeInternalLayouts = (Component) => (passThroughProps) => (
+const ComposeInternalLayouts = (Component: any) => (passThroughProps: any) => (
   <>
     <InternalLayout {...passThroughProps} Component={Component} />
   </>

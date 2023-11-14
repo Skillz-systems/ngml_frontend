@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types, @typescript-eslint/explicit-function-return-type
 const Sidebar = ({ SideBarLinks }) => {
+  console.log(SideBarLinks, 'SideBarLinksSideBarLinks')
   return (
     <>
       <div
@@ -33,7 +35,7 @@ const Sidebar = ({ SideBarLinks }) => {
             }}
           >
             <div>
-              <img src={searchIcon} alt="search" />{' '}
+           Icon
             </div>
             <input
               placeholder="Search"
@@ -73,7 +75,7 @@ const Sidebar = ({ SideBarLinks }) => {
                   cursor: 'pointer'
                 }}
               >
-                <div style={{ width: '20px', height: '20px' }}>
+                {/* <div style={{ width: '20px', height: '20px' }}>
                   {typeof sideBar.icon === 'string'
                     ? (
                     // check if the icon is a string (asset path)
@@ -86,7 +88,7 @@ const Sidebar = ({ SideBarLinks }) => {
                     : (
                     <sideBar.icon style={{ color: '#667085' }} /> // assuming it's a React component
                       )}
-                </div>
+                </div> */}
                 <span
                   style={{
                     fontWeight: 600,
