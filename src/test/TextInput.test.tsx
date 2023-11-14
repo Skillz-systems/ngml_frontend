@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect' // for better assertion messages
-import TextInput from '../Components/TextInput' // assuming your component is in the same directory
+import TextInput from '../components/TextInput' // assuming your component is in the same directory
 
 describe('TextInput Component', () => {
   test('renders without errors', () => {

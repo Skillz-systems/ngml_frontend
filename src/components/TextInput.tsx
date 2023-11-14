@@ -53,11 +53,11 @@ import type { ChangeEvent } from 'react'
  */
 
 interface TextInputProps {
-  type: 'text' | 'password'
-  label: string
-  value: string
-  name: string
-  placeholder: string
+  type?: string
+  label?: string
+  value?: string
+  name?: string
+  placeholder?: string
   error: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   icon?: React.ReactNode
@@ -68,6 +68,7 @@ interface TextInputProps {
   iconHeight?: string
   iconWidth?: string
   backgroundColor?: string
+  radius?: string
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -80,6 +81,7 @@ const TextInput: React.FC<TextInputProps> = ({
   onChange,
   icon,
   iconRight,
+  radius = 'rounded-[50px]',
   width = '100%',
   height = '2.5rem',
   children,
@@ -91,7 +93,7 @@ const TextInput: React.FC<TextInputProps> = ({
     <div className="mb-2 p-4">
        <div className="relative flex">
         <span
-          className="absolute left-2 top-2 bg-green-200 rounded-full p-4  "
+          className="absolute left-2 top-2  p-4  "
           style={{ pointerEvents: 'none', height: iconHeight, width: iconWidth, backgroundColor }}
         >
           {icon}
@@ -103,8 +105,8 @@ const TextInput: React.FC<TextInputProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className={`w-full bg-gray-100 sm:w-[100%] pl-[80px] rounded-[50px] border ${error ? 'border-red-500' : 'border-gray-300'}`}
-        style={{ width, height, fontStyle: 'italic', color: '#828DA9', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        className={`w-full bg-gray-100 sm:w-[100%] pl-[80px]  border ${error ? 'border-red-500' : 'border-gray-300'}`}
+        style={{ width, height, borderRadius: radius, fontStyle: 'italic', color: '#828DA9', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
       />
         {type === 'password'
           ? (

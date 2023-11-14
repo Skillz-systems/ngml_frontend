@@ -1,5 +1,5 @@
 import React, { type ChangeEvent } from 'react'
-import TextInput from 'src/Components/TextInput'
+import TextInput from 'src/components/TextInput'
 import logo from '../../src/Asset/CompanyLogo.png'
 import emailIcon from '../../src/Asset/emailIcons.png'
 import lockIcon from '../../src/Asset/lockIcons.png'
