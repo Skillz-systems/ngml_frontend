@@ -15,7 +15,7 @@ import { SideBarLinks } from 'src/SideBarLinks/SideBarLinks'
 // eslint-disable-next-line react/prop-types, @typescript-eslint/explicit-function-return-type
 const InternalLayout = ({ Component, title, ...otherProps }: object): HTMLElement => (
     <>
-        <Box 
+        <Box
             sx={{
               display: 'flex',
               height: '100vh',

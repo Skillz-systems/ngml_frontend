@@ -4,7 +4,7 @@ import TextInput from 'src/components/TextInput'
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const StaffPersonalDetails = () => {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleOnChange = (event) => {
+  const handleOnChange = (event: { target: { value: any } }) => {
     console.log(event.target.value)
   }
 
