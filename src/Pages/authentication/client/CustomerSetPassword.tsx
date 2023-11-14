@@ -1,9 +1,10 @@
 import React, { type ChangeEvent } from 'react'
 import nnpclogo from '../../../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
-import { MdOutlineMarkEmailUnread } from 'react-icons/md'
-import { CiLock } from 'react-icons/ci'
-import { AiOutlineEye } from 'react-icons/ai'
+
+import emailIcon from '../../../Asset/svg-icons/Emailngml.svg'
+import eyeIClosedcon from '../../../Asset/svg-icons/Eyeclosedngml.svg'
+import passwordIcon from '../../../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 
@@ -36,7 +37,9 @@ const CustomerSetPassword = (): JSX.Element => {
               placeholder="Enter the Business Email here"
               error={false}
               onChange={handleOnChange}
-              icon={<MdOutlineMarkEmailUnread size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={
+                <img src={emailIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='business' />
+              }
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -55,13 +58,13 @@ const CustomerSetPassword = (): JSX.Element => {
               placeholder="Enter a Password"
               error={false}
               onChange={handleOnChange}
-              icon={<CiLock size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='password' />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
               iconStyle='absolute top-2 left-2  rounded-full'
               divStyle='p-0 mb-0'
-              iconRight={<AiOutlineEye size={20} className='p-0.5 absolute top-1.5 -right-3' />}
+              iconRight={<img src={eyeIClosedcon} width={20} height={20} className='p-0.5 absolute top-1.5 -right-3' />}
             />
           </div>
           <div className="w-full">
@@ -75,8 +78,8 @@ const CustomerSetPassword = (): JSX.Element => {
               placeholder="Re-enter the Password "
               error={false}
               onChange={handleOnChange}
-              icon={<CiLock size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
-              iconRight={<AiOutlineEye size={20} className='p-0.5 absolute top-1.5 -right-3' />}
+              icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='password' />}
+              iconRight={<img src={eyeIClosedcon} width={20} height={20} className='p-0.5 absolute top-1.5 -right-3' />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
