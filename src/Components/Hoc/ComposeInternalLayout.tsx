@@ -1,5 +1,5 @@
 import React from 'react'
-import InternalLayout from '../Layout/InternalLayout'
+import InternalLayout from 'src/Components/Layout/InternalLayout'
 
 /**
  * this is an HOC that renders the Internal Layout components of the application

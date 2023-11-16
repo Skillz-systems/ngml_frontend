@@ -1,7 +1,7 @@
 import React, { type ComponentType } from 'react'
-import Sidebar from '../SideBar/SideBar'
+import Sidebar from 'src/Components/SideBar/SideBar'
 import { SideBarLinks } from 'src/SideBarLinks/SideBarLinks'
-import NavBar from '../NavBar'
+import NavBar from 'src/Components/NavBar'
 // import { SideBarLinks } from 'src/SideBarLinks'
 
 /**
