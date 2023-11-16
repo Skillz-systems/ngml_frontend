@@ -11,7 +11,7 @@ export const AuthRoutes = [
     title: 'Staffpersonaldetails',
     path: '/app/Staffpersonaldetails',
     component: StaffPersonalDetails
-  }
+  },
   // {
   //   title: 'customersetpassword',
   //   path: '/app/customersetpassword',
