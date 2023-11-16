@@ -69,6 +69,8 @@ interface TextInputProps {
   iconWidth?: string
   backgroundColor?: string
   radius?: string
+  iconStyle?: string
+  divStyle?: string
 }
 
 const TextInput: React.FC<TextInputProps> = ({
@@ -87,43 +89,46 @@ const TextInput: React.FC<TextInputProps> = ({
   children,
   iconHeight = '12px',
   iconWidth = '10px',
-  backgroundColor
+  backgroundColor,
+  iconStyle = 'absolute p-4 bg-green-200 rounded-full left-2 top-2 ',
+  divStyle = 'p-4 mb-2'
 }) => {
   return (
-    <div className="mb-2 p-4">
-       <div className="relative flex">
+    <div className={`${divStyle}`}>
+      <div className="relative flex">
         <span
-          className="absolute left-2 top-2  p-4  "
+          className={`${iconStyle}`}
           style={{ pointerEvents: 'none', height: iconHeight, width: iconWidth, backgroundColor }}
         >
           {icon}
         </span>
         <input
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className={`w-full bg-gray-100 sm:w-[100%] pl-[80px]  border ${error ? 'border-red-500' : 'border-gray-300'}`}
-        style={{ width, height, borderRadius: radius, fontStyle: 'italic', color: '#828DA9', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      />
+          type={type}
+          id={name}
+          name={name}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className={`w-full bg-gray-100 sm:w-[100%] pl-[80px] rounded-[50px] border ${error ? 'border-red-500' : 'border-gray-300'}`}
+          style={{ width, height, fontStyle: 'italic', color: '#828DA9', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        />
         {type === 'password'
           ? (
             <span
-              className="absolute right-7 top-1 p-4"
+              className="absolute p-4 right-7 top-1"
               style={{ pointerEvents: 'none' }}
             >
               {iconRight}
-            </span>
-            )
+            </span>)
           : null}
-       </div>
+      </div>
       {error && (
-        <p className="text-red-500 text-sm mt-2" >Input field can&apos; be empty!</p>
+        <p className="mt-2 text-sm text-red-500" >Input field can&apos; be empty!</p>
       )}
     </div>
   )
 }
 
 export default TextInput
+
+export {}
