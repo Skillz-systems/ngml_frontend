@@ -1,10 +1,11 @@
 import React, { type ChangeEvent } from 'react'
-import TextInput from 'src/Components/TextInput'
+import TextInput from '../Components/TextInput'
 import logo from '../../src/Asset/CompanyLogo.png'
 import emailIcon from '../../src/Asset/emailIcons.png'
+import eyeIcon from '../../src/Asset/eyeIcons.png'
 import lockIcon from '../../src/Asset/lockIcons.png'
 import eyeIcon from '../../src/Asset/eyeIcons.png'
-import ButtonComponent from 'src/Components/ButtonComponent'
+import ButtonComponent from 'src/components/ButtonComponent'
 
 const StaffLoginPage: React.FC = () => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -28,22 +29,22 @@ const StaffLoginPage: React.FC = () => {
               <div style={{ textTransform: 'uppercase', color: '#49526A', fontFamily: 'Mulish', fontSize: '24px', fontWeight: '700', lineHeight: '40px', fontStyle: 'normal' }}>NGML Staff Sign In </div>
             </div>
             <div style={{ marginTop: '10px' }}>
-                <TextInput
-                  width='480px'
-                  height='64px'
-                  type="text"
-                  label="Email"
-                  value=""
-                  name="email"
-                  placeholder="Enter your email here"
-                  error={false}
-                  onChange={handleOnChange}
-                  icon={<img src={emailIcon} alt='emaillogo' />}
-                  iconHeight='50px'
-                   iconWidth='50px'
-                   backgroundColor='#D2F69E'
-                />
-              </div>
+              <TextInput
+                width='480px'
+                height='64px'
+                type="text"
+                label="Email"
+                value=""
+                name="email"
+                placeholder="Enter your email here"
+                error={false}
+                onChange={handleOnChange}
+                icon={<img src={emailIcon} alt='emaillogo' />}
+                iconHeight='50px'
+                iconWidth='50px'
+                backgroundColor='#D2F69E'
+              />
+            </div>
             <div>
               <TextInput
                 width='480px'
@@ -61,7 +62,7 @@ const StaffLoginPage: React.FC = () => {
                 iconWidth='50px'
                 backgroundColor='#D2F69E'
               />
-               </div>
+            </div>
             <div style={{ marginTop: '12px' }}>
               <ButtonComponent
                 border="none"
