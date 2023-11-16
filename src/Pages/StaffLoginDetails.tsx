@@ -1,16 +1,14 @@
 import React, { type ChangeEvent } from 'react'
-import TextInput from '../Components/TextInput'
+import TextInput from 'src/components/TextInput'
 import logo from '../../src/Asset/CompanyLogo.png'
 import emailIcon from '../../src/Asset/emailIcons.png'
-import eyeIcon from '../../src/Asset/eyeIcons.png'
 import lockIcon from '../../src/Asset/lockIcons.png'
 import eyeIcon from '../../src/Asset/eyeIcons.png'
-import ButtonComponent from 'src/components/ButtonComponent'
+import ButtonComponent from 'src/Components/ButtonComponent'
 
-const StaffLoginPage: React.FC = () => {
+const StaffLoginDetails: React.FC = () => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     console.log(event.target.value)
-    // alert('kskkskksks')
   }
 
   const handleClick = (): void => {
@@ -109,4 +107,4 @@ const StaffLoginPage: React.FC = () => {
   )
 }
 
-export default StaffLoginPage
+export default StaffLoginDetails

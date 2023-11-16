@@ -53,11 +53,11 @@ import type { ChangeEvent } from 'react'
  */
 
 interface TextInputProps {
-  type: 'text' | 'password'
-  label: string
-  value: string
-  name: string
-  placeholder: string
+  type?: string
+  label?: string
+  value?: string
+  name?: string
+  placeholder?: string
   error: boolean
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
   icon?: React.ReactNode
@@ -68,6 +68,7 @@ interface TextInputProps {
   iconHeight?: string
   iconWidth?: string
   backgroundColor?: string
+  radius?: string
   iconStyle?: string
   divStyle?: string
 }
@@ -82,6 +83,7 @@ const TextInput: React.FC<TextInputProps> = ({
   onChange,
   icon,
   iconRight,
+  radius = 'rounded-[50px]',
   width = '100%',
   height = '2.5rem',
   children,
