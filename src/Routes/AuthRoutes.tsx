@@ -11,21 +11,21 @@ export const AuthRoutes = [
     title: 'Staffpersonaldetails',
     path: '/app/Staffpersonaldetails',
     component: StaffPersonalDetails
-  },
-  {
-    title: 'customersetpassword',
-    path: '/app/customersetpassword',
-    component: CustomerSetPassword
-  },
-  {
-    title: 'signupstaff',
-    path: '/app/signupstaff',
-    component: SignupStaff
-  },
-  {
-    title: 'customerselfregistration',
-    path: '/app/customerselfregistration',
-    component: CustomerSelfRegistration
   }
+  // {
+  //   title: 'customersetpassword',
+  //   path: '/app/customersetpassword',
+  //   component: CustomerSetPassword
+  // },
+  // {
+  //   title: 'signupstaff',
+  //   path: '/app/signupstaff',
+  //   component: SignupStaff
+  // },
+  // {
+  //   title: 'customerselfregistration',
+  //   path: '/app/customerselfregistration',
+  //   component: CustomerSelfRegistration
+  // }
 
 ]
