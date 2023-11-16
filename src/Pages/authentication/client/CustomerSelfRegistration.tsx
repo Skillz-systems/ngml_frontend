@@ -1,12 +1,14 @@
 import React, { type ChangeEvent } from 'react'
 import nnpclogo from '../../../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
-import { MdOutlineBusinessCenter, MdOutlineMarkEmailUnread } from 'react-icons/md'
-import { GrCertificate } from 'react-icons/gr'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 
-const CustomerSelfRevistration = (): JSX.Element => {
+import business from '../../../Asset/svg-icons/Businessngml.svg'
+import email from '../../../Asset/svg-icons/Emailngml.svg'
+import cac from '../../../Asset/svg-icons/Invoicengml.svg'
+
+const CustomerSelfRegistration = (): JSX.Element => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     console.log(event.target.value)
   }
@@ -35,7 +37,7 @@ const CustomerSelfRevistration = (): JSX.Element => {
               placeholder="Enter Business Name here"
               error={false}
               onChange={handleOnChange}
-              icon={<MdOutlineBusinessCenter size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={business} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='business' />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -54,7 +56,7 @@ const CustomerSelfRevistration = (): JSX.Element => {
               placeholder="Enter the CAC number here"
               error={false}
               onChange={handleOnChange}
-              icon={<GrCertificate size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={cac} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='cac' />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -73,7 +75,7 @@ const CustomerSelfRevistration = (): JSX.Element => {
               placeholder="Enter the Business Email here"
               error={false}
               onChange={handleOnChange}
-              icon={<MdOutlineMarkEmailUnread size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={email} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} alt='email' />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -106,4 +108,4 @@ const CustomerSelfRevistration = (): JSX.Element => {
   )
 }
 
-export default CustomerSelfRevistration
+export default CustomerSelfRegistration

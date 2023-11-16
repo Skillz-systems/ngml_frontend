@@ -1,5 +1,10 @@
 import React, { type ChangeEvent } from 'react'
-import { HiOutlineUser, HiOutlineMail, HiOutlineLocationMarker, HiOutlineOfficeBuilding, HiOutlineIdentification } from 'react-icons/hi'
+
+import name from '../../../Asset/svg-icons/Namengml.svg'
+import email from '../../../Asset/svg-icons/Emailngml.svg'
+import zone from '../../../Asset/svg-icons/Zonengml.svg'
+import unit from '../../../Asset/svg-icons/Unitngml.svg'
+import designation from '../../../Asset/svg-icons/Designationngml.svg'
 
 import ButtonComponent from '../../../Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
@@ -33,7 +38,7 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your First Name"
               error={false}
               onChange={handleOnChange}
-              icon={<HiOutlineUser size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={name} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -52,7 +57,7 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your last Name"
               error={false}
               onChange={handleOnChange}
-              icon={<HiOutlineUser size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={name} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -71,7 +76,7 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your email here"
               error={false}
               onChange={handleOnChange}
-              icon={<HiOutlineMail size={20} className='p-0.5 absolute top-0.5 left-0.5' />}
+              icon={<img src={email} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -80,7 +85,8 @@ const SignupStaff = (): JSX.Element => {
             />
           </div>
           <div className="relative w-full group">
-            <HiOutlineLocationMarker size={24} className='authentication-icons' />
+
+            <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
             <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Choose your area of operation' required>
               <option>Choose your area of operation</option>
               <option value="imo">Imo</option>
@@ -89,7 +95,7 @@ const SignupStaff = (): JSX.Element => {
             </select>
           </div>
           <div className="relative w-full group">
-            <HiOutlineOfficeBuilding size={24} className='authentication-icons' />
+            <img src={unit} className='authentication-icons' width={24} height={24} alt='unit' />
             <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required>
               <option>Choose your department</option>
               <option value="it">IT</option>
@@ -99,7 +105,7 @@ const SignupStaff = (): JSX.Element => {
             </select>
           </div>
           <div className="relative w-full group">
-            <HiOutlineIdentification size={24} className='authentication-icons' />
+            <img src={designation} className='authentication-icons' width={24} height={24} alt='designation' />
             <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required>
               <option>Choose your designation</option>
               <option value="officer1">Officer I</option>

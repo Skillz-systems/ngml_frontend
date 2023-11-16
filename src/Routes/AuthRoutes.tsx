@@ -1,12 +1,18 @@
-import CustomerSelfRevistration from '../pages/authentication/client/CustomerSelfRevistration'
+import CustomerSelfRegistration from '../pages/authentication/client/CustomerSelfRegistration'
 import StaffLoginPage from '../pages/StaffLoginPage'
 import SignupStaff from '../pages/authentication/staff/SignupStaff'
+import CustomerSetPassword from '../pages/authentication/client/CustomerSetPassword'
 
 export const AuthRoutes = [
   {
     title: 'stafflogin',
     path: '/app/StaffloginPage',
     component: StaffLoginPage
+  },
+  {
+    title: 'customersetpassword',
+    path: '/app/customersetpassword',
+    component: CustomerSetPassword
   },
   {
     title: 'signupstaff',
@@ -16,6 +22,6 @@ export const AuthRoutes = [
   {
     title: 'customerselfregistration',
     path: '/app/customerselfregistration',
-    component: CustomerSelfRevistration
+    component: CustomerSelfRegistration
   }
 ]
