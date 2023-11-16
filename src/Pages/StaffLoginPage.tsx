@@ -4,7 +4,8 @@ import logo from '../../src/Asset/CompanyLogo.png'
 import emailIcon from '../../src/Asset/emailIcons.png'
 import eyeIcon from '../../src/Asset/eyeIcons.png'
 import lockIcon from '../../src/Asset/lockIcons.png'
-import ButtonComponent from '../Components/ButtonComponent'
+import eyeIcon from '../../src/Asset/eyeIcons.png'
+import ButtonComponent from 'src/components/ButtonComponent'
 
 const StaffLoginPage: React.FC = () => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {

@@ -128,3 +128,5 @@ const TextInput: React.FC<TextInputProps> = ({
 }
 
 export default TextInput
+
+export {}
