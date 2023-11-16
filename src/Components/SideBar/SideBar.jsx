@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import avatar from '../../Asset/avatar.png'
+import { SlArrowLeft } from 'react-icons/sl'
 
 // eslint-disable-next-line react/prop-types, @typescript-eslint/explicit-function-return-type
 const Sidebar = ({ SideBarLinks }) => {
@@ -11,43 +13,106 @@ const Sidebar = ({ SideBarLinks }) => {
       <div
         style={{
           borderRight: '0.5px solid #ccc',
-          width: '325px',
+          width: '350px',
           padding: '18px',
           overflowY: 'auto'
         }}
       >
         <div>
-          <div>
-            Woman of God
-            {/* <img src={Logo} alt="logo" /> */}
-          </div>
           <div
             style={{
+              backgroundColor: '#FFFFFF',
+              height: '60px',
               display: 'flex',
-              border: '1px solid #ccc',
-              borderRadius: '8px',
-              height: '44px',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              columnGap: '10px',
-              padding: '10px 14px 10px 14px',
-              margin: '40px 0'
+              flexDirection: 'column',
+              marginBottom: '22px',
+              borderRadius: '30px'
             }}
           >
-            <div>
-           Icon
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '6px'
+              }}
+            >
+              <div style={{ marginLeft: '6px' }}>
+                <img src={avatar} alt="happyavatar" />
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'column'
+                }}
+              >
+                <div
+                  style={{
+                    color: '#050505',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    fontFamily: 'Mulish'
+                  }}
+                >
+                  John Okor
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    columnGap: '6px'
+                  }}
+                >
+                  <div
+                    style={{
+                      color: '#828DA9',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      fontFamily: 'Mulish',
+                      lineHeight: '20px'
+                    }}
+                  >
+                    D.MANAGER
+                  </div>
+                  <div
+                    style={{
+                      color: '#828DA9',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      fontFamily: 'Mulish',
+                      lineHeight: '20px'
+                    }}
+                  >
+                    SS Zone
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  backgroundColor: '#e8eaed',
+                  height: '30px',
+                  width: '30px',
+                  borderRadius: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginRight: '6px'
+                }}
+              >
+                <SlArrowLeft style={{ color: '#828DA9' }} />
+              </div>
             </div>
-            <input
-              placeholder="Search"
-              style={{ border: 'none', outline: 'none' }}
-            />
           </div>
           <div
             style={{
-              background: '#FFFFFF',
-              height: '100%',
               display: 'flex',
-              flexDirection: 'column'
+              flexDirection: 'column',
+              borderRadius: '14px',
+              marginBottom: '10px',
+              background: '#FFFFFF'
             }}
           >
             {SideBarLinks?.map((sideBar) => (
@@ -62,38 +127,31 @@ const Sidebar = ({ SideBarLinks }) => {
                       : 'inactive-nav'
                 }
                 style={{
-                  height: '40px',
                   display: 'flex',
-                  columnGap: '20px',
+                  columnGap: '16px',
                   textDecoration: 'none',
-                  marginTop: `${
-                    sideBar?.name === 'Support' ? '80px' : '10px'
-                  }`,
+                  // background: '#FFFFFF',
+                  // marginTop: `${
+                  //   sideBar?.name === 'Communication' && '80px'
+                  // }`,
                   alignItems: 'center',
                   padding: '10px',
                   borderRadius: '6px',
                   cursor: 'pointer'
                 }}
               >
-                {/* <div style={{ width: '20px', height: '20px' }}>
-                  {typeof sideBar.icon === 'string'
-                    ? (
-                    // check if the icon is a string (asset path)
-                    <img
-                      src={sideBar.icon}
-                      alt="icon"
-                      style={{ color: '#667085' }}
-                    />
-                      )
-                    : (
-                    <sideBar.icon style={{ color: '#667085' }} /> // assuming it's a React component
-                      )}
-                </div> */}
                 <span
                   style={{
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontSize: '16px',
-                    color: 'rgba(16, 24, 40, 1)'
+                    fontFamily: 'Mulish'
+                  }}
+                >
+                  {sideBar.icon}
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'Mulish'
                   }}
                 >
                   {sideBar.name}
@@ -101,72 +159,8 @@ const Sidebar = ({ SideBarLinks }) => {
               </NavLink>
             ))}
           </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              rowGap: '14px',
-              background: 'rgba(249, 250, 251, 1)',
-              padding: '20px 16px 20px 16px',
-              borderRadius: '8px',
-              marginTop: '20px'
-            }}
-          >
-            <div
-              style={{
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '14px',
-                lineHeight: '20px',
-                color: 'rgba(71, 84, 103, 1)',
-                marginBottom: '4px'
-              }}
-            >
-              Used Budget
-            </div>
-            <div>
-              {' '}
-              <div
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 400,
-                  fontSize: '14px',
-                  lineHeight: '20px',
-                  color: 'rgba(71, 84, 103, 1)'
-                }}
-              >
-                Your team has used 80% of your budget this month.
-              </div>
-            </div>
-          </div>
-          <div
-            style={{ display: 'flex', alignItems: 'center', columnGap: '10px' }}
-          >
-            <div
-              style={{
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '14px',
-                lineHeight: '20px',
-                color: 'rgba(71, 84, 103, 1)'
-              }}
-            >
-              Discuss
-            </div>
-            <div
-              style={{
-                fontFamily: 'Inter',
-                fontWeight: 600,
-                fontSize: '14px',
-                lineHeight: '20px',
-                color: 'rgba(181, 71, 8, 1)'
-              }}
-            >
-              Budget Settings
-            </div>
-          </div>
         </div>
+
       </div>
     </>
   )

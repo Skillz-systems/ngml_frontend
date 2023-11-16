@@ -1,4 +1,4 @@
-import StaffLoginPage from 'src/Pages/StaffLoginPage'
+import StaffLoginPage from 'src/Pages/StaffLoginDetails'
 import StaffPersonalDetails from 'src/Pages/StaffPersonalDetails'
 
 export const AuthRoutes = [

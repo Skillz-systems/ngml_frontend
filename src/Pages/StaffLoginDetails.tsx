@@ -6,7 +6,7 @@ import lockIcon from '../../src/Asset/lockIcons.png'
 import eyeIcon from '../../src/Asset/eyeIcons.png'
 import ButtonComponent from 'src/components/ButtonComponent'
 
-const StaffLoginPage: React.FC = () => {
+const StaffLoginDetails: React.FC = () => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
     console.log(event.target.value)
   }
@@ -107,4 +107,4 @@ const StaffLoginPage: React.FC = () => {
   )
 }
 
-export default StaffLoginPage
+export default StaffLoginDetails

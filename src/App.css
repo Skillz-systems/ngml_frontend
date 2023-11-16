@@ -42,4 +42,13 @@
   }
 }
 
+.active-nav{
+  font-weight: 900 !important;
+  color: #050505;
+  font-size: 20px;
+}
+.inactive-nav{
+  color: #49526A;
+  font-size: 16px;
+}
 
