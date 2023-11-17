@@ -6,7 +6,7 @@ import zone from '../../../Asset/svg-icons/Zonengml.svg'
 import unit from '../../../Asset/svg-icons/Unitngml.svg'
 import designation from '../../../Asset/svg-icons/Designationngml.svg'
 
-import ButtonComponent from '../../../Components/ButtonComponent'
+import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
 const SignupStaff = (): JSX.Element => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {

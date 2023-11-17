@@ -1,12 +1,12 @@
-import ComposeInternalLayouts from 'src/components/Hoc/ComposeInternalLayout'
-import CommunicationPage from 'src/Pages/CommunicationPage'
-import HomePageInfo from 'src/Pages/HomePage'
-import Managerpage from 'src/Pages/MangerPage'
-import ProfilePage from 'src/Pages/ProfilePage'
-import RecordsPage from 'src/Pages/RecordsPage'
-import ReportPage from 'src/Pages/ReportsPage'
-import SettingsPage from 'src/Pages/SettingsPage'
-import Staffpage from 'src/Pages/StaffPage'
+import ComposeInternalLayouts from 'src/Components/Hoc/ComposeInternalLayout'
+import CommunicationPage from 'src/pages/CommunicationPage'
+import HomePageInfo from 'src/pages/HomePage'
+import Managerpage from 'src/pages/MangerPage'
+import ProfilePage from 'src/pages/ProfilePage'
+import RecordsPage from 'src/pages/RecordsPage'
+import ReportPage from 'src/pages/ReportsPage'
+import SettingsPage from 'src/pages/SettingsPage'
+import Staffpage from 'src/pages/StaffPage'
 
 export const PrivateRoutes = [
   {
@@ -57,5 +57,4 @@ export const PrivateRoutes = [
     component: ComposeInternalLayouts(SettingsPage),
     exact: true
   }
-
 ]
