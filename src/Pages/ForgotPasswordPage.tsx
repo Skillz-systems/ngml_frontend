@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import TextInput from '../Components/TextInput'
+import TextInput from '../components/TextInput'
 import ButtonComponent from '../Components/ButtonComponent'
 import emailIcon from '../Asset/emailIcons.png'
-import Footer from '../Components/Footer'
+import Footer from '../components/Footer'
 import logo from '../Asset/CompanyLogo.png'
 import cancel from '../Asset/cancel.png'
 

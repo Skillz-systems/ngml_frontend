@@ -1,6 +1,6 @@
 import React, { type ChangeEvent } from 'react'
 import nnpclogo from '../../../Asset/nnpc.png'
-import TextInput from 'src/Components/TextInput'
+import TextInput from 'src/components/TextInput'
 
 import emailIcon from '../../../Asset/svg-icons/Emailngml.svg'
 import eyeIClosedcon from '../../../Asset/svg-icons/Eyeclosedngml.svg'
