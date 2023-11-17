@@ -32,7 +32,7 @@ const InternalLayout: React.FC<InternalLayoutProps> = ({
     <div
       style={{
         display: 'flex',
-        height: '100vh',
+        height: '100%',
         columnGap: '2px',
         marginTop: '0px',
         width: '100%'

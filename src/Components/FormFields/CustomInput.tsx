@@ -67,19 +67,20 @@ const CustomInput: FC<InputProps> = ({
       {label !== null && (
         <label className="block text-left text-sm font-medium text-gray-500 capitalize">
           {label}
+          <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span>
         </label>
       )}
       <input
         name={name}
         type={type}
         placeholder={placeholder}
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${error !== null ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
         value={value}
         onChange={onChange}
       />
-      {error !== null && (
+      {((error ?? '').length > 0) && (
         <p className="text-left text-red-500 text-xs mt-1">{error}</p>
       )}
     </div>

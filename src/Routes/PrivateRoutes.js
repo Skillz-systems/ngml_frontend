@@ -1,12 +1,12 @@
 import ComposeInternalLayouts from 'src/Components/Hoc/ComposeInternalLayout'
-import CommunicationPage from 'src/Pages/CommunicationPage'
-import HomePageInfo from 'src/Pages/HomePage'
-import Managerpage from 'src/Pages/MangerPage'
-import ProfilePage from 'src/Pages/ProfilePage'
-import RecordsPage from 'src/Pages/RecordsPage'
-import ReportPage from 'src/Pages/ReportsPage'
-import SettingsPage from 'src/Pages/SettingsPage'
-import Staffpage from 'src/Pages/StaffPage'
+import CommunicationPage from 'src/Page/CommunicationPage'
+import HomePageInfo from 'src/Page/HomePage'
+import Managerpage from 'src/Page/MangerPage'
+import ProfilePage from 'src/Page/ProfilePage'
+import RecordsPage from 'src/Page/RecordsPage'
+import ReportPage from 'src/Page/ReportsPage'
+import SettingsPage from 'src/Page/SettingsPage'
+import Staffpage from 'src/Page/StaffPage'
 
 export const PrivateRoutes = [
   {

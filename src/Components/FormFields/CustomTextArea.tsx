@@ -12,7 +12,7 @@ interface TextAreaProps {
 }
 
 const CustomTextArea: FC<TextAreaProps> = ({
-  required = false,
+  required = true,
   label,
   placeholder,
   className,
@@ -23,17 +23,20 @@ const CustomTextArea: FC<TextAreaProps> = ({
 }) => {
   return (
     <div className={`mb-1 w-full ${className}`}>
-      {(label != null) && <label className="block text-left text-sm font-medium text-gray-500 capitalize">{label}</label>}
+      {(label != null) && <label className="block text-left text-sm font-medium text-gray-500 capitalize">{label}
+        <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span></label>}
       <textarea
         placeholder={placeholder}
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${(error != null) ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
         value={value}
         onChange={onChange}
         name={name}
       />
-      {(error != null) && <p className="text-left text-red-500 text-xs mt-1">{error}</p>}
+      {((error ?? '').length > 0) && (
+        <p className="text-left text-red-500 text-xs mt-1">{error}</p>
+      )}
     </div>
   )
 }

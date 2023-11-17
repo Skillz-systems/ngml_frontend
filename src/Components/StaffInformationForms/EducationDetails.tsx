@@ -16,7 +16,7 @@ const EducationDetails: React.FC = () => {
     console.log('Input value:', event.target.value)
   }
   return (
-    <div className='border-2 border-slate-400/70 border-dashed rounded-lg w-full p-4 ' id='education'>
+    <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='education'>
       <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Education Details</h3>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
         <CustomSelect
