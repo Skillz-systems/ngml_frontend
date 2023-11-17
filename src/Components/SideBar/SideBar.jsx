@@ -38,8 +38,8 @@ const Sidebar = ({ SideBarLinks }) => {
                 padding: '6px'
               }}
             >
-              <div style={{ marginLeft: '6px' }}>
-                <img src={avatar} alt="happyavatar" />
+              <div style={{ marginLeft: '2px' }}>
+                <img src={avatar} alt="happyavatar" style={{ width: '45px', height: '45px' }}/>
               </div>
               <div
                 style={{
@@ -144,7 +144,7 @@ const Sidebar = ({ SideBarLinks }) => {
                     fontFamily: 'Mulish'
                   }}
                 >
-                  {sideBar.icon}
+                  <img src={sideBar.icon} />
                 </span>
                 <span
                   style={{
@@ -197,7 +197,7 @@ const Sidebar = ({ SideBarLinks }) => {
                   fontFamily: 'Mulish'
                 }}
               >
-                {sideBar.icon}
+                 <img src={sideBar.icon} />
               </span>
               <span
                 style={{
