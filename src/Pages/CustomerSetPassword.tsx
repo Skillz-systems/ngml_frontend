@@ -1,10 +1,10 @@
 import React, { type ChangeEvent } from 'react'
-import nnpclogo from '../../../Asset/nnpc.png'
+import nnpclogo from '../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
 
-import emailIcon from '../../../Asset/svg-icons/Emailngml.svg'
-import eyeIClosedcon from '../../../Asset/svg-icons/Eyeclosedngml.svg'
-import passwordIcon from '../../../Asset/svg-icons/Passwordngml.svg'
+import emailIcon from '../Asset/svg-icons/Emailngml.svg'
+import eyeIClosedcon from '../Asset/svg-icons/Eyeclosedngml.svg'
+import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 
