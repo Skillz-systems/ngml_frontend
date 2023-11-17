@@ -1,5 +1,8 @@
-import StaffLoginPage from 'src/Pages/StaffLoginDetails'
-import StaffPersonalDetails from 'src/Pages/StaffPersonalDetails'
+import StaffLoginPage from 'src/pages/StaffLoginDetails'
+import StaffPersonalDetails from 'src/pages/StaffPersonalDetails'
+import CustomerSelfRegistration from 'src/pages/authentication/client/CustomerSelfRegistration'
+import CustomerSetPassword from 'src/pages/authentication/client/CustomerSetPassword'
+import SignupStaff from 'src/pages/authentication/staff/SignupStaff'
 
 export const AuthRoutes = [
   {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import ButtonComponent from 'src/components/ButtonComponent'
+import ButtonComponent from 'src/Components/ButtonComponent'
 
 describe('ButtonComponent', () => {
   it('renders children and calls onClick when clicked', () => {
@@ -9,8 +9,8 @@ describe('ButtonComponent', () => {
 
     const { getByText } = render(
       <ButtonComponent onClick={onClickMock}>
-      {buttonText}
-     </ButtonComponent>
+        {buttonText}
+      </ButtonComponent>
     )
 
     const buttonElement = getByText(buttonText)
