@@ -1,10 +1,10 @@
 import React, { type ChangeEvent } from 'react'
 
-import name from '../../../Asset/svg-icons/Namengml.svg'
-import email from '../../../Asset/svg-icons/Emailngml.svg'
-import zone from '../../../Asset/svg-icons/Zonengml.svg'
-import unit from '../../../Asset/svg-icons/Unitngml.svg'
-import designation from '../../../Asset/svg-icons/Designationngml.svg'
+import name from '../Asset/svg-icons/Namengml.svg'
+import email from '../Asset/svg-icons/Emailngml.svg'
+import zone from '../Asset/svg-icons/Zonengml.svg'
+import unit from '../Asset/svg-icons/Unitngml.svg'
+import designation from '../Asset/svg-icons/Designationngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'

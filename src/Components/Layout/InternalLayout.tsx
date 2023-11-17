@@ -35,7 +35,7 @@ const InternalLayout: React.FC<InternalLayoutProps> = ({
         height: '100vh',
         columnGap: '2px',
         marginTop: '0px',
-        width: '100vw'
+        width: '100%'
       }}
     >
       <div style={{ display: 'flex', width: '100%', background: ' linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)' }}>

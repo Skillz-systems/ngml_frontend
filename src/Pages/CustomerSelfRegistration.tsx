@@ -1,12 +1,12 @@
 import React, { type ChangeEvent } from 'react'
-import nnpclogo from '../../../Asset/nnpc.png'
+import nnpclogo from '../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 
-import business from '../../../Asset/svg-icons/Businessngml.svg'
-import email from '../../../Asset/svg-icons/Emailngml.svg'
-import cac from '../../../Asset/svg-icons/Invoicengml.svg'
+import business from '../Asset/svg-icons/Businessngml.svg'
+import email from '../Asset/svg-icons/Emailngml.svg'
+import cac from '../Asset/svg-icons/Invoicengml.svg'
 
 const CustomerSelfRegistration = (): JSX.Element => {
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
