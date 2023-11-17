@@ -1,25 +1,41 @@
 import React from 'react'
-import logo from './logo.svg'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { PrivateAdminRoute, routes } from './Routes/Index'
 import './App.css'
 
-function App (): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/space-before-function-paren
+function App(): JSX.Element {
+  // routes without layouts
+  const authRoutes = routes.AuthRoutes.map(({ path, component: Component }) => (
+    <Route key={path} path={path} element={<Component />} />
+  ))
+
+  const PrivateRoutes = routes.PrivateRoutes.map(
+    ({ path, component: Component, exact }) => (
+      <>
+      <Route
+              key={path}
+              path={path}
+              element={
+                  <PrivateAdminRoute key={path} >
+                      <Component/>
+                  </PrivateAdminRoute>
+              }
+          /></>
+
+    )
+  )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          {authRoutes}
+          {PrivateRoutes}
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
+
 export default App

@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@mui/material/*": ["node_modules/@mui/material/*"],
+      "@mui/x-date-pickers/*": ["node_modules/@mui/x-date-pickers/*"],
+      "types": ["react-icons", "react-router-dom"]
+    },
     "target": "es5",
     "lib": [
       "dom",
