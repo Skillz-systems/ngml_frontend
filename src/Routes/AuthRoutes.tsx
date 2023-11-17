@@ -1,3 +1,4 @@
+import FormBuilderScreen from 'src/Pages/FormBuilder/FormBuilderScreen'
 import StaffLoginPage from 'src/Pages/StaffLoginDetails'
 import StaffPersonalDetails from 'src/Pages/StaffPersonalDetails'
 import CustomerSelfRegistration from 'src/Pages/authentication/client/CustomerSelfRegistration'
@@ -29,5 +30,10 @@ export const AuthRoutes = [
     title: 'customerselfregistration',
     path: '/customerselfregistration',
     component: CustomerSelfRegistration
+  },
+  {
+    title: 'Form Builde',
+    path: '/formbuilder',
+    component: FormBuilderScreen
   }
 ]
