@@ -13,15 +13,15 @@ function App(): JSX.Element {
   const PrivateRoutes = routes.PrivateRoutes.map(
     ({ path, component: Component, exact }) => (
       <>
-      <Route
-              key={path}
-              path={path}
-              element={
-                  <PrivateAdminRoute key={path} >
-                      <Component/>
-                  </PrivateAdminRoute>
-              }
-          /></>
+        <Route
+          key={path}
+          path={path}
+          element={
+            <PrivateAdminRoute key={path} >
+              <Component />
+            </PrivateAdminRoute>
+          }
+        /></>
 
     )
   )
@@ -29,15 +29,15 @@ function App(): JSX.Element {
   const CustomerRoutes = routes.CustomerRoutes.map(
     ({ path, component: Component, exact }) => (
       <>
-      <Route
-              key={path}
-              path={path}
-              element={
-                  <PrivateAdminRoute key={path} >
-                      <Component/>
-                  </PrivateAdminRoute>
-              }
-          /></>
+        <Route
+          key={path}
+          path={path}
+          element={
+            <PrivateAdminRoute key={path} >
+              <Component />
+            </PrivateAdminRoute>
+          }
+        /></>
 
     )
   )
