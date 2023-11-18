@@ -87,3 +87,29 @@ button:hover {
   margin: 20px;
   width: 160px;
 }
+
+.bg-default {
+  background-color: #fafafa!important;
+  margin-top: 20px !important;
+}
+
+.container {
+  max-width: 1140px;
+  background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+  /* margin-right: 0 !important; */
+}
+@media (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+    background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+}
+}
+
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
