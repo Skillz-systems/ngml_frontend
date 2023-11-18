@@ -1,4 +1,5 @@
-import React, { type ChangeEvent } from 'react'
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import nnpclogo from '../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
 
@@ -9,11 +10,18 @@ import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 import ButtonComponent from 'src/Components/ButtonComponent'
 
 const CustomerSetPassword = (): JSX.Element => {
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.value)
+  const [values, setValues] = useState({})
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    setValues({ ...values, [event.target.name]: event.target.value })
   }
-  const handleClick = (): void => {
-    console.log('submit ')
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
+    e.preventDefault()
+    console.log(values)
+    try {
+      setValues({})
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
   }
   return (
     <main className="flex flex-col items-center justify-center w-screen h-screen gradient">
@@ -25,7 +33,7 @@ const CustomerSetPassword = (): JSX.Element => {
           </div>
           <h2 className='text-lg antialiased font-bold uppercase xl:text-xl text-slate-700'>Set Password</h2>
         </header>
-        <form className='w-full space-y-4'>
+        <form className='flex flex-col items-center justify-center w-full space-y-4' onSubmit={handleSubmit}>
           <div className="w-full">
             <TextInput
               width=''
@@ -89,19 +97,19 @@ const CustomerSetPassword = (): JSX.Element => {
             />
           </div>
 
-          <div className="w-full mt-4">
-            <ButtonComponent
-              border="none"
-              backgroundColor="#00AF50"
-              height="36px"
-              radius="100px"
-              width=""
-              fontSize='16px'
-              onClick={() => {
-                handleClick()
-              }}
-            > Proceed</ButtonComponent>
-          </div>
+          {/* <div className="w-full mt-4"> */}
+          <ButtonComponent
+            border="none"
+            backgroundColor="#00AF50"
+            height="36px"
+            radius="100px"
+            width="100%"
+            fontSize='14px'
+            marginRight=''
+            onClick={() => {
+            }}
+          > Proceed</ButtonComponent>
+          {/* </div> */}
         </form>
 
       </section>

@@ -55,9 +55,9 @@ code {
 		@apply bg-white w-full rounded-full px-10 py-1.5 outline-transparent focus-within:outline-[#E7EE87] focus:outline-[#E7EE87] active:outline-none duration-300 ease-in-out transition-all group-hover:bg-[#E7EE87] group-hover:text-slate-900 group-hover:placeholder:text-slate-900 cursor-pointer;
 	}
 	.authentication-select {
-		@apply bg-gray-100 w-full px-10 py-1.5 duration-300 ease-in-out transition-all cursor-pointer pl-[80px] rounded-[50px] border border-gray-300 italic;
+		@apply bg-gray-100 w-full px-10 py-[9px] duration-300 ease-in-out transition-all text-[##828DA9] cursor-pointer pl-[80px] rounded-[50px] border border-gray-300 italic;
 	}
 	.authentication-icons {
-		@apply absolute top-1.5 left-2 text-slate-800 p-1 bg-[#E7EE87] rounded-full duration-300 ease-in-out transition-all;
+		@apply absolute top-2 left-2 text-slate-800 p-1 bg-[#E7EE87] rounded-full duration-300 ease-in-out transition-all;
 	}
 }

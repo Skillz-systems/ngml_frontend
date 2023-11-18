@@ -25,7 +25,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
           </div>
           <h2 className='text-lg antialiased font-bold uppercase xl:text-xl text-slate-700'>NGML Business registration</h2>
         </header>
-        <form className='w-full space-y-4'>
+        <form className='flex flex-col items-center justify-center w-full space-y-4'>
           <div className="w-full">
             <TextInput
               width=''
@@ -83,19 +83,20 @@ const CustomerSelfRegistration = (): JSX.Element => {
               divStyle='p-0 mb-0'
             />
           </div>
-          <div className="w-full mt-4">
-            <ButtonComponent
-              border="none"
-              backgroundColor="#00AF50"
-              height="36px"
-              radius="100px"
-              width=""
-              fontSize='16px'
-              onClick={() => {
-                handleClick()
-              }}
-            > Register</ButtonComponent>
-          </div>
+          {/* <div className="w-full mt-4"> */}
+          <ButtonComponent
+            border="none"
+            backgroundColor="#00AF50"
+            height="36px"
+            radius="100px"
+            width="100%"
+            fontSize='14px'
+            marginRight=''
+            onClick={() => {
+              handleClick()
+            }}
+          > Register</ButtonComponent>
+          {/* </div> */}
         </form>
 
       </section>
