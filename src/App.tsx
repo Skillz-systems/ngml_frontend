@@ -4,6 +4,7 @@ import { PrivateAdminRoute, routes } from './Routes/Index'
 import './App.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { AuthProvider } from './Context/AuthContext'
 
 // eslint-disable-next-line @typescript-eslint/space-before-function-paren
 function App(): JSX.Element {
@@ -45,15 +46,19 @@ function App(): JSX.Element {
   )
 
   return (
+
     <div className="App">
       <ToastContainer />
-      <BrowserRouter>
-        <Routes>
-          {authRoutes}
-          {PrivateRoutes}
-          {CustomerRoutes}
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+
+        <BrowserRouter>
+          <Routes>
+            {authRoutes}
+            {PrivateRoutes}
+            {CustomerRoutes}
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
       {/* </ToastContainer> */}
 
     </div>

@@ -291,14 +291,15 @@ const StaffInformation: React.FC = () => {
         </div>
         {/* end tax */}
       </div>
-      <div className="flex justify-end flex-1 bg-white w-full p-4 mt-4  rounded-lg">
+      <div className="flex justify-end flex-1 bg-white w-full  mt-4  rounded-xl">
         <ButtonComponent
           border="1px solid #eee"
           backgroundColor="white"
           height="38px"
           radius="100px"
-          width="200px"
-          fontSize='16px'
+          width="170px"
+          fontSize='14px'
+          marginRight=''
           color="#49526A"
           onClick={() => {
 
@@ -309,8 +310,9 @@ const StaffInformation: React.FC = () => {
           backgroundColor="#00AF50"
           height="38px"
           radius="100px"
-          width="200px"
-          fontSize='16px'
+          width="170px"
+          fontSize='14px'
+          marginRight=''
           onClick={() => {
 
           }}

@@ -1,12 +1,21 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import avatar from '../../Asset/avatar.png'
 import { SlArrowLeft } from 'react-icons/sl'
 
+import { useAuthState } from 'src/Context/AuthContext'
+
 // eslint-disable-next-line react/prop-types, @typescript-eslint/explicit-function-return-type
 const Sidebar = ({ SideBarLinks }) => {
+  const { user } = useAuthState()
+  const [name, setName] = useState('John Okafor')
+  useEffect(() => {
+    if (user) {
+      setName(user.firstname + ' ' + user.lastname)
+    }
+  }, [])
   const communicationProfileSettings = SideBarLinks.slice(5, 8)
   return (
     <>
@@ -57,7 +66,7 @@ const Sidebar = ({ SideBarLinks }) => {
                     fontFamily: 'Mulish'
                   }}
                 >
-                  John Okor
+                  {name}
                 </div>
                 <div
                   style={{

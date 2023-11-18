@@ -12,27 +12,30 @@ import designation from '../Asset/svg-icons/Designationngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
+import { registerUser, type RegisterInterface } from 'src/api/axios'
 
-interface FormInteface {
-  firstname: string
-  lastname: string
-  email: string
-  zone: string
-  unit: string
-  designation: string
-}
+import { useNavigate } from 'react-router-dom'
+import { useAuthDispatch } from '../Context/AuthContext'
+// interface FormInteface {
+//   firstname: string
+//   lastname: string
+//   email: string
+//   zone: string
+//   unit: string
+//   designation: string
+// }
 const SignupStaff = (): JSX.Element => {
-  const [values, setValues] = useState<FormInteface>({
+  const [values, setValues] = useState<RegisterInterface>({
     firstname: '',
     lastname: '',
     email: '',
     zone: '',
-    unit: '',
-    designation: ''
+    operation: '',
+    designation: '',
+    type: 'STAFF'
   })
-
-  // const dataEndpoint = '/api/dataEndpoint'
-  // const { data, error } = useSWR(dataEndpoint)
+  const authDispatch = useAuthDispatch()
+  const navigate = useNavigate()
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
@@ -42,15 +45,17 @@ const SignupStaff = (): JSX.Element => {
     // console.log(error)
     console.log(values)
     try {
-      // await axios.post('/api/submitForm', values)
-      // await mutate(dataEndpoint)
+      const res = await registerUser(values)
+      authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
+      navigate('/app/staffpage', { replace: true })
       setValues({
         firstname: '',
         lastname: '',
         email: '',
         zone: '',
-        unit: '',
-        designation: ''
+        operation: '',
+        designation: '',
+        type: 'STAFF'
       })
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -124,6 +129,7 @@ const SignupStaff = (): JSX.Element => {
               divStyle='p-0 mb-0'
             />
           </div>
+          <input type="text" hidden name='type' value="STAFF" onChange={handleOnChange} />
           <div className="relative w-full group">
             <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
             <select name="zone" id="zone" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.zone}>
@@ -135,7 +141,7 @@ const SignupStaff = (): JSX.Element => {
           </div>
           <div className="relative w-full group">
             <img src={unit} className='authentication-icons' width={24} height={24} alt='unit' />
-            <select name="unit" id="unit" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.unit} >
+            <select name="operation" id="operation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.operation} >
               <option>Choose your department</option>
               <option value="it">IT</option>
               <option value="admin">Admin</option>
