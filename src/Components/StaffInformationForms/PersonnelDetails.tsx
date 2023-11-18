@@ -1,23 +1,16 @@
-import React, { type ChangeEvent, useRef } from 'react'
+import React, { type ChangeEvent, useState } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 import CustomTextArea from '../FormFields/CustomTextArea'
 
 const PersonnelDetails: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [values, setValues] = useState({})
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    // Handle input change
-    console.log('Input value:', event.target.value)
-  }
-
-  const selectRef = useRef(null)
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    // Handle the select change
-    console.log('Input value:', event.target.value)
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    setValues({ ...values, [event.target.name]: event.target.value })
   }
   return (
-    <div className='border-2 border-slate-400/70 border-dashed rounded-lg w-full p-4 ' id='personal'>
+    <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='personal'>
       <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Personal Details</h3>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
         <CustomSelect
@@ -28,7 +21,7 @@ const PersonnelDetails: React.FC = () => {
             { value: 'mrs', label: 'mrs' },
             { value: 'miss', label: 'miss' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomInput name='firstname' required
           label="First Name"
           placeholder="Enter your first name"
@@ -36,7 +29,7 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=''
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='othernames' required
           label="other names"
           placeholder="Enter your other names"
@@ -44,7 +37,7 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='lastname' required
           label="last name"
           placeholder="Enter your last name"
@@ -52,7 +45,7 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='dateofbirth' required
           label="date of birth"
           placeholder="Enter your last name"
@@ -60,7 +53,7 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomSelect
           name='gender'
           label="gender"
@@ -69,7 +62,7 @@ const PersonnelDetails: React.FC = () => {
             { value: 'female', label: 'female' },
             { value: 'other', label: 'other' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomSelect
           name='nationality'
           label="nationality"
@@ -78,7 +71,7 @@ const PersonnelDetails: React.FC = () => {
             { value: 'cameroon', label: 'cameroon' },
             { value: 'ghana', label: 'ghana' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomSelect
           name='stateoforigin'
           label="state of origin"
@@ -87,16 +80,16 @@ const PersonnelDetails: React.FC = () => {
             { value: 'edo', label: 'edo' },
             { value: 'fct', label: 'fct' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomSelect
-          name='localgovernment'
-          label="local government"
+          name='lga'
+          label=" LGA"
           options={[
             { value: 'fct', label: 'fct' },
             { value: 'bwari', label: 'bwari' },
             { value: 'nyanya', label: 'nyanya' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomSelect
           name='maritalstatus'
           label="marital status"
@@ -105,7 +98,7 @@ const PersonnelDetails: React.FC = () => {
             { value: 'single', label: 'single' },
             { value: 'divorced', label: 'divorced' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleChange} />
         <CustomInput name='phonenumber' required
           label="phone number"
           placeholder="Enter your phone number"
@@ -113,7 +106,7 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='email' required
           label="email"
           placeholder="Enter your email"
@@ -121,14 +114,13 @@ const PersonnelDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomTextArea name='address' required
           label="address"
           placeholder="Enter your address"
           className=""
           error="" />
       </div>
-
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState, type FC } from 'react'
 import TabList, { type TabListInterface } from './TabList'
 import TabPanel from './TabPanel'
-import ButtonComponent from '../ButtonComponent'
+// import ButtonComponent from '../ButtonComponent'
 
 /**
  * This code defines a Tabs component that displays a tabbed interface.
@@ -61,7 +61,9 @@ const Tabs: FC = () => {
     <>
       <div className="flex flex-1 mt-4">
         <TabList tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
-        <form className="flex flex-col flex-1">
+
+        <TabPanel activeTab={activeTab} panelName={panelName} />
+        {/* <div className="flex flex-col flex-1">
 
           <div className="flex-1 bg-white w-full p-3  rounded-lg">
             <TabPanel activeTab={activeTab} panelName={panelName} />
@@ -92,7 +94,7 @@ const Tabs: FC = () => {
               }}
             > Save and Continue</ButtonComponent>
           </div>
-        </form>
+        </div> */}
 
       </div>
     </>

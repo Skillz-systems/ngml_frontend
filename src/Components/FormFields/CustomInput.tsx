@@ -1,13 +1,9 @@
-import React, { type FC, type ChangeEvent, type Ref } from 'react'
+import React, { type FC, type ChangeEvent } from 'react'
 
 /**
  * Props for the CustomInput component.
  */
 interface InputProps {
-  /**
-   * Ref to attach to the underlying input element.
-   */
-  ref: Ref<HTMLInputElement>
   /**
    * Specifies whether the field is required.
    */
@@ -62,24 +58,36 @@ const CustomInput: FC<InputProps> = ({
   onChange,
   name
 }) => {
+  // const [focused, setFocused] = useState<boolean>(false)
+  // const handleFocus = (): void => {
+  //   setFocused(true)
+  // }
   return (
-    <div className={`mb-1 w-full ${className}`}>
+    <div className={`mb-1 w-full flex flex-col justify-start ${className}`}>
       {label !== null && (
         <label className="block text-left text-sm font-medium text-gray-500 capitalize">
           {label}
+          <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span>
         </label>
       )}
       <input
         name={name}
         type={type}
         placeholder={placeholder}
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${error !== null ? 'border-red-500' : 'border-gray-300'
+        // className='mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 border-gray-300 error-input'
+        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
         value={value}
         onChange={onChange}
+      // onBlur={handleFocus}
+      // eslint-disable-next-line react/no-unknown-property
+      // focused={focused.toString()}
       />
-      {error !== null && (
+
+      {/* <span className="text-left text-transparent text-xs">{error}</span> */}
+
+      {((error ?? '').length > 0) && (
         <p className="text-left text-red-500 text-xs mt-1">{error}</p>
       )}
     </div>

@@ -39,7 +39,7 @@ const Sidebar = ({ SideBarLinks }) => {
               }}
             >
               <div style={{ marginLeft: '2px' }}>
-                <img src={avatar} alt="happyavatar" style={{ width: '45px', height: '45px' }}/>
+                <img src={avatar} alt="happyavatar" style={{ width: '45px', height: '45px' }} />
               </div>
               <div
                 style={{
@@ -115,8 +115,8 @@ const Sidebar = ({ SideBarLinks }) => {
               marginBottom: '10px',
               background: '#FFFFFF'
             }}
-           >
-             {SideBarLinks.slice(0, 5).map((sideBar) => (
+          >
+            {SideBarLinks.slice(0, 5).map((sideBar) => (
               <NavLink
                 key={sideBar.id}
                 to={sideBar.to}
@@ -154,7 +154,7 @@ const Sidebar = ({ SideBarLinks }) => {
                   {sideBar.name}
                 </span>
               </NavLink>
-             ))}
+            ))}
           </div>
         </div>
         <div
@@ -197,7 +197,7 @@ const Sidebar = ({ SideBarLinks }) => {
                   fontFamily: 'Mulish'
                 }}
               >
-                 <img src={sideBar.icon} />
+                <img src={sideBar.icon} />
               </span>
               <span
                 style={{
