@@ -87,7 +87,7 @@ const StaffLoginDetails: React.FC = () => {
                       backgroundColor="none"
                       height="38px"
                       radius="40px"
-                      width="160px"
+                      width='160px'
                       color='black'
                       fontSize='16px'
                       onClick={() => {
