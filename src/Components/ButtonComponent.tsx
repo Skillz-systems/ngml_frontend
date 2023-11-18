@@ -33,7 +33,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   children,
   onClick,
   backgroundColor = 'green',
-  width = '100% ',
+  width = '100%',
   border = '1px solid red',
   radius = '10px',
   height = '40px',
@@ -43,20 +43,20 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
 }) => {
   return (
     <button onClick={onClick}
-    className='sm:w-[100%]'
-    style={{
-      backgroundColor,
-      border,
-      borderRadius: radius,
-      height,
-      width,
-      fontSize,
-      color,
-      cursor: 'pointer',
-      marginRight: '16px',
-      fontFamily: 'Mulish'
-    }}
-     >
+      className='sm:w-[100%]'
+      style={{
+        backgroundColor,
+        border,
+        borderRadius: radius,
+        height,
+        width,
+        fontSize,
+        color,
+        cursor: 'pointer',
+        marginRight: '16px',
+        fontFamily: 'Mulish'
+      }}
+    >
       {children}
     </button>
   )

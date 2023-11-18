@@ -53,3 +53,63 @@
   font-size: 18px;
 }
 
+
+
+/* //Form Buider Style */
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
+}
+
+.float-child {
+  width: 45%;
+  float: left;
+  padding: 20px;
+  border: 2px solid gray;
+  min-height: 800px;
+}  
+
+button {
+  padding: 10px;
+  margin: 20px;
+  width: 150px;
+  height: 40px;
+  color: whitesmoke;
+  background-color: gray;
+  cursor: pointer;
+  transition: width 0.5s;
+  border: 4px  solid #302e3b;
+
+}
+
+button:hover {
+  padding: 10px;
+  margin: 20px;
+  width: 160px;
+}
+
+.bg-default {
+  background-color: #fafafa!important;
+  margin-top: 20px !important;
+}
+
+.container {
+  max-width: 1140px;
+  background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+  /* margin-right: 0 !important; */
+}
+@media (min-width: 1200px){
+  .container {
+    max-width: 1140px;
+    background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+}
+}
+
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

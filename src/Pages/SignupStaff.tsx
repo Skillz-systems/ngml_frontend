@@ -65,7 +65,7 @@ const SignupStaff = (): JSX.Element => {
         <h4 className='text-sm text-justify'>we want to comfirm something</h4>
       </header>
       <section>
-        <form className='flex flex-col items-center px-3 py-8 mt-3 space-y-4 md:px-6 h-fit w-fit md:w-96 bg-white/40 rounded-3xl' onSubmit={handleSubmit}>
+        <form className='flex flex-col justify-center items-center px-3 py-8 mt-3 space-y-4 md:px-6 h-fit w-fit md:w-96 bg-white/40 rounded-3xl' onSubmit={handleSubmit}>
 
           <div className="w-full">
             <TextInput
@@ -159,7 +159,7 @@ const SignupStaff = (): JSX.Element => {
               backgroundColor="#00AF50"
               height="38px"
               radius="100px"
-              width=""
+              width="100%"
               fontSize='16px'
               onClick={() => {
               }}

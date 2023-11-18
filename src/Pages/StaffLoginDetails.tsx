@@ -15,7 +15,7 @@ const StaffLoginDetails: React.FC = () => {
     console.log('ypp ')
   }
   return (
-    <div className='w-[100%] h-screen' style={{ background: ' linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div className='w-[100%] h-screen' style={{ background: 'linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div>
           <div className='sm:w-[100%]' style={{ background: 'rgba(255, 255, 255, 0.50)', width: '600px', padding: 'var(--get-general-numbers-00732, 32px)', borderRadius: 'var(--get-general-numbers-00732, 32px)', position: 'relative' }}>
