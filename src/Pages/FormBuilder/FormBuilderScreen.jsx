@@ -127,7 +127,7 @@ export default function FormBuilderScreen () {
         placeholder: formData[i]?.label?.blocks[0]?.text
       }
 
-      if (formData[i].options) {
+      if (formData[i].options !== undefined) {
         const selectable = []
 
         const options = formData[i]?.options

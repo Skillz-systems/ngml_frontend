@@ -27,13 +27,12 @@ export default function ViewForm () {
     const formFieldAnswers = []
 
     for (const key in resp) {
-      const field = form?.fields?.filter(field => field.fieldId == key)
-
+      const field = form?.fields?.filter(field => field.fieldId === key)
 
       let response = resp[`${key}`]
 
-      if (field[0].inputType == 'Dropdown') {
-        const fieldOption = field[0]?.selectable?.filter(field => field.optionId == resp[`${key}`])
+      if (field[0].inputType === 'Dropdown') {
+        const fieldOption = field[0]?.selectable?.filter(field => field.optionId === resp[`${key}`])
 
         console.log(fieldOption, 'fieldOptionfieldOption')
         response = fieldOption[0].value
