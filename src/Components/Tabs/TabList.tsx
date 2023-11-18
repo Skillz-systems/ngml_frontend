@@ -35,14 +35,18 @@ const TabList: FC<TabListProps> = ({ tablist, onTabChange, activeTab }) => {
               : <span className='h-1.5 w-1.5 rounded-full bg-[#00AF50]/40 transition-all ease-in-out duration-300' ></span>
             }
           </div>
-          {tab.children?.map((child) => (
-            <a key={child.ref} className="  space-y-2  cursor-pointer" href={`#${child.ref}`} >
-              <div className="flex justify-between items-center gap-x-2  ml-8">
-                <h4 className='truncate text-neutral-500 text-base capitalize'>{child?.name}
-                </h4>
-                <span className='h-1.5 w-1.5 rounded-full bg-[#00AF50]/20' ></span>
-              </div>
-            </a>))
+          {activeTab === tab.ref && (
+
+            tab.children?.map((child) => (
+              <a key={child.ref} className="  space-y-2  cursor-pointer" href={`#${child.ref}`} >
+                <div className="flex justify-between items-center gap-x-2  ml-8">
+                  <h4 className='truncate text-neutral-500 text-base capitalize'>{child?.name}
+                  </h4>
+                  <span className='h-1.5 w-1.5 rounded-full bg-[#00AF50]/20' ></span>
+                </div>
+              </a>))
+
+          )
           }
         </div>
       ))}

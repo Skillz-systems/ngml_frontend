@@ -123,7 +123,9 @@ const StaffInformation: React.FC = () => {
               error=""
               onChange={handleChange}
             />
-            <CustomTextArea name='address' required
+            <CustomTextArea
+              onChange={handleChange}
+              name='address' required
               label="address"
               placeholder="Enter your address"
               className=""
@@ -195,10 +197,11 @@ const StaffInformation: React.FC = () => {
               error=""
               onChange={handleChange}
             />
-            <CustomTextArea name='address' required
+            <CustomTextArea name='nextofkinaddress' required
               label="address"
               placeholder="Enter your address"
               className=""
+              onChange={handleChange}
               error="" />
           </div>
 
