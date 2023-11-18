@@ -1,4 +1,8 @@
-import React, { type ChangeEvent } from 'react'
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { useState, type ChangeEvent, type FormEvent } from 'react'
+
+import useSWR, { mutate } from 'swr'
+import axios from 'axios'
 
 import name from '../Asset/svg-icons/Namengml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
@@ -8,13 +12,49 @@ import designation from '../Asset/svg-icons/Designationngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
+
+interface FormInteface {
+  firstname: string
+  lastname: string
+  email: string
+  zone: string
+  unit: string
+  designation: string
+}
 const SignupStaff = (): JSX.Element => {
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.value)
-    // alert('kskkskksks')
+  const [values, setValues] = useState<FormInteface>({
+    firstname: '',
+    lastname: '',
+    email: '',
+    zone: '',
+    unit: '',
+    designation: ''
+  })
+
+  const dataEndpoint = '/api/dataEndpoint'
+  const { data, error } = useSWR(dataEndpoint)
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    setValues({ ...values, [event.target.name]: event.target.value })
   }
-  const handleClick = (): void => {
-    console.log('ypp ')
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
+    e.preventDefault()
+    console.log(data)
+    console.log(error)
+    console.log(values)
+    try {
+      await axios.post('/api/submitForm', values)
+      await mutate(dataEndpoint)
+      setValues({
+        firstname: '',
+        lastname: '',
+        email: '',
+        zone: '',
+        unit: '',
+        designation: ''
+      })
+    } catch (error) {
+      console.error('Error submitting form:', error)
+    }
   }
   return (
     <main className="flex flex-col items-center justify-center w-screen h-screen gradient">
@@ -25,7 +65,7 @@ const SignupStaff = (): JSX.Element => {
         <h4 className='text-sm text-justify'>we want to comfirm something</h4>
       </header>
       <section>
-        <form className='flex flex-col items-center px-3 py-8 mt-3 space-y-4 md:px-6 h-fit w-fit md:w-96 bg-white/40 rounded-3xl'>
+        <form className='flex flex-col items-center px-3 py-8 mt-3 space-y-4 md:px-6 h-fit w-fit md:w-96 bg-white/40 rounded-3xl' onSubmit={handleSubmit}>
 
           <div className="w-full">
             <TextInput
@@ -33,8 +73,8 @@ const SignupStaff = (): JSX.Element => {
               height='40px'
               type="text"
               label="firstName"
-              value=""
-              name="firstName"
+              value={values.firstname}
+              name="firstname"
               placeholder="Enter your First Name"
               error={false}
               onChange={handleOnChange}
@@ -52,7 +92,7 @@ const SignupStaff = (): JSX.Element => {
               height='40px'
               type="text"
               label="lastName"
-              value=""
+              value={values.lastname}
               name="lastname"
               placeholder="Enter your last Name"
               error={false}
@@ -71,7 +111,7 @@ const SignupStaff = (): JSX.Element => {
               height='40px'
               type="text"
               label="Email"
-              value=""
+              value={values.email}
               name="email"
               placeholder="Enter your email here"
               error={false}
@@ -85,9 +125,8 @@ const SignupStaff = (): JSX.Element => {
             />
           </div>
           <div className="relative w-full group">
-
             <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
-            <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Choose your area of operation' required>
+            <select name="zone" id="zone" className='text-[#828DA9] authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.zone}>
               <option>Choose your area of operation</option>
               <option value="imo">Imo</option>
               <option value="fct">FCT</option>
@@ -96,7 +135,7 @@ const SignupStaff = (): JSX.Element => {
           </div>
           <div className="relative w-full group">
             <img src={unit} className='authentication-icons' width={24} height={24} alt='unit' />
-            <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required>
+            <select name="unit" id="unit" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.unit} >
               <option>Choose your department</option>
               <option value="it">IT</option>
               <option value="admin">Admin</option>
@@ -106,7 +145,7 @@ const SignupStaff = (): JSX.Element => {
           </div>
           <div className="relative w-full group">
             <img src={designation} className='authentication-icons' width={24} height={24} alt='designation' />
-            <select name="" id="" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required>
+            <select name="designation" id="designation" className='text-[#828DA9] authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.unit} >
               <option>Choose your designation</option>
               <option value="officer1">Officer I</option>
               <option value="officer2">Officer II</option>
@@ -123,7 +162,6 @@ const SignupStaff = (): JSX.Element => {
               width=""
               fontSize='16px'
               onClick={() => {
-                handleClick()
               }}
             > Submit</ButtonComponent>
           </div>
