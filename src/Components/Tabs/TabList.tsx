@@ -38,9 +38,9 @@ const TabList: FC<TabListProps> = ({ tablist, onTabChange, activeTab }) => {
           {activeTab === tab.ref && (
 
             tab.children?.map((child) => (
-              <a key={child.ref} className="  space-y-2  cursor-pointer" href={`#${child.ref}`} >
+              <a key={child.ref} className="space-y-2  cursor-pointer no-underline hover:no-underline " href={`#${child.ref}`} >
                 <div className="flex justify-between items-center gap-x-2  ml-8">
-                  <h4 className='truncate text-neutral-500 text-base capitalize'>{child?.name}
+                  <h4 className='truncate text-neutral-500 text-base capitalize hover:text-neutral-700'>{child?.name}
                   </h4>
                   <span className='h-1.5 w-1.5 rounded-full bg-[#00AF50]/20' ></span>
                 </div>
