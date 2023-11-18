@@ -32,7 +32,6 @@ const StaffLoginDetails: React.FC = () => {
                 height='64px'
                 type="text"
                 label="Email"
-                value=""
                 name="email"
                 placeholder="Enter your email here"
                 error={false}
@@ -49,7 +48,6 @@ const StaffLoginDetails: React.FC = () => {
                 height='64px'
                 type="password"
                 label="password"
-                value="password"
                 name="password"
                 placeholder="Enter your password"
                 error={false}
