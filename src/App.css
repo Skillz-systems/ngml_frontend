@@ -46,10 +46,11 @@
   font-weight: 900 !important;
   color: #050505;
   font-size: 20px;
+  background-color: #F6FDEC;
 }
 .inactive-nav{
   color: #49526A;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 
