@@ -42,6 +42,12 @@ code {
 			#d2f69e 108.92%
 		);
 	}
+	.error-input:invalid[focused='true'] {
+		@apply border-red-500;
+	}
+	.error-input:invalid[focused='true'] ~ span {
+		@apply text-red-500;
+	}
 }
 
 @layer utilities {

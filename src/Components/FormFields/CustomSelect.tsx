@@ -1,13 +1,10 @@
-import React, { type FC, type ChangeEvent, type Ref } from 'react'
+import React, { type FC, type ChangeEvent } from 'react'
 
 /**
  * Props for the CustomSelect component.
  */
 interface SelectProps {
-  /**
-   * Ref to attach to the underlying select element.
-   */
-  ref: Ref<HTMLSelectElement>
+
   /**
    * Specifies whether the field is required.
    */
@@ -58,7 +55,7 @@ const CustomSelect: FC<SelectProps> = ({
   name
 }) => {
   return (
-    <div className={`mb-1 w-full  ${className}`}>
+    <div className={`mb-1 w-full flex flex-col justify-start ${className}`}>
       {label !== null && (
         <label className="block text-sm font-medium text-gray-500 text-left capitalize">
           {label}

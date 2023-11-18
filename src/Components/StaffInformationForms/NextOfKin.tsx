@@ -1,17 +1,13 @@
-import React, { type ChangeEvent, useRef } from 'react'
+import React, { type ChangeEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 import CustomTextArea from '../FormFields/CustomTextArea'
 
 const NextOfKin: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     // Handle input change
     console.log('Input value:', event.target.value)
   }
-
-  const selectRef = useRef(null)
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     // Handle the select change
     console.log('Input value:', event.target.value)
@@ -28,7 +24,7 @@ const NextOfKin: React.FC = () => {
             { value: 'mrs', label: 'mrs' },
             { value: 'miss', label: 'miss' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleSelectChange} />
         <CustomInput name='firstname' required
           label="First Name"
           placeholder="Enter your first name"
@@ -36,7 +32,7 @@ const NextOfKin: React.FC = () => {
           className=""
           error=''
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='lastname' required
           label="last name"
           placeholder="Enter your last name"
@@ -44,7 +40,7 @@ const NextOfKin: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomSelect
           name='gender'
           label="gender"
@@ -53,7 +49,7 @@ const NextOfKin: React.FC = () => {
             { value: 'female', label: 'female' },
             { value: 'other', label: 'other' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleSelectChange} />
         <CustomSelect
           name='relationship'
           label="relationship"
@@ -63,7 +59,7 @@ const NextOfKin: React.FC = () => {
             { value: 'sister', label: 'sister' },
             { value: 'brother', label: 'brother' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleSelectChange} />
         <CustomInput name='phonenumber' required
           label="phone number"
           placeholder="Enter your phone number"
@@ -71,7 +67,7 @@ const NextOfKin: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomInput name='email' required
           label="email"
           placeholder="Enter your email"
@@ -79,7 +75,7 @@ const NextOfKin: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
         <CustomTextArea name='address' required
           label="address"
           placeholder="Enter your address"

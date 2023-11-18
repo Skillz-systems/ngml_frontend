@@ -1,9 +1,10 @@
 import React, { type FC } from 'react'
-import PersonnelDetails from '../StaffInformationForms/PersonnelDetails'
-import NextOfKin from '../StaffInformationForms/NextOfKin'
-import EducationDetails from '../StaffInformationForms/EducationDetails'
-import PensionDetails from '../StaffInformationForms/PensionDetails'
-import TaxDetails from '../StaffInformationForms/TaxDetails'
+// import PersonnelDetails from '../StaffInformationForms/PersonnelDetails'
+// import NextOfKin from '../StaffInformationForms/NextOfKin'
+// import EducationDetails from '../StaffInformationForms/EducationDetails'
+// import PensionDetails from '../StaffInformationForms/PensionDetails'
+// import TaxDetails from '../StaffInformationForms/TaxDetails'
+import StaffInformation from '../StaffInformationForms/StaffInformation'
 
 interface TabPanelProps {
   activeTab: string
@@ -14,14 +15,15 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
   return (
     <div className='w-full h-full '>
       {activeTab === 'staffinformation' && (
-        <div className='space-y-8'>
-          <PersonnelDetails />
+        <div className='flex-1  w-full'>
+          <StaffInformation />
+          {/* <PersonnelDetails />
           <NextOfKin />
           <EducationDetails />
           <PensionDetails />
           <TaxDetails />
           <div className="mt-6">
-          </div>
+          </div> */}
         </div>
       )}
       {activeTab === 'employment' && (

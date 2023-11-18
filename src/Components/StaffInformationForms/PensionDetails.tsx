@@ -1,16 +1,13 @@
-import React, { type ChangeEvent, useRef } from 'react'
+import React, { type ChangeEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 
 const PensionDetails: React.FC = () => {
-  const inputRef = useRef<HTMLInputElement>(null)
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     // Handle input change
     console.log('Input value:', event.target.value)
   }
 
-  const selectRef = useRef(null)
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     // Handle the select change
     console.log('Input value:', event.target.value)
@@ -27,7 +24,7 @@ const PensionDetails: React.FC = () => {
             { value: 'leadway', label: 'leadway pension' },
             { value: 'aso pension', label: 'aso pension' }
           ]}
-          onChange={handleSelectChange} ref={selectRef} />
+          onChange={handleSelectChange} />
         <CustomInput name='pensionumber' required
           label="pension identification number"
           placeholder="Enter your PIN"
@@ -35,7 +32,7 @@ const PensionDetails: React.FC = () => {
           className=""
           error=""
           onChange={handleChange}
-          ref={inputRef} />
+        />
       </div>
 
     </div>
