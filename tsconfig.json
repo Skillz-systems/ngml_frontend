@@ -2,11 +2,19 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@mui/material/*": ["node_modules/@mui/material/*"],
-      "@mui/x-date-pickers/*": ["node_modules/@mui/x-date-pickers/*"],
-      "types": ["react-icons", "react-router-dom"]
+      "@mui/material/*": [
+        "node_modules/@mui/material/*"
+      ],
+      "@mui/x-date-pickers/*": [
+        "node_modules/@mui/x-date-pickers/*"
+      ],
+      "types": [
+        "react-icons",
+        "react-router-dom"
+      ]
     },
     "target": "es5",
+    "downlevelIteration": true,
     "lib": [
       "dom",
       "dom.iterable",
@@ -26,5 +34,8 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*", ".eslintrc.js"]
+  "include": [
+    "src/**/*",
+    ".eslintrc.js"
+  ]
 }
