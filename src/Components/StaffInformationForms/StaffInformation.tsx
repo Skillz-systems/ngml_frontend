@@ -3,7 +3,9 @@ import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
+import { useAuthState } from 'src/Context/AuthContext'
 const StaffInformation: React.FC = () => {
+  const { user } = useAuthState()
   const [values, setValues] = useState({})
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
@@ -16,9 +18,9 @@ const StaffInformation: React.FC = () => {
 
   return (
     <form className="" onSubmit={handleSubmit}>
-      <div className='flex-1 bg-white w-full p-4 space-y-8  rounded-lg'>
+      <div className='flex-1 bg-white w-full p-4 space-y-8  rounded-xl'>
         {/* personal */}
-        <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='personal'>
+        <div className='border-2 border-slate-400 border-dashed rounded-xl w-full p-4 ' id='personal'>
           <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Personal Details</h3>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
             <CustomSelect
@@ -36,19 +38,30 @@ const StaffInformation: React.FC = () => {
               type="text"
               className=''
               error=''
+              value={(user != null) ? user.firstname : ''}
               onChange={handleChange}
             />
-            <CustomInput name='othernames' required
-              label="other names"
-              placeholder="Enter your other names"
-              type="text"
+            <CustomInput name='email' required
+              label="email"
+              placeholder="Enter your email"
+              type="email"
               className=""
               error=""
+              value={(user != null) ? user.email : ''}
               onChange={handleChange}
             />
             <CustomInput name='lastname' required
               label="last name"
               placeholder="Enter your last name"
+              type="text"
+              className=""
+              error=""
+              value={(user != null) ? user.lastname : ''}
+              onChange={handleChange}
+            />
+            <CustomInput name='othernames' required
+              label="other names"
+              placeholder="Enter your other names"
               type="text"
               className=""
               error=""
@@ -134,7 +147,7 @@ const StaffInformation: React.FC = () => {
         </div>
         {/* personal end */}
         {/* next of kin */}
-        <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4' id='nextofkin'>
+        <div className='border-2 border-slate-400 border-dashed rounded-xl w-full p-4' id='nextofkin'>
           <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Next of Kin Details</h3>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
             <CustomSelect
@@ -189,14 +202,6 @@ const StaffInformation: React.FC = () => {
               error=""
               onChange={handleChange}
             />
-            <CustomInput name='email' required
-              label="email"
-              placeholder="Enter your email"
-              type="email"
-              className=""
-              error=""
-              onChange={handleChange}
-            />
             <CustomTextArea name='nextofkinaddress' required
               label="address"
               placeholder="Enter your address"
@@ -208,7 +213,7 @@ const StaffInformation: React.FC = () => {
         </div>
         {/* end next of kin */}
         {/* education */}
-        <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='education'>
+        <div className='border-2 border-slate-400 border-dashed rounded-xl w-full p-4 ' id='education'>
           <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Education Details</h3>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
             <CustomSelect
@@ -241,7 +246,7 @@ const StaffInformation: React.FC = () => {
         </div>
         {/* end education */}
         {/* pension */}
-        <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='pension'>
+        <div className='border-2 border-slate-400 border-dashed rounded-xl w-full p-4 ' id='pension'>
           <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Pension Details</h3>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
             <CustomSelect
@@ -266,7 +271,7 @@ const StaffInformation: React.FC = () => {
         </div>
         {/* end pension */}
         {/*  tax */}
-        <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='tax'>
+        <div className='border-2 border-slate-400 border-dashed rounded-xl w-full p-4 ' id='tax'>
           <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>Tax Details</h3>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
             <CustomSelect

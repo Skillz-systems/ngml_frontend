@@ -11,19 +11,23 @@ import { useAuthState } from 'src/Context/AuthContext'
 const Sidebar = ({ SideBarLinks }) => {
   const { user } = useAuthState()
   const [name, setName] = useState('John Okafor')
+  const [designation, setDesignation] = useState('D.MANAGER')
+  const [zone, setZone] = useState('SS. Zone')
 
   useEffect(() => {
     if (user !== null) {
       // const acc = JSON.parse(localStorage.getItem('user'))
       setName(user.firstname + ' ' + user.lastname)
+      setDesignation(user.designation)
+      setZone(user.operation + ' Zone')
     }
   }, [])
   const communicationProfileSettings = SideBarLinks.slice(5, SideBarLinks.length)
   return (
     <>
-      <div
+      <div className='fixed top-10 h-screen'
         style={{
-          borderRight: '0.5px solid #ccc',
+          // borderRight: '0.5px solid #ccc',
           width: '350px',
           padding: '18px',
           overflowY: 'auto'
@@ -86,10 +90,12 @@ const Sidebar = ({ SideBarLinks }) => {
                       fontFamily: 'Mulish',
                       lineHeight: '20px'
                     }}
+                    className='uppercase'
                   >
-                    D.MANAGER
+                    {designation}
                   </div>
                   <div
+                    className='uppercase'
                     style={{
                       color: '#828DA9',
                       fontSize: '12px',
@@ -98,7 +104,7 @@ const Sidebar = ({ SideBarLinks }) => {
                       lineHeight: '20px'
                     }}
                   >
-                    SS Zone
+                    {zone}
                   </div>
                 </div>
               </div>

@@ -7,10 +7,11 @@ import email from '../Asset/svg-icons/Emailngml.svg'
 import zone from '../Asset/svg-icons/Zonengml.svg'
 import unit from '../Asset/svg-icons/Unitngml.svg'
 import designation from '../Asset/svg-icons/Designationngml.svg'
+import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
-import { registerUser, type RegisterInterface } from 'src/api/axios'
+import { registerUser, type RegisterInterface } from 'src/api/api'
 
 // import { useNavigate } from 'react-router-dom'
 // import { useAuthDispatch } from '../Context/AuthContext'
@@ -25,7 +26,8 @@ const SignupStaff = (): JSX.Element => {
     department: '',
     operation: '',
     designation: '',
-    type: 'STAFF'
+    type: 'STAFF',
+    password: ''
   })
   // const authDispatch = useAuthDispatch()
   // const navigate = useNavigate()
@@ -47,7 +49,8 @@ const SignupStaff = (): JSX.Element => {
         department: '',
         operation: '',
         designation: '',
-        type: 'STAFF'
+        type: 'STAFF',
+        password: ''
       })
     } catch (error: any) {
       setLoading(false)
@@ -123,14 +126,37 @@ const SignupStaff = (): JSX.Element => {
               divStyle='p-0 mb-0'
             />
           </div>
+          <div className="w-full">
+            <TextInput
+              width=''
+              height='39px'
+              type='password'
+              label="Password"
+              value={values.password}
+              name="password"
+              placeholder="Enter your email here"
+              error={false}
+              onChange={handleOnChange}
+              icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
+              iconHeight='24px'
+              iconWidth='24px'
+              backgroundColor='#D2F69E'
+              iconStyle='absolute top-2 left-2  rounded-full'
+              divStyle='p-0 mb-0'
+            />
+          </div>
           <input type="text" hidden name='type' value="STAFF" onChange={handleOnChange} />
           <div className="relative w-full group">
             <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
             <select name="operation" id="operation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.operation}>
               <option>Choose your area of operation</option>
-              <option value="imo">Imo</option>
+              <option value="se">Imo</option>
+              <option value="se">Abia</option>
+              <option value="nc">Nasarawa</option>
+              <option value="nc">Kogi</option>
+              <option value="sw">Lagos</option>
               <option value="fct">FCT</option>
-              <option value="crossriver">Cross River</option>
+              <option value="ss">Cross River</option>
             </select>
           </div>
           <div className="relative w-full group">
@@ -147,8 +173,10 @@ const SignupStaff = (): JSX.Element => {
             <img src={designation} className='authentication-icons' width={24} height={24} alt='designation' />
             <select name="designation" id="designation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.designation} >
               <option>Choose your designation</option>
-              <option value="officer1">Officer I</option>
-              <option value="officer2">Officer II</option>
+              <option value="officer">Officer</option>
+              <option value="manager">Manager</option>
+              <option value="it">IT specialist</option>
+              <option value="director">Director</option>
             </select>
           </div>
           {/* <div className="flex justify-center w-full mt-4 bg-yellow-300"> */}

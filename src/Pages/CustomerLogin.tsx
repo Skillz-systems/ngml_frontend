@@ -40,8 +40,7 @@ const CustomerLogin = (): JSX.Element => {
 
         if (response?.data?.data?.type === 'STAFF') {
           toast.success(
-            `${
-               response?.data?.message || response?.data?.data?.message
+            `${response?.data?.message || response?.data?.data?.message
             }`,
             {
               position: 'top-right',

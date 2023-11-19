@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import TextInput from 'src/Components/TextInput'
 import logo from '../../src/Asset/CompanyLogo.png'
@@ -8,7 +6,8 @@ import emailIcon from '../../src/Asset/emailIcons.png'
 import lockIcon from '../../src/Asset/lockIcons.png'
 import eyeIcon from '../../src/Asset/eyeIcons.png'
 import ButtonComponent from 'src/Components/ButtonComponent'
-import { loginUser, type LoginInterface } from 'src/api/axios'
+import { loginUser, type LoginInterface } from 'src/api/api'
+import { setBearerToken } from 'src/api/axios'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuthDispatch } from '../Context/AuthContext'
@@ -38,9 +37,11 @@ const StaffLoginDetails: React.FC = () => {
       const res = await loginUser(values)
       setLoading(false)
       console.log(res, 'resres')
+      setBearerToken(res.data.data.token)
       toast.success(`${res?.data?.message}`)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
-      navigate('/app/staffpage', { replace: true })
+      // navigate('/app/staffpage', { replace: true })
+      navigate('/customer/customerhomepage', { replace: true })
       setValues({
         password: '',
         email: ''
@@ -48,7 +49,7 @@ const StaffLoginDetails: React.FC = () => {
     } catch (error: any) {
       setLoading(false)
       console.log(error, 'dkkddk')
-      toast.error(`${error?.response?.data?.message || error?.response?.data?.error || error?.message}`)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || (Boolean((error?.response?.data?.error))) || error?.message}`)
       console.error('Error submitting form:', error)
     }
   }

@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { createContext, useContext, useReducer, type ReactNode, useEffect } from 'react'
 
-import { type RegisterInterface } from '../api/axios'
+import { type UserInterface } from '../api/api'
 
 // interface User {
 //   id: number
@@ -9,10 +9,10 @@ import { type RegisterInterface } from '../api/axios'
 // }
 
 interface AuthState {
-  user: RegisterInterface | null
+  user: UserInterface | null
 }
 
-type AuthAction = { type: 'CURRENTUSER', payload: RegisterInterface } | { type: 'LOGOUT' }
+type AuthAction = { type: 'CURRENTUSER', payload: UserInterface } | { type: 'LOGOUT' }
 const AuthStateContext = createContext<AuthState | undefined>(undefined)
 const AuthDispatchContext = createContext<React.Dispatch<AuthAction> | undefined>(
   undefined

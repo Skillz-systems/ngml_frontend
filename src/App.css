@@ -1,114 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mulish:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,600&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Mulish:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,600&display=swap');
- 
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
-
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
-.active-nav{
-  font-weight: 900 !important;
-  color: #050505;
-  font-size: 20px;
-  background-color: #F6FDEC;
+.active-nav {
+	font-weight: 900 !important;
+	color: #050505;
+	font-size: 20px;
+	background-color: #f6fdec;
 }
-.inactive-nav{
-  color: #49526A;
-  font-size: 18px;
+.inactive-nav {
+	color: #49526a;
+	font-size: 18px;
 }
-
-
 
 /* //Form Buider Style */
 .float-container {
-  border: 3px solid #fff;
-  padding: 20px;
+	border: 3px solid #fff;
+	padding: 20px;
 }
 
 .float-child {
-  width: 45%;
-  float: left;
-  padding: 20px;
-  border: 2px solid gray;
-  min-height: 800px;
-}  
+	width: 45%;
+	float: left;
+	padding: 20px;
+	border: 2px solid gray;
+	min-height: 800px;
+}
 
 button {
-  padding: 10px;
-  margin: 20px;
-  width: 150px;
-  height: 40px;
-  color: whitesmoke;
-  background-color: gray;
-  cursor: pointer;
-  transition: width 0.5s;
-  border: 4px  solid #302e3b;
-
+	padding: 10px;
+	margin: 20px;
+	width: 150px;
+	height: 40px;
+	color: whitesmoke;
+	background-color: gray;
+	cursor: pointer;
+	transition: width 0.5s;
+	border: 4px solid #302e3b;
 }
 
 button:hover {
-  padding: 10px;
-  margin: 20px;
-  width: 160px;
+	padding: 10px;
+	margin: 20px;
+	width: 160px;
 }
 
 .bg-default {
-  background-color: #fafafa!important;
-  margin-top: 20px !important;
+	background-color: #fafafa !important;
+	margin-top: 20px !important;
 }
 
 .container {
-  max-width: 1140px;
-  background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+	max-width: 1140px;
+	background: linear-gradient(
+		108deg,
+		#aae4c5 -6.77%,
+		#efec80 45.65%,
+		#d2f69e 108.92%
+	) !important;
 }
-@media (min-width: 1200px){
-  .container {
-    max-width: 1140px;
-    background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%) !important;
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1140px;
+		background: linear-gradient(
+			108deg,
+			#aae4c5 -6.77%,
+			#efec80 45.65%,
+			#d2f69e 108.92%
+		) !important;
+	}
 }
-}
-
 
 .container {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
