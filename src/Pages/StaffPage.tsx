@@ -3,7 +3,7 @@ import Tabs from 'src/Components/Tabs/Tabs'
 
 const Staffpage: React.FC = () => {
   return (
-    <div className='p-5'>
+    <div className='p-5' style={{ overflowX: 'auto', height: '100vh' }}>
       <div className='bg-white/40 w-full h-full p-5 overflow-x-hidden rounded-lg'>
         <div className="flex justify-between">
           <h3 className='text-left capitalize font-semibold text-3xl text-neutral-600'>Staff page</h3>

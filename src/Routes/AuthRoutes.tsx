@@ -1,11 +1,11 @@
-import FormBuilderScreen from 'src/Pages/FormBuilder/FormBuilderScreen'
 import StaffLoginPage from 'src/Pages/StaffLoginDetails'
-import StaffPersonalDetails from 'src/Pages/StaffPersonalDetails'
-import CustomerSelfRegistration from 'src/Pages/CustomerSelfRegistration'
 import CustomerSetPassword from 'src/Pages/CustomerSetPassword'
 import SignupStaff from 'src/Pages/SignupStaff'
 import AllFormBuilder from 'src/Pages/FormBuilder/AllFormBuilder'
 import ViewForm from 'src/Pages/FormBuilder/ViewForm'
+import CustomerSelfRegistration from 'src/Pages/CustomerSelfRegistration'
+import TokenVerification from 'src/Pages/TokenVerification'
+import CustomerLogin from 'src/Pages/CustomerLogin'
 
 export const AuthRoutes = [
   {
@@ -14,29 +14,19 @@ export const AuthRoutes = [
     component: StaffLoginPage
   },
   {
-    title: 'Staffpersonaldetails',
-    path: '/app/Staffpersonaldetails',
-    component: StaffPersonalDetails
+    title: 'stafflogin',
+    path: '/staff-login',
+    component: StaffLoginPage
   },
   {
     title: 'customersetpassword',
-    path: '/app/customersetpassword',
+    path: '/customer/reset-password',
     component: CustomerSetPassword
   },
   {
     title: 'signupstaff',
-    path: '/app/signupstaff',
+    path: '/signupstaff',
     component: SignupStaff
-  },
-  {
-    title: 'customerselfregistration',
-    path: '/app/customerselfregistration',
-    component: CustomerSelfRegistration
-  },
-  {
-    title: 'Form Builder',
-    path: '/formbuilder',
-    component: FormBuilderScreen
   },
   {
     title: 'Form Builder',
@@ -47,5 +37,20 @@ export const AuthRoutes = [
     title: 'Form Builder',
     path: '/view-form/:id',
     component: ViewForm
+  },
+  {
+    title: 'customerselfregistration',
+    path: '/customer/register',
+    component: CustomerSelfRegistration
+  },
+  {
+    title: 'customerselfregistration',
+    path: '/verify-token/:email',
+    component: TokenVerification
+  },
+  {
+    title: 'customerselfregistration',
+    path: '/customer/login',
+    component: CustomerLogin
   }
 ]

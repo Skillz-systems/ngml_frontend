@@ -1,5 +1,6 @@
 import ComposeInternalLayouts from 'src/Components/Hoc/ComposeInternalLayout'
 import CommunicationPage from 'src/Pages/CommunicationPage'
+import FormBuilderScreen from 'src/Pages/FormBuilder/FormBuilderScreen'
 import HomePageInfo from 'src/Pages/HomePage'
 import Managerpage from 'src/Pages/MangerPage'
 import ProfilePage from 'src/Pages/ProfilePage'
@@ -56,5 +57,10 @@ export const PrivateRoutes = [
     path: '/app/settingspage',
     component: ComposeInternalLayouts(SettingsPage),
     exact: true
+  },
+  {
+    title: 'Form Builder',
+    path: '/app/formbuilder',
+    component: ComposeInternalLayouts(FormBuilderScreen)
   }
 ]
