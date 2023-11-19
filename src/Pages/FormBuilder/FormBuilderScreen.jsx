@@ -106,8 +106,6 @@ export default function FormBuilderScreen () {
   const [error, setError] = useState(false)
 
   const createForm = async (e) => {
-    console.log(e, 'formData', title)
-
     if (title === '') {
       setError(true)
       toast.error('Form title is required')
@@ -169,7 +167,7 @@ export default function FormBuilderScreen () {
       <div className='flex justify-center mb-10'>
         <input
           placeholder="Enter form title"
-          style={{ background: '#FFFFFF', border: `${error ? '2px' : '1px'} solid ${error ? 'red' : '#ccc'} `, marginTop: '200px', width: '250px', height: '50px', paddingLeft: '10px' }}
+          style={{ background: '#FFFFFF', borderRadius: '8px', border: `${error ? '2px' : '1px'} solid ${error ? 'red' : '#ccc'} `, marginTop: '50px', width: '250px', height: '50px', paddingLeft: '10px' }}
           onChange={(e) => {
             setTitle(e.target.value)
             setError(false)

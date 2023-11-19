@@ -13,11 +13,11 @@ const EOIForm: React.FC = () => {
     e.preventDefault()
     console.log(values)
   }
+  
   return (
     <>
       <div className="m-5">
         <div className="bg-white/40 w-full h-full p-5 overflow-x-hidden rounded-xl">
-
           <div className="flex justify-between mb-3">
             <h3 className='text-left capitalize font-semibold text-xl text-neutral-500'>Expression of Interest Form</h3>
             <p className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-neutral-400 rounded-3xl text-neutral-600">Cancel</p>

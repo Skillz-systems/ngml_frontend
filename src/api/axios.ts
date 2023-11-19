@@ -17,7 +17,7 @@ export interface RegisterInterface {
   designation: string
   email: string
   operation: string
-  zone: string
+  department: string
   type: string
   _id?: string
   createdAt?: string
@@ -36,7 +36,13 @@ export interface RegisterInterface {
 // }
 
 export const registerUser = async (data: RegisterInterface): Promise<AxiosResponse<any>> => {
-  return await axios.post(`${apiUrl}auth/staff-register`, data)
+  try {
+    const response = await axios.post(`${apiUrl}/auth/staff-register`, data)
+    return response
+  } catch (error: any) {
+    // return error
+    return await Promise.reject(error)
+  }
 }
 
 export const loginUser = async (
