@@ -38,7 +38,9 @@ const CustomerLogin = (): JSX.Element => {
         setLoading(false)
         console.log(response, 'ndndnnndnndndn')
 
-        if (response?.data?.data?.type == 'STAFF') {
+        // navigate(`/verify-token/${response?.data?.data?.email || response?.data?.data?.user?.email}`)
+
+        if (response?.data?.data?.type === 'CUSTOMER') {
           toast.success(
             `${response?.data?.message || response?.data?.data?.message
             }`,

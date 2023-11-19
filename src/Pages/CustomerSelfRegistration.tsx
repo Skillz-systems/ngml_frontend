@@ -13,7 +13,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { type RegisterCustomerInterface } from 'src/api/axios'
+import { type RegisterCustomerInterface } from 'src/api/api'
 
 interface MyApiResponse {
   status?: number

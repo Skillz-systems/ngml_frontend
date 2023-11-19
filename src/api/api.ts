@@ -33,7 +33,7 @@ export interface RegisterInterface {
   email: string
   operation: string
   department: string
-  password: string
+  // password: string
   type: string
 }
 

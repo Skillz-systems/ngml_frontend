@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { type ChangeEvent, useState, type FormEvent } from 'react'
+import React, { type ChangeEvent, useState, type FormEvent, useEffect } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-import { type EOIInterface, postEOI } from 'src/api/api'
+import { type EOIInterface, postEOI, getEOIByCustomerEmail } from 'src/api/api'
 import { toast } from 'react-toastify'
+import { useAuthState } from 'src/Context/AuthContext'
 const EOIForm: React.FC = () => {
+  const { user } = useAuthState()
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<EOIInterface>({
     email: '',
@@ -13,6 +17,12 @@ const EOIForm: React.FC = () => {
     companyName: '',
     reason: ''
   })
+
+  // const { email } = user
+
+  const email = user?.email ?? ''
+
+  console.log(user, 'useruser')
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -24,6 +34,7 @@ const EOIForm: React.FC = () => {
       const res = await postEOI(values)
       setLoading(false)
       console.log(res)
+
       toast.success(`${res?.data?.message}`, {
         position: 'top-right',
         autoClose: 5000,
@@ -50,6 +61,46 @@ const EOIForm: React.FC = () => {
     }
   }
 
+  const fetchUserData = async () => {
+    try {
+      const res = await getEOIByCustomerEmail(email)
+      setValues(res?.data?.data)
+      setLoading(false)
+      console.log(res, 'dkdkkdk')
+      // toast.success(`${res?.data?.message}`, {
+      //   position: 'top-right',
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: 'light'
+      // })
+    } catch (error: any) {
+      setLoading(false)
+      // toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`, {
+      //   position: 'top-right',
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: 'light'
+      // })
+      console.error('Error submitting form:', error)
+    }
+  }
+
+  useEffect(() => {
+    // if (email !== '') {
+    fetchUserData()
+    // }
+  }, [email])
+
+  console.log(values, 'sshhshsh')
+
   return (
     <>
       <div className="">
@@ -71,7 +122,7 @@ const EOIForm: React.FC = () => {
                     type="text"
                     className=""
                     error=""
-                    value={values.companyName}
+                    value={values?.companyName}
                     onChange={handleChange}
                   />
                   <CustomInput name='email' required
@@ -80,7 +131,7 @@ const EOIForm: React.FC = () => {
                     type="email"
                     className=""
                     error=""
-                    value={values.email}
+                    value={values?.email}
 
                     onChange={handleChange}
                   />
@@ -90,7 +141,7 @@ const EOIForm: React.FC = () => {
                     type="tel"
                     className=""
                     error=""
-                    value={values.phoneNumber}
+                    value={values?.phoneNumber}
                     onChange={handleChange}
                   />
                   <CustomTextArea name='reason' required={false}
@@ -98,7 +149,7 @@ const EOIForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="Type here"
                     className=""
-                    value={values.reason}
+                    value={values?.reason}
                     error="" />
                 </div>
               </div>

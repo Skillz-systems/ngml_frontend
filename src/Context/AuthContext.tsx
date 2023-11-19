@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { createContext, useContext, useReducer, type ReactNode, useEffect } from 'react'
 
-import { type UserInterface } from '../api/axios'
+import { type UserInterface } from '../api/api'
 
 // interface User {
 //   id: number
