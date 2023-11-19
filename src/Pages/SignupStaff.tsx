@@ -7,7 +7,7 @@ import email from '../Asset/svg-icons/Emailngml.svg'
 import zone from '../Asset/svg-icons/Zonengml.svg'
 import unit from '../Asset/svg-icons/Unitngml.svg'
 import designation from '../Asset/svg-icons/Designationngml.svg'
-import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
+// import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
@@ -26,8 +26,8 @@ const SignupStaff = (): JSX.Element => {
     department: '',
     operation: '',
     designation: '',
-    type: 'STAFF',
-    password: ''
+    type: 'STAFF'
+    // password: ''
   })
   // const authDispatch = useAuthDispatch()
   // const navigate = useNavigate()
@@ -49,8 +49,8 @@ const SignupStaff = (): JSX.Element => {
         department: '',
         operation: '',
         designation: '',
-        type: 'STAFF',
-        password: ''
+        type: 'STAFF'
+        // password: ''
       })
     } catch (error: any) {
       setLoading(false)
@@ -126,7 +126,7 @@ const SignupStaff = (): JSX.Element => {
               divStyle='p-0 mb-0'
             />
           </div>
-          <div className="w-full">
+          {/* <div className="w-full">
             <TextInput
               width=''
               height='39px'
@@ -134,7 +134,7 @@ const SignupStaff = (): JSX.Element => {
               label="Password"
               value={values.password}
               name="password"
-              placeholder="Enter your email here"
+              placeholder="Enter your password here"
               error={false}
               onChange={handleOnChange}
               icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
@@ -144,7 +144,7 @@ const SignupStaff = (): JSX.Element => {
               iconStyle='absolute top-2 left-2  rounded-full'
               divStyle='p-0 mb-0'
             />
-          </div>
+          </div> */}
           <input type="text" hidden name='type' value="STAFF" onChange={handleOnChange} />
           <div className="relative w-full group">
             <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />

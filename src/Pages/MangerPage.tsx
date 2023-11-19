@@ -93,15 +93,15 @@ const MangerPage: React.FC = () => {
               <div className="h-94 p-4 bg-gray-100 border-t border-b border-gray-300 flex flex-col gap-4 mb-4">
                 <div className="flex items-center gap-10">
                   <div className="text-sm font-semibold text-gray-700">Company Name</div>
-                  <div className="text-sm font-bold text-gray-700">{data.companyName}</div>
+                  <div className="text-sm font-bold text-gray-700">{data?.companyName}</div>
                 </div>
                 <div className="flex items-center gap-10">
                   <div className="text-sm font-semibold text-gray-700">Company Email</div>
-                  <div className="text-sm font-bold text-gray-700">{data.email}</div>
+                  <div className="text-sm font-bold text-gray-700">{data?.email}</div>
                 </div>
                 <div className="flex items-center gap-10">
                   <div className="text-sm font-semibold text-gray-700">Company Number</div>
-                  <div className="text-sm font-bold text-gray-700">{data.phoneNumber}</div>
+                  <div className="text-sm font-bold text-gray-700">{data?.phoneNumber}</div>
                 </div>
                 <div className="absolute right-10 rounded-full border border-gray-400 p-2">
                   <img src={Calendar} alt="Calendar logo" width="20px" />
