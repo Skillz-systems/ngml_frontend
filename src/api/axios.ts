@@ -11,7 +11,7 @@ export interface LoginInterface {
   password: string
 }
 
-export interface RegisterInterface {
+export interface UserInterface {
   firstname: string
   lastname: string
   designation: string
@@ -19,10 +19,19 @@ export interface RegisterInterface {
   operation: string
   department: string
   type: string
-  _id?: string
-  createdAt?: string
-  updatedAt?: string
-
+  _id: string
+  createdAt: string
+  updatedAt: string
+}
+export interface RegisterInterface {
+  firstname: string
+  lastname: string
+  designation: string
+  email: string
+  operation: string
+  department: string
+  password: string
+  type: string
 }
 
 export interface RegisterCustomerInterface {

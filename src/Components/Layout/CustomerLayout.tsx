@@ -41,8 +41,8 @@ const CustomerLayout: React.FC<InternalLayoutProps> = ({
       <div style={{ display: 'flex', width: '100%', background: ' linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)' }}>
         <Sidebar SideBarLinks={CustomerSideBarLinks} />
         <main
-          className=""
           style={{ background: '#FFFFF', width: '100%', overflowY: 'auto' }}
+          className="ml-[350px] mt-10"
         >
           <Component {...otherProps} style={{ overflowY: 'auto' }} />
         </main>

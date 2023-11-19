@@ -20,12 +20,12 @@ interface TabListProps {
 const TabList: FC<TabListProps> = ({ tablist, onTabChange, activeTab }) => {
   // console.log(tablist)
   return (
-    <div className='w-1/4 flex flex-col items-start justify-start space-y-2 mr-3 sticky top-0'>
+    <div className='w-1/4 flex flex-col items-start justify-start space-y-2 mr-3 '>
       {tablist.map((tab, index) => (
         <div key={tab.ref} className="flex flex-col  w-full space-y-2 " onClick={() => { onTabChange(tab) }}>
           <div className="flex justify-between items-center gap-x-2 cursor-pointer capitalize">
             <div className="flex truncate text-neutral-600 font-medium text-base capitalize justify-start">
-              <span className={`px-1.5 py-0.5 rounded-full ${tab.ref === activeTab ? 'bg-[#EEED09]/70' : 'bg-transparent'}`}>0{index + 1}</span>
+              <span className={`px-2 py-0.5 flex justify-center items-center rounded-full ${tab.ref === activeTab ? 'bg-[#EEED09]/70' : 'bg-transparent'}`}>0{index + 1}</span>
               <h4 className='truncate text-neutral-600 font-medium text-base capitalize leading-relaxed ml-1'>{tab.name}
               </h4>
             </div>

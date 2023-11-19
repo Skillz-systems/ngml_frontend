@@ -24,24 +24,36 @@ const EOIForm: React.FC = () => {
       const res = await eoiSubmit(values)
       setLoading(false)
       console.log(res)
-      toast.success(`${res?.data?.message}`)
-      setValues({
-        email: '',
-        phoneNumber: '',
-        companyName: '',
-        reason: ''
+      toast.success(`${res?.data?.message}`, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
       })
     } catch (error: any) {
       setLoading(false)
-      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`, {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      })
       console.error('Error submitting form:', error)
     }
   }
 
   return (
     <>
-      <div className="m-5">
-        <div className="bg-white/40 w-full h-full p-5 overflow-x-hidden rounded-xl">
+      <div className="">
+        <div className="bg-white/40 flex-1 m-5 p-5 overflow-x-hidden rounded-xl">
           <div className="flex justify-between mb-3">
             <h3 className='text-left capitalize font-semibold text-xl text-neutral-500'>Expression of Interest Form</h3>
             <p className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-neutral-400 rounded-3xl text-neutral-600">Cancel</p>
