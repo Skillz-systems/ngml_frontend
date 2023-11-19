@@ -3,7 +3,7 @@ import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import nnpclogo from '../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
 
-import emailIcon from '../Asset/svg-icons/Emailngml.svg'
+// import emailIcon from '../Asset/svg-icons/Emailngml.svg'
 import eyeIClosedcon from '../Asset/svg-icons/Eyeclosedngml.svg'
 import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
@@ -34,7 +34,7 @@ const CustomerSetPassword = (): JSX.Element => {
           <h2 className='text-lg antialiased font-bold uppercase xl:text-xl text-slate-700'>Set Password</h2>
         </header>
         <form className='flex flex-col items-center justify-center w-full space-y-4' onSubmit={handleSubmit}>
-          <div className="w-full">
+          {/* <div className="w-full">
             <TextInput
               width=''
               height='40px'
@@ -54,14 +54,14 @@ const CustomerSetPassword = (): JSX.Element => {
               iconStyle='absolute top-2 left-2  rounded-full'
               divStyle='p-0 mb-0'
             />
-          </div>
+          </div> */}
           <div className="w-full">
             <TextInput
               width=''
               height='40px'
               type="password"
               label="password"
-              value=""
+              // value=""
               name="password"
               placeholder="Enter a Password"
               error={false}
@@ -81,7 +81,7 @@ const CustomerSetPassword = (): JSX.Element => {
               height='40px'
               type="password"
               label="password"
-              value=""
+              // value=""
               name="password"
               placeholder="Re-enter the Password "
               error={false}

@@ -122,7 +122,7 @@ const EOIForm: React.FC = () => {
                     type="text"
                     className=""
                     error=""
-                    value={values.companyName}
+                    value={values?.companyName}
                     onChange={handleChange}
                   />
                   <CustomInput name='email' required
@@ -131,7 +131,7 @@ const EOIForm: React.FC = () => {
                     type="email"
                     className=""
                     error=""
-                    value={values.email}
+                    value={values?.email}
 
                     onChange={handleChange}
                   />
@@ -141,7 +141,7 @@ const EOIForm: React.FC = () => {
                     type="tel"
                     className=""
                     error=""
-                    value={values.phoneNumber}
+                    value={values?.phoneNumber}
                     onChange={handleChange}
                   />
                   <CustomTextArea name='reason' required={false}
@@ -149,7 +149,7 @@ const EOIForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="Type here"
                     className=""
-                    value={values.reason}
+                    value={values?.reason}
                     error="" />
                 </div>
               </div>
