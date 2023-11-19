@@ -46,7 +46,7 @@ const MangerPage: React.FC = () => {
   }
 
   return (
-    <div className="w-full h-full p-8 bg-white bg-opacity-50 rounded overflow-hidden flex flex-col justify-start items-start gap-8">
+    <div className="w-full h-full p-8 bg-white bg-opacity-50 rounded overflow-hidden flex flex-col justify-start items-start gap-8" style={{ overflowX: 'auto', height: '100vh' }}>
       {/* Top Section */}
       <div className="flex justify-between items-center">
         <div className="flex gap-12">

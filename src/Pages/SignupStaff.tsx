@@ -12,8 +12,8 @@ import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
 import { registerUser, type RegisterInterface } from 'src/api/axios'
 
-import { useNavigate } from 'react-router-dom'
-import { useAuthDispatch } from '../Context/AuthContext'
+// import { useNavigate } from 'react-router-dom'
+// import { useAuthDispatch } from '../Context/AuthContext'
 import { toast } from 'react-toastify'
 
 const SignupStaff = (): JSX.Element => {
@@ -26,8 +26,8 @@ const SignupStaff = (): JSX.Element => {
     designation: '',
     type: 'STAFF'
   })
-  const authDispatch = useAuthDispatch()
-  const navigate = useNavigate()
+  // const authDispatch = useAuthDispatch()
+  // const navigate = useNavigate()
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
@@ -40,8 +40,6 @@ const SignupStaff = (): JSX.Element => {
       const res = await registerUser(values)
       console.log(res, 'resres')
       toast.success(`${res?.data?.message}`)
-      authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
-      navigate('/app/staffpage', { replace: true })
       setValues({
         firstname: '',
         lastname: '',
@@ -52,7 +50,6 @@ const SignupStaff = (): JSX.Element => {
         type: 'STAFF'
       })
     } catch (error: any) {
-      console.log(error, 'dkkddk')
       toast.error(`${error?.response?.data?.message || error?.message}`)
       console.error('Error submitting form:', error)
     }
