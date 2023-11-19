@@ -1,8 +1,6 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
-
-// import useSWR, { mutate } from 'swr'
-// import axios from 'axios'
 
 import name from '../Asset/svg-icons/Namengml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
@@ -16,20 +14,14 @@ import { registerUser, type RegisterInterface } from 'src/api/axios'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuthDispatch } from '../Context/AuthContext'
-// interface FormInteface {
-//   firstname: string
-//   lastname: string
-//   email: string
-//   zone: string
-//   unit: string
-//   designation: string
-// }
+import { toast } from 'react-toastify'
+
 const SignupStaff = (): JSX.Element => {
   const [values, setValues] = useState<RegisterInterface>({
     firstname: '',
     lastname: '',
     email: '',
-    zone: '',
+    department: '',
     operation: '',
     designation: '',
     type: 'STAFF'
@@ -46,18 +38,22 @@ const SignupStaff = (): JSX.Element => {
     console.log(values)
     try {
       const res = await registerUser(values)
+      console.log(res, 'resres')
+      toast.success(`${res?.data?.message}`)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
       navigate('/app/staffpage', { replace: true })
       setValues({
         firstname: '',
         lastname: '',
         email: '',
-        zone: '',
+        department: '',
         operation: '',
         designation: '',
         type: 'STAFF'
       })
-    } catch (error) {
+    } catch (error: any) {
+      console.log(error, 'dkkddk')
+      toast.error(`${error?.response?.data?.message || error?.message}`)
       console.error('Error submitting form:', error)
     }
   }
@@ -132,7 +128,7 @@ const SignupStaff = (): JSX.Element => {
           <input type="text" hidden name='type' value="STAFF" onChange={handleOnChange} />
           <div className="relative w-full group">
             <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
-            <select name="zone" id="zone" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.zone}>
+            <select name="operation" id="operation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.operation}>
               <option>Choose your area of operation</option>
               <option value="imo">Imo</option>
               <option value="fct">FCT</option>
@@ -141,7 +137,7 @@ const SignupStaff = (): JSX.Element => {
           </div>
           <div className="relative w-full group">
             <img src={unit} className='authentication-icons' width={24} height={24} alt='unit' />
-            <select name="operation" id="operation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.operation} >
+            <select name="department" id="department" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.department} >
               <option>Choose your department</option>
               <option value="it">IT</option>
               <option value="admin">Admin</option>

@@ -15,22 +15,22 @@ export const AuthRoutes = [
   },
   {
     title: 'Staffpersonaldetails',
-    path: '/app/Staffpersonaldetails',
+    path: '/Staffpersonaldetails',
     component: StaffPersonalDetails
   },
   {
     title: 'customersetpassword',
-    path: '/app/customersetpassword',
+    path: '/customersetpassword',
     component: CustomerSetPassword
   },
   {
     title: 'signupstaff',
-    path: '/app/signupstaff',
+    path: '/signupstaff',
     component: SignupStaff
   },
   {
     title: 'customerselfregistration',
-    path: '/app/customerselfregistration',
+    path: '/customerselfregistration',
     component: CustomerSelfRegistration
   },
   {

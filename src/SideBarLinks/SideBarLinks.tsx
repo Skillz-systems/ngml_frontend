@@ -10,7 +10,7 @@ import Profileicon from '../Asset/png-icons/Profile.png'
 import Settingsicon from '../Asset/png-icons/Settings.png'
 
 export const SideBarLinks = [
-  { id: 1, name: 'Home', to: '/customer/customerhomepage', icon: Homeicon },
+  { id: 1, name: 'Home', to: '/app/homepageinfo', icon: Homeicon },
   { id: 2, name: 'Manager', to: '/app/managerpage', icon: Managericon },
   { id: 3, name: 'Staff', to: '/app/staffpage', icon: Stafficon },
   { id: 4, name: 'Records', to: '/app/recordspage', icon: Recordsicon },
