@@ -1,5 +1,6 @@
 import axios, { type AxiosResponse } from 'axios'
 export const apiUrl = process.env.REACT_APP_BASE_URL
+
 const axiosInstance = axios.create({
   baseURL: apiUrl
 })
