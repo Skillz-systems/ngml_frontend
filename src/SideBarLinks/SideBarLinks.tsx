@@ -17,5 +17,6 @@ export const SideBarLinks = [
   { id: 5, name: 'Report', to: '/app/reportpage', icon: Reporticon },
   { id: 6, name: 'Communication', to: '/app/communicationpage', icon: Communicationicon },
   { id: 7, name: 'Profile', to: '/app/profilepage', icon: Profileicon },
-  { id: 8, name: 'Settings', to: '/app/settingspage', icon: Settingsicon }
+  { id: 8, name: 'Settings', to: '/app/settingspage', icon: Settingsicon },
+  { id: 4, name: 'Form Builder', to: '/app/formbuilder', icon: Recordsicon }
 ]

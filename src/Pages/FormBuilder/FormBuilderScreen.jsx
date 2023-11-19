@@ -163,7 +163,7 @@ export default function FormBuilderScreen () {
   }
 
   return (
-    <div className='gradient'>
+    <div className='' style={{ overflowX: 'auto', height: '100vh' }}>
       <div className='flex justify-center mb-10'>
         <input
           placeholder="Enter form title"

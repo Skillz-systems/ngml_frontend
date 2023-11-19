@@ -47,7 +47,12 @@ export const registerUser = async (data: RegisterInterface): Promise<AxiosRespon
 export const loginUser = async (
   credentials: LoginInterface
 ): Promise<AxiosResponse<any>> => {
-  return await axios.post(`${apiUrl}auth/staff-login`, credentials)
+  try {
+    const response = await axios.post(`${apiUrl}/auth/staff-login`, credentials)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
 }
 
 export const logoutUser = async (): Promise<AxiosResponse<void>> => {

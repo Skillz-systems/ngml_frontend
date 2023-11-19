@@ -16,7 +16,7 @@ const Sidebar = ({ SideBarLinks }) => {
       setName(user.firstname + ' ' + user.lastname)
     }
   }, [])
-  const communicationProfileSettings = SideBarLinks.slice(5, 8)
+  const communicationProfileSettings = SideBarLinks.slice(5, SideBarLinks.length)
   return (
     <>
       <div
@@ -173,7 +173,6 @@ const Sidebar = ({ SideBarLinks }) => {
             borderRadius: '14px',
             marginBottom: '10px',
             background: '#FFFFFF',
-            height: '140px',
             width: '100%',
             marginTop: '30px'
           }}
