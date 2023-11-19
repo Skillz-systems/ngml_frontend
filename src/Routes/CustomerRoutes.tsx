@@ -3,7 +3,6 @@ import CustomerBusinessPage from 'src/Pages/Customer/CustomerBusinessPage'
 import CustomerHome from 'src/Pages/Customer/CustomerHomePage'
 import CustomerProfilePage from 'src/Pages/Customer/CustomerProfilePage'
 import CustomerSettingsPage from 'src/Pages/Customer/CustomerSettingsPage'
-import CustomerSelfRegistration from 'src/Pages/CustomerSelfRegistration'
 
 export const CustomerRoutes = [
   {
@@ -29,10 +28,5 @@ export const CustomerRoutes = [
     path: '/customer/customersettingspage',
     component: CustomerInternalLayout(CustomerSettingsPage),
     exact: true
-  },
-  {
-    title: 'customerselfregistration',
-    path: '/customer/customerselfregistration',
-    component: CustomerSelfRegistration
   }
 ]

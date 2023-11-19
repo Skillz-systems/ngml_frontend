@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { type RegisterCustomerInterface } from 'src/api/axios'
 
 interface MyApiResponse {
   status?: number
@@ -22,45 +23,34 @@ interface MyApiResponse {
 
 const CustomerSelfRegistration = (): JSX.Element => {
   const [loading, setLoading] = useState(false)
-  const [email, setEmail] = useState('')
-  const [businessName, setBusinessName] = useState('')
+  const [values, setValues] = useState<RegisterCustomerInterface>({
+    email: '',
+    businessname: '',
+    cac: '',
+    type: 'CUSTOMER'
+  })
 
   const navigate = useNavigate()
 
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    alert('fuck you !!!')
-    // console.log(event.target, 'kkkkkkk')
-
-    const { name, value } = event.target
-    console.log(name, 'lllllllll')
-    if (name === 'email') {
-      setEmail(value)
-    } else if (name === 'businessname') {
-      setBusinessName(value)
-    }
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
+    setValues({ ...values, [event.target.name]: event.target.value })
   }
 
-  const data = {
-    companyName: businessName,
-    email,
-    type: 'CUSTOMER'
-  }
   const handleRegister = async () => {
-    console.log(email, businessName, 'gggggggghhhhh')
     setLoading(true)
     try {
       const response = await axios.post(
-        'https://ngml-be.onrender.com/api/v1/auth/customer-register',
-        data
+        `${process.env.REACT_APP_BASE_URL}/auth/customer-register`,
+        values
       )
       setLoading(false)
       console.log(response, 'ndndnnndnndndn')
 
+      navigate(`/verify-token/${response?.data?.data?.email || response?.data?.data?.user?.email}`)
+
       toast.success(
         `${
-          response?.status === 200
-            ? 'Registration sucessful'
-            : response?.data?.message || 'Unknown error'
+           response?.data?.message || response?.data?.data?.message
         }`,
         {
           position: 'top-right',
@@ -73,18 +63,18 @@ const CustomerSelfRegistration = (): JSX.Element => {
       // navigate('/loginpage')
 
       console.log(response, 'response')
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false)
 
-      console.log(error, 'gggggggggggg')
+      console.log(error?.response, 'gggggggggggg')
 
-    //   toast.error(`${error?.response?.data?.message || error.message}`, {
-    //     position: 'top-right',
-    //     autoClose: 2000000000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     draggable: false
-    //   })
+      toast.error(`${error?.response?.data?.message || error.message}`, {
+        position: 'top-right',
+        autoClose: 2000000000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: false
+      })
     }
   }
   return (
@@ -104,7 +94,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
               height='40px'
               type="text"
               label="businessname"
-              // value=""
+              value={values.businessname}
               name="businessname"
               placeholder="Enter Business Name here"
               error={false}
@@ -123,7 +113,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
               height='40px'
               type="text"
               label="cac"
-              // value=""
+              value={values.cac}
               name="cac"
               placeholder="Enter the CAC number here"
               error={false}
@@ -142,7 +132,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
               height='40px'
               type="text"
               label="email"
-              // value=""
+              value={values.email}
               name="email"
               placeholder="Enter the Business Email here"
               error={false}
@@ -167,7 +157,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
             onClick={() => {
               handleRegister()
             }}
-          > Register</ButtonComponent>
+          > {loading ? 'Registering....' : 'Register'}</ButtonComponent>
           {/* </div> */}
         </div>
 
