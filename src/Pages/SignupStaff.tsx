@@ -17,6 +17,7 @@ import { registerUser, type RegisterInterface } from 'src/api/axios'
 import { toast } from 'react-toastify'
 
 const SignupStaff = (): JSX.Element => {
+  const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<RegisterInterface>({
     firstname: '',
     lastname: '',
@@ -33,11 +34,10 @@ const SignupStaff = (): JSX.Element => {
   }
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
-    // console.log(data)
-    // console.log(error)
-    console.log(values)
+    setLoading(true)
     try {
       const res = await registerUser(values)
+      setLoading(false)
       console.log(res, 'resres')
       toast.success(`${res?.data?.message}`)
       setValues({
@@ -50,6 +50,7 @@ const SignupStaff = (): JSX.Element => {
         type: 'STAFF'
       })
     } catch (error: any) {
+      setLoading(false)
       toast.error(`${error?.response?.data?.message || error?.message}`)
       console.error('Error submitting form:', error)
     }
@@ -163,7 +164,7 @@ const SignupStaff = (): JSX.Element => {
             marginRight=''
             onClick={() => {
             }}
-          > Submit</ButtonComponent>
+          >  {loading ? 'Registering....' : 'Submit'}</ButtonComponent>
           {/* </div> */}
         </form>
       </section>

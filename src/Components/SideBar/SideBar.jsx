@@ -11,8 +11,10 @@ import { useAuthState } from 'src/Context/AuthContext'
 const Sidebar = ({ SideBarLinks }) => {
   const { user } = useAuthState()
   const [name, setName] = useState('John Okafor')
+
   useEffect(() => {
-    if (user) {
+    if (user !== null) {
+      // const acc = JSON.parse(localStorage.getItem('user'))
       setName(user.firstname + ' ' + user.lastname)
     }
   }, [])

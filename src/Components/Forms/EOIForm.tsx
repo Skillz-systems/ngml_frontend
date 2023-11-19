@@ -1,19 +1,43 @@
-import React, { type ChangeEvent, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { type ChangeEvent, useState, type FormEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-
+import { type EOIInterface, eoiSubmit } from 'src/api/axios'
+import { toast } from 'react-toastify'
 const EOIForm: React.FC = () => {
-  const [values, setValues] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [values, setValues] = useState<EOIInterface>({
+    email: '',
+    phoneNumber: '',
+    companyName: '',
+    reason: ''
+  })
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
-  const handleSubmit = (e: { preventDefault: () => void }): void => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
-    console.log(values)
+    setLoading(true)
+    try {
+      const res = await eoiSubmit(values)
+      setLoading(false)
+      console.log(res)
+      toast.success(`${res?.data?.message}`)
+      setValues({
+        email: '',
+        phoneNumber: '',
+        companyName: '',
+        reason: ''
+      })
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.error('Error submitting form:', error)
+    }
   }
-  
+
   return (
     <>
       <div className="m-5">
@@ -29,29 +53,32 @@ const EOIForm: React.FC = () => {
                 <h3 className='text-left text-lg  text-neutral-400 italic mb-2 '>Complete the form below an submit</h3>
                 <div className="grid grid-cols-1 gap-3 justify-start">
 
-                  <CustomInput name='companyname' required
+                  <CustomInput name='companyName' required
                     label="Company Registered Name"
                     placeholder="Enter company name"
                     type="text"
                     className=""
                     error=""
+                    value={values.companyName}
                     onChange={handleChange}
                   />
-                  <CustomInput name='companyemail' required
+                  <CustomInput name='email' required
                     label="Company email"
                     placeholder="Enter company's email"
                     type="email"
                     className=""
                     error=""
+                    value={values.email}
 
                     onChange={handleChange}
                   />
-                  <CustomInput name='companycontact' required
+                  <CustomInput name='phoneNumber' required
                     label="Company Phone number"
                     placeholder="Enter company contact"
                     type="tel"
                     className=""
                     error=""
+                    value={values.phoneNumber}
                     onChange={handleChange}
                   />
                   <CustomTextArea name='reason' required={false}
@@ -59,6 +86,7 @@ const EOIForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="Type here"
                     className=""
+                    value={values.reason}
                     error="" />
                 </div>
               </div>
@@ -76,7 +104,7 @@ const EOIForm: React.FC = () => {
                 onClick={() => {
 
                 }}
-              > Submit Request</ButtonComponent>
+              > {loading ? 'Submiting....' : 'Submit Request'}</ButtonComponent>
             </div>
           </form>
         </div>
