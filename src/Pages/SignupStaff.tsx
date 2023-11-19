@@ -11,7 +11,7 @@ import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
 import TextInput from 'src/Components/TextInput'
-import { registerUser, type RegisterInterface } from 'src/api/axios'
+import { registerUser, type RegisterInterface } from 'src/api/api'
 
 // import { useNavigate } from 'react-router-dom'
 // import { useAuthDispatch } from '../Context/AuthContext'

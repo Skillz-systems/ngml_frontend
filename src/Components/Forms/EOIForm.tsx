@@ -3,7 +3,7 @@ import React, { type ChangeEvent, useState, type FormEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-import { type EOIInterface, eoiSubmit } from 'src/api/axios'
+import { type EOIInterface, postEOI } from 'src/api/api'
 import { toast } from 'react-toastify'
 const EOIForm: React.FC = () => {
   const [loading, setLoading] = useState(false)
@@ -21,7 +21,7 @@ const EOIForm: React.FC = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await eoiSubmit(values)
+      const res = await postEOI(values)
       setLoading(false)
       console.log(res)
       toast.success(`${res?.data?.message}`, {
@@ -104,7 +104,6 @@ const EOIForm: React.FC = () => {
               </div>
             </div>
             <div className="flex justify-end flex-1 bg-white w-full mt-4  rounded-xl">
-
               <ButtonComponent
                 border="none"
                 backgroundColor="#00AF50"

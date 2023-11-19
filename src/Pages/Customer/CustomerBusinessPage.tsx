@@ -1,9 +1,28 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react'
+import { toast } from 'react-toastify'
+import { getEOIByCustomerEmail } from 'src/api/api'
 
 const CustomerBusinessPage: React.FC = () => {
+  //! DELETE THIS CODE ONLY FOR TESTING PUR{POSES
+  const handleClick = async (): Promise<void> => {
+    try {
+      // const res = await getEOIByCustomerEmail(user.email)
+      const res = await getEOIByCustomerEmail('cemah@mailinator.com')
+
+      console.log(res.data)
+
+      toast.success(`${res?.data?.message}`)
+    } catch (error: any) {
+      console.log(error, 'dkkddk')
+      toast.error(`${(Boolean((error?.response?.data?.message))) || (Boolean((error?.response?.data?.error))) || error?.message}`)
+      console.error('Error submitting form:', error)
+    }
+  }
+
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-xl'>
-      <h3 className='text-left capitalize font-semibold text-2xl text-neutral-600'>CustomerBusiness</h3>
+      <h3 className='text-left capitalize font-semibold text-2xl text-neutral-600' onClick={handleClick}>CustomerBusiness</h3>
 
       {/* delete below  */}
       <div>
