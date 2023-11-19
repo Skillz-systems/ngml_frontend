@@ -40,7 +40,6 @@ export const registerUser = async (data: RegisterInterface): Promise<AxiosRespon
     const response = await axios.post(`${apiUrl}/auth/staff-register`, data)
     return response
   } catch (error: any) {
-    // return error
     return await Promise.reject(error)
   }
 }
