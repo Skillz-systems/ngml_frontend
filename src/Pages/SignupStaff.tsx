@@ -3,7 +3,7 @@ import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 
 // import useSWR, { mutate } from 'swr'
 // import axios from 'axios'
-
+import { toast } from 'react-toastify'
 import name from '../Asset/svg-icons/Namengml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
 import zone from '../Asset/svg-icons/Zonengml.svg'
@@ -41,12 +41,10 @@ const SignupStaff = (): JSX.Element => {
   }
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
-    // console.log(data)
-    // console.log(error)
-    console.log(values)
     try {
       const res = await registerUser(values)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
+      toast.success(res.data.data.message)
       navigate('/app/staffpage', { replace: true })
       setValues({
         firstname: '',
@@ -57,7 +55,8 @@ const SignupStaff = (): JSX.Element => {
         designation: '',
         type: 'STAFF'
       })
-    } catch (error) {
+    } catch (error: any) {
+      toast.error(error.message)
       console.error('Error submitting form:', error)
     }
   }
