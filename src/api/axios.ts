@@ -31,16 +31,12 @@ export interface RegisterCustomerInterface {
   type: string
   cac: string
 }
-// export interface RegisterInterface {
-//   firstname: string
-//   lastname: string
-//   designation: string
-//   email: string
-//   department: string
-//   operation: string
-//   type: string
-//   password: string
-// }
+export interface EOIInterface {
+  companyName: string
+  email: string
+  phoneNumber: string
+  reason: string
+}
 
 export const registerUser = async (data: RegisterInterface): Promise<AxiosResponse<any>> => {
   try {
@@ -64,5 +60,16 @@ export const loginUser = async (
 
 export const logoutUser = async (): Promise<AxiosResponse<void>> => {
   // You might want to clear user authentication on the server side as well
-  return await axios.post(`${apiUrl}auth/staff-logout`)
+  return await axios.post(`${apiUrl}/auth/staff-logout`)
+}
+
+export const eoiSubmit = async (
+  data: EOIInterface
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axios.post(`${apiUrl}/customer/submit-eoi`, data)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
 }
