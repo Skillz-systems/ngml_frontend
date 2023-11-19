@@ -24,6 +24,13 @@ export interface RegisterInterface {
   updatedAt?: string
 
 }
+
+export interface RegisterCustomerInterface {
+  businessname: string
+  email: string
+  type: string
+  cac: string
+}
 // export interface RegisterInterface {
 //   firstname: string
 //   lastname: string

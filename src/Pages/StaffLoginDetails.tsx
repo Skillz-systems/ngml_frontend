@@ -127,11 +127,11 @@ const StaffLoginDetails: React.FC = () => {
                   <div style={{ color: 'var(--TEXT-MAIN, #050505)', fontFamily: 'Mulish', fontSize: '18px', fontWeight: '400', lineHeight: '100%', padding: '4px' }}>New to the portal, sign in here</div>
                   <div>
                     <ButtonComponent
-                      border="2px solid #91918e"
+                      border='2px solid #91918e'
                       backgroundColor="none"
                       height="38px"
                       radius="40px"
-                      width="160px"
+                      width='160px'
                       color='black'
                       fontSize='16px'
                       onClick={() => {
