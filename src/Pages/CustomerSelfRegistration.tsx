@@ -1,19 +1,89 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { type ChangeEvent } from 'react'
 import nnpclogo from '../Asset/nnpc.png'
 import TextInput from 'src/Components/TextInput'
-
 import ButtonComponent from 'src/Components/ButtonComponent'
-
 import business from '../Asset/svg-icons/Businessngml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
 import cac from '../Asset/svg-icons/Invoicengml.svg'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+
+interface MyApiResponse {
+  status?: number
+  message?: string
+
+}
 
 const CustomerSelfRegistration = (): JSX.Element => {
+  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState('')
+  const [businessName, setBusinessName] = useState('')
+
+  const navigate = useNavigate()
+
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.value)
+    const { name, value } = event.target
+    alert('fuck you !!!')
+    console.log(name, 'lllllllll')
+    if (name === 'email') {
+      setEmail(value)
+    } else if (name === 'businessname') {
+      setBusinessName(value)
+    }
   }
-  const handleClick = (): void => {
-    console.log('submit ')
+
+  const data = {
+    companyName: businessName,
+    email,
+    type: 'CUSTOMER'
+  }
+  const handleRegister = async () => {
+    console.log(email, businessName, 'gggggggghhhhh')
+    setLoading(true)
+    try {
+      const response = await axios.post(
+        'https://ngml-be.onrender.com/api/v1/auth/customer-register',
+        data
+      )
+      setLoading(false)
+      console.log(response, 'ndndnnndnndndn')
+
+      toast.success(
+        `${
+          response?.status === 200
+            ? 'Registration sucessful'
+            : response?.data?.message || 'Unknown error'
+        }`,
+        {
+          position: 'top-right',
+          autoClose: 2000000000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: false
+        }
+      )
+      // navigate('/loginpage')
+
+      console.log(response, 'response')
+    } catch (error) {
+      setLoading(false)
+
+      console.log(error, 'gggggggggggg')
+
+    //   toast.error(`${error?.response?.data?.message || error.message}`, {
+    //     position: 'top-right',
+    //     autoClose: 2000000000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     draggable: false
+    //   })
+    }
   }
   return (
     <main className="flex flex-col items-center justify-center w-screen h-screen gradient">
@@ -25,14 +95,14 @@ const CustomerSelfRegistration = (): JSX.Element => {
           </div>
           <h2 className='text-lg antialiased font-bold uppercase xl:text-xl text-slate-700'>NGML Business registration</h2>
         </header>
-        <form className='flex flex-col items-center justify-center w-full space-y-4'>
+        <div className='flex flex-col items-center justify-center w-full space-y-4'>
           <div className="w-full">
             <TextInput
               width=''
               height='40px'
               type="text"
               label="businessname"
-              value=""
+              // value=""
               name="businessname"
               placeholder="Enter Business Name here"
               error={false}
@@ -51,7 +121,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
               height='40px'
               type="text"
               label="cac"
-              value=""
+              // value=""
               name="cac"
               placeholder="Enter the CAC number here"
               error={false}
@@ -70,7 +140,7 @@ const CustomerSelfRegistration = (): JSX.Element => {
               height='40px'
               type="text"
               label="email"
-              value=""
+              // value=""
               name="email"
               placeholder="Enter the Business Email here"
               error={false}
@@ -93,11 +163,11 @@ const CustomerSelfRegistration = (): JSX.Element => {
             fontSize='14px'
             marginRight=''
             onClick={() => {
-              handleClick()
+              handleRegister()
             }}
           > Register</ButtonComponent>
           {/* </div> */}
-        </form>
+        </div>
 
       </section>
 
