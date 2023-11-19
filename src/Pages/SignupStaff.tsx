@@ -134,7 +134,7 @@ const SignupStaff = (): JSX.Element => {
               label="Password"
               value={values.password}
               name="password"
-              placeholder="Enter your email here"
+              placeholder="Enter your password"
               error={false}
               onChange={handleOnChange}
               icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
