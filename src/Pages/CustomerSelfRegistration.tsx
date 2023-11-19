@@ -28,8 +28,10 @@ const CustomerSelfRegistration = (): JSX.Element => {
   const navigate = useNavigate()
 
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target
     alert('fuck you !!!')
+    // console.log(event.target, 'kkkkkkk')
+
+    const { name, value } = event.target
     console.log(name, 'lllllllll')
     if (name === 'email') {
       setEmail(value)
