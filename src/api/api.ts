@@ -50,6 +50,21 @@ export interface EOIInterface {
   reason: string
 }
 
+export interface StaffInterface {
+  eoiStarted: boolean
+  verified: boolean
+  _id: string
+  firstname: string
+  lastname: string
+  department?: string // You can mark optional properties with "?"
+  designation: string
+  operation?: string // Another optional property
+  email: string
+  type: string
+  createdAt: string
+  updatedAt: string
+}
+
 export const registerUser = async (data: RegisterInterface): Promise<AxiosResponse<any>> => {
   try {
     const response = await axiosInstance.post('/auth/staff-register', data)
@@ -90,6 +105,15 @@ export const getEOIByCustomerEmail = async (
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axiosInstance.get(`/customer/eoi/${customerEmail}`)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+export const getAllStaff = async (
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.get('/staff')
     return response
   } catch (error: any) {
     return await Promise.reject(error)
