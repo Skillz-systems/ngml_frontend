@@ -40,7 +40,7 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
           <PortalDetailPage />
         </div>)}
       {activeTab === 'summary' && (
-        <div className="flex-1 w-full">
+        <div className="">
           <StaffsummaryPage />
         </div>)}
     </div>

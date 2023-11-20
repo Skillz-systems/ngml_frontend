@@ -1,6 +1,7 @@
 import React, { useState, type FC } from 'react'
 import TabList, { type TabListInterface } from './TabList'
 import TabPanel from './TabPanel'
+import Staffpage from 'src/Pages/StaffPage'
 // import ButtonComponent from '../ButtonComponent'
 
 /**
@@ -71,6 +72,7 @@ const Tabs: FC = () => {
         <TabList tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
 
         <TabPanel activeTab={activeTab} panelName={panelName} />
+        <Staffpage activeTabs={activeTab} panelNames={panelName} />
         {/* <div className="flex flex-col flex-1">
 
           <div className="flex-1 bg-white w-full p-3  rounded-lg">
