@@ -75,39 +75,6 @@ const Tabs: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
         <TabList tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
 
         <TabPanel activeTab={activeTab} panelName={panelName} />
-        {/* <div className="flex flex-col flex-1">
-
-          <div className="flex-1 bg-white w-full p-3  rounded-lg">
-            <TabPanel activeTab={activeTab} panelName={panelName} />
-          </div>
-          <div className="flex justify-end flex-1 bg-white w-full p-4 mt-4  rounded-lg">
-
-            <ButtonComponent
-              border="1px solid #eee"
-              backgroundColor="white"
-              height="38px"
-              radius="100px"
-              width="200px"
-              fontSize='16px'
-              color="#49526A"
-              onClick={() => {
-
-              }}
-            > Save and close</ButtonComponent>
-            <ButtonComponent
-              border="none"
-              backgroundColor="#00AF50"
-              height="38px"
-              radius="100px"
-              width="200px"
-              fontSize='16px'
-              onClick={() => {
-
-              }}
-            > Save and Continue</ButtonComponent>
-          </div>
-        </div> */}
-
       </div>
     </>
   )

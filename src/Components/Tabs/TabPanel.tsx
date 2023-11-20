@@ -7,6 +7,8 @@ import React, { type FC } from 'react'
 import StaffInformation from '../StaffInformationForms/StaffInformation'
 import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
 import PortalDetailPage from '../Portaldetail/PortalDetailPage'
+import Uploads from '../StaffInformationForms/Uploads'
+import EducationDetails from '../StaffInformationForms/EducationDetails'
 
 interface TabPanelProps {
   activeTab: string
@@ -19,21 +21,15 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
       {activeTab === 'staffinformation' && (
         <div className='flex-1  w-full'>
           <StaffInformation />
-          {/* <PersonnelDetails />
-          <NextOfKin />
-          <EducationDetails />
-          <PensionDetails />
-          <TaxDetails />
-          <div className="mt-6">
-          </div> */}
         </div>
       )}
       {activeTab === 'employment' && (
-        <div className="w-full h-96 bg-red-300 rounded-lg">
-
+        <div className="w-full h-ful">
+          <EducationDetails />
         </div>)}
       {activeTab === 'uploads' && (
-        <div className="w-full h-96 bg-yellow-300 rounded-lg">
+        <div className="w-full h-full">
+          <Uploads />
         </div>)}
       {activeTab === 'portal' && (
         <div className="">

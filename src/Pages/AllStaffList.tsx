@@ -15,16 +15,24 @@ import { useAuthState } from '../Context/AuthContext'
 const AllStaffList: React.FC = () => {
   const navigate = useNavigate()
   const [staff, setStaff] = useState<StaffInterface[]>([])
+  const [totalStaffCount, setTotalStaffCount] = useState(0)
+  const [verifiedStaffCount, setVerifiedStaffCount] = useState(0)
+  const [unverifiedStaffCount, setUnverifiedStaffCount] = useState(0)
   const { user } = useAuthState()
-
-  console.log(user, 'useruserY')
 
   useEffect(() => {
     if (user?.type !== 'SUPERADMIN') {
       navigate('/app/staffpage/current', { replace: true }); return
     }
     handleGet()
-  }, [])
+    const total = staff.length
+    const verified = staff.filter((count) => count.verified).length
+    const unverified = total - verified
+
+    setTotalStaffCount(total)
+    setVerifiedStaffCount(verified)
+    setUnverifiedStaffCount(unverified)
+  }, [staff])
   const handleGet = async (): Promise<void> => {
     try {
       const res = await getAllStaff()
@@ -58,26 +66,26 @@ const AllStaffList: React.FC = () => {
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#00AF50] rounded-lg' color='white' />
           <span className='text-sm ml-1'>Total staff</span>
-          <span className='ml-auto text-lg font-semibold'>8,307</span>
+          <span className='ml-auto text-lg font-semibold'>{totalStaffCount}</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#E7EE87] rounded-lg' color='black' />
           <span className='text-sm ml-1'>Total Verified Staff</span>
-          <span className='ml-auto text-lg font-semibold'>6,002</span>
+          <span className='ml-auto text-lg font-semibold'>{verifiedStaffCount}</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex items-center justify-between">
           <div className="flex items-center">
             <GoShield size={24} color='#ffb300' className='p-1 bg-[#ffe8cc] rounded-full' />
             <span className='text-sm ml-1'>Un-Verified Staff</span>
           </div>
-          <span className='ml-auto text-lg font-semibold'>2,305</span>
+          <span className='ml-auto text-lg font-semibold'>{unverifiedStaffCount}</span>
         </div>
       </div>
       {/* delete below  */}
       <div>
         <div className='w-full flex-1 bg-white rounded-xl h-full mt-4'>
           <div className="flex justify-between items-center p-4">
-            <span className='italics text-sm text-neutral-600'>Showing 20 of 8307 Staff Records</span>
+            <span className='italics text-xs text-neutral-600'>Showing {totalStaffCount} of {totalStaffCount} Staff Records</span>
             <div className="relative ml-auto">
               <input
                 type="text"

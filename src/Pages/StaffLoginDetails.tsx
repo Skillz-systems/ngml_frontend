@@ -48,8 +48,6 @@ const StaffLoginDetails: React.FC = () => {
         navigate('/app/staffpage', { replace: true })
       } else {
         navigate('/app/staffpage', { replace: true })
-      } else {
-        navigate('/app/staffpage/current', { replace: true })
       }
       setValues({
         password: '',
