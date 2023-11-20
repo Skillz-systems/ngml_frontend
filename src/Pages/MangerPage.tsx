@@ -1,34 +1,32 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Calendar from 'src/Asset/png-icons/Calendar.png'
 
 const MangerPage: React.FC = () => {
-  const currentDate = new Date()
-
-  // To format the date as a string (e.g., "2023-11-18")
-  const formattedDate = currentDate.toISOString().split('T')[0]
   // State to simulate loading and fetched data
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<any>(null)
   const [error, setError] = useState<any>(null)
 
+  const currentDate = new Date()
+
+  // To format the date as a string (e.g., "2023-11-18")
+  const formattedDate = currentDate.toISOString().split('T')[0]
+
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/customer/eoi/password@gmail.com`, {
-          method: 'GET',
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/customer/eoi/password@gmail.com`, {
           headers: {
             'Content-Type': 'application/json'
           }
         })
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok')
-        }
-
-        const result = await response.json()
-        setData(result)
+        setData(response.data)
+        console.log('fgfhgdfhg', response)
       } catch (error: any) {
         setError(error)
+        console.log('yes', error)
       } finally {
         setIsLoading(false)
       }
