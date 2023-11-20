@@ -6,6 +6,7 @@ import ViewForm from 'src/Pages/FormBuilder/ViewForm'
 import CustomerSelfRegistration from 'src/Pages/CustomerSelfRegistration'
 import TokenVerification from 'src/Pages/TokenVerification'
 import CustomerLogin from 'src/Pages/CustomerLogin'
+import SucessModal from 'src/Components/ResponseComponent/ResponseModal'
 
 export const AuthRoutes = [
   {
@@ -52,5 +53,10 @@ export const AuthRoutes = [
     title: 'customerselfregistration',
     path: '/customer/login',
     component: CustomerLogin
+  },
+  {
+    title: 'SucessModal',
+    path: '/app/sucessmodal',
+    component: SucessModal
   }
 ]
