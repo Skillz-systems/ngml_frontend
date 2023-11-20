@@ -20,7 +20,7 @@ const Staffpage: FC = () => {
                   <img className="w-4 h-4 relative flex-col justify-start items-start flex" src={print} />
                 </div>
               </div>
-              <div style={{ whiteSpace: 'nowrap' }} className="w-[157px] px-[120px] py-[13px] rounded-[32px] border border-gray-300 justify-center items-center gap-2 flex">
+              <div style={{ whiteSpace: 'nowrap' }} className="w-[157px] px-[20px] py-[13px] rounded-[32px] border border-gray-300 justify-center items-center gap-2 flex">
                 <div className="w-4 h-4 justify-center items-center flex">
                   {/* <div className="w-4 h-4 relative rounded-[5px] flex-col justify-start items-start flex"></div> */}
                   <img src={AltDownArrow} />
