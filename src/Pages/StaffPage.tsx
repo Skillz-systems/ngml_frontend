@@ -6,8 +6,6 @@ import AltDownArrow from 'src/Asset/png-icons/AltDownArrow.png'
 const Staffpage: FC = () => {
   const [activeTab, setActiveTab] = useState<string>('staffinformation')
 
-  console.log(activeTab, 'activeTabactiveTab')
-
   useEffect(() => {
 
   }, [activeTab])
