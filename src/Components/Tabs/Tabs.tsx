@@ -49,6 +49,14 @@ const Tabs: FC = () => {
     {
       name: 'employment details',
       ref: 'employment'
+    },
+    {
+      name: 'portal details',
+      ref: 'portal'
+    },
+    {
+      name: 'summary',
+      ref: 'summary'
     }
 
   ]
