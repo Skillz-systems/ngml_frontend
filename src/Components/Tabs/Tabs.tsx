@@ -11,8 +11,12 @@ import TabPanel from './TabPanel'
  * The component renders the TabList and TabPanel components, passing the necessary props.
  */
 
-const Tabs: FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('staffinformation')
+interface TabsProps {
+  activeTab: string
+  setActiveTab: (tab: string) => void
+}
+
+const Tabs: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
   const [panelName, setPanelName] = useState<string>('staffinformation')
 
   const tablist: TabListInterface[] = [
