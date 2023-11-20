@@ -27,6 +27,7 @@ interface ButtonComponentProps {
   fontSize?: string
   color?: string
   marginRight?: string
+  marginLeft?: string
 
 }
 
@@ -40,7 +41,8 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   height = '40px',
   fontSize = '20px',
   color = 'white',
-  marginRight = '16px'
+  marginRight = '14px',
+  marginLeft = '10px'
 
 }) => {
   return (
@@ -54,9 +56,13 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
         width,
         fontSize,
         color,
+        marginLeft,
         marginRight,
         cursor: 'pointer',
-        fontFamily: 'Mulish'
+        fontFamily: 'Mulish',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       {children}

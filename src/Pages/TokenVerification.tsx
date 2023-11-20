@@ -36,7 +36,6 @@ const TokenVerification = (): JSX.Element => {
           values
         )
         setLoading(false)
-        console.log(response, 'ndndnnndnndndn')
 
         toast.success(
           `${
@@ -56,12 +55,8 @@ const TokenVerification = (): JSX.Element => {
         } else {
           navigate('/customer/customerprofilepage', { replace: true })
         }
-
-        console.log(response, 'response')
       } catch (error: any) {
         setLoading(false)
-
-        console.log(error, 'gggggggggggg')
 
         toast.error(`${error?.response?.data?.message || error.message}`, {
           position: 'top-right',

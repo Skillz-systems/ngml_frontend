@@ -15,7 +15,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <div className={`flex items-center justify-between p-3 bg-white ${className}`}>
+    <div className={`flex items-center justify-between p-3 bg-white fixed w-screen  ${className}`}>
       {/* Logo */}
       <div className="w-8 h-8 rounded-full overflow-hidden">
         <img className="w-full h-full" src={CompanyLogo} alt="Company Logo" />
