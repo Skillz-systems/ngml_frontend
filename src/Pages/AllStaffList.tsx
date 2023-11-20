@@ -17,6 +17,8 @@ const AllStaffList: React.FC = () => {
   const [staff, setStaff] = useState<StaffInterface[]>([])
   const { user } = useAuthState()
 
+  console.log(user, 'useruserY')
+
   useEffect(() => {
     if (user?.type !== 'SUPERADMIN') {
       navigate('/app/staffpage/current', { replace: true }); return
