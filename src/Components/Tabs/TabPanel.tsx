@@ -8,7 +8,8 @@ import StaffInformation from '../StaffInformationForms/StaffInformation'
 import PortalDetailPage from '../Portaldetail/PortalDetailPage'
 import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
 import StaffEmploymentDetails from '../Staffemploymentdetails/StaffEmploymentDetails'
-import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
+// import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
+import Uploads from '../StaffInformationForms/Uploads'
 
 interface TabPanelProps {
   activeTab: string
@@ -19,18 +20,19 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
   return (
     <div className='w-full h-full '>
       {activeTab === 'staffinformation' && (
-        <div className='flex-1  w-full'>
+        <div className='flex-1 w-full'>
           <StaffInformation />
         </div>
       )}
       {activeTab === 'employment' && (
-        <div className='flex-1  w-full'>
+        <div className='flex-1 w-full'>
           <StaffEmploymentDetails />
         </div>
       )}
       {activeTab === 'uploads' && (
-        <div className="flex-1  w-full">
-          <StaffDocumentUpload />
+        <div className="flex-1 w-full">
+          {/* <StaffDocumentUpload /> */}
+          <Uploads />
         </div>)}
       {activeTab === 'portal' && (
         <div className="">
