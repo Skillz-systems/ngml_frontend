@@ -25,7 +25,7 @@ export const PrivateRoutes = [
     exact: true
   },
   {
-    title: 'Staff',
+    title: 'StaffID',
     path: '/app/staffpage/:id',
     component: ComposeInternalLayouts(SingleStaff),
     exact: true
@@ -37,7 +37,7 @@ export const PrivateRoutes = [
     exact: true
   },
   {
-    title: 'All Staff',
+    title: 'AllStaff',
     path: '/app/staffpage',
     component: ComposeInternalLayouts(AllStaffList),
     exact: true
