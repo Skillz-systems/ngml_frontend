@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import TextInput from 'src/Components/TextInput'
@@ -29,21 +30,22 @@ const StaffLoginDetails: React.FC = () => {
   const authDispatch = useAuthDispatch()
   const navigate = useNavigate()
 
-  const handleClick = async (e: FormEvent): Promise<void> => {
+  const handleClick = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
     // console.log(data)
     // console.log(error)
     console.log(values)
+
     try {
       const res = await loginUser(values)
       setLoading(false)
-      console.log(res, 'resres')
+      console.log(res, 'resres7')
       setBearerToken(res.data.data.token)
       toast.success(`${res?.data?.message}`)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
       if (res.data.data.user.type === 'SUPERADMIN') {
-        navigate('/app/staffpage/lists', { replace: true })
+        navigate('/app/staffpage', { replace: true })
       } else {
         navigate('/app/staffpage', { replace: true })
       }
@@ -54,15 +56,10 @@ const StaffLoginDetails: React.FC = () => {
     } catch (error: any) {
       setLoading(false)
       console.log(error, 'dkkddk')
-      toast.error(
-        `${Boolean(error?.response?.data?.message) ||
-        Boolean(error?.response?.data?.error) ||
-        error?.message
-        }`
-      )
-      console.error('Error submitting form:', error)
+      toast.error(`${error?.response?.data?.message}`)
     }
   }
+
   return (
     <div
       className="w-[100%] h-screen"
@@ -129,7 +126,7 @@ const StaffLoginDetails: React.FC = () => {
                       fontStyle: 'normal'
                     }}
                   >
-                    NGML Staff Sign In{' '}
+                    NGML Staff Sign In
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-full space-y-4 ">
