@@ -5,10 +5,10 @@ import React, { type FC } from 'react'
 // import PensionDetails from '../StaffInformationForms/PensionDetails'
 // import TaxDetails from '../StaffInformationForms/TaxDetails'
 import StaffInformation from '../StaffInformationForms/StaffInformation'
-import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
 import PortalDetailPage from '../Portaldetail/PortalDetailPage'
-import Uploads from '../StaffInformationForms/Uploads'
-import EducationDetails from '../StaffInformationForms/EducationDetails'
+import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
+import StaffEmploymentDetails from '../Staffemploymentdetails/StaffEmploymentDetails'
+import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
 
 interface TabPanelProps {
   activeTab: string
@@ -24,12 +24,13 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
         </div>
       )}
       {activeTab === 'employment' && (
-        <div className="w-full h-ful">
-          <EducationDetails />
-        </div>)}
+        <div className='flex-1  w-full'>
+          <StaffEmploymentDetails />
+        </div>
+      )}
       {activeTab === 'uploads' && (
-        <div className="w-full h-full">
-          <Uploads />
+        <div className="flex-1  w-full">
+          <StaffDocumentUpload />
         </div>)}
       {activeTab === 'portal' && (
         <div className="">

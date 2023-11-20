@@ -22,12 +22,12 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       </div>
 
       {/* Search Input */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mt-2 mr-6">
         <div className="relative">
           <input
             type="text"
             placeholder="Search here"
-            className="h-8 pl-3 md:pl-6 lg:pl-[40rem] rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 italic"
+            className="h-8 pl-8 md:pl-6 lg:pl-[40rem] rounded-full border border-gray-300 focus:outline-none focus:border-blue-500 italic"
           />
           <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
             {/* Search Logo */}
