@@ -9,6 +9,7 @@ import RecordsPage from 'src/Pages/RecordsPage'
 import ReportPage from 'src/Pages/ReportsPage'
 import SettingsPage from 'src/Pages/SettingsPage'
 import Staffpage from 'src/Pages/StaffPage'
+import SingleStaff from 'src/Pages/SingleStaff'
 
 export const PrivateRoutes = [
   {
@@ -25,13 +26,19 @@ export const PrivateRoutes = [
   },
   {
     title: 'Staff',
-    path: '/app/staffpage',
-    component: ComposeInternalLayouts(Staffpage),
+    path: '/app/staffpage/:id',
+    component: ComposeInternalLayouts(SingleStaff),
     exact: true
   },
   {
     title: 'Staff',
-    path: '/app/staffpage/lists',
+    path: '/app/staffpage/current',
+    component: ComposeInternalLayouts(Staffpage),
+    exact: true
+  },
+  {
+    title: 'All Staff',
+    path: '/app/staffpage',
     component: ComposeInternalLayouts(AllStaffList),
     exact: true
   },
