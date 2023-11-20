@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useState } from 'react'
-import unit from '../Asset/svg-icons/Unitngml.svg'
+// import unit from '../Asset/svg-icons/Unitngml.svg'
 // import designation from '../Asset/svg-icons/Designationngml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
 import { HiOutlineUserCircle } from 'react-icons/hi2'
@@ -8,50 +8,65 @@ import { GoShield } from 'react-icons/go'
 import Search from 'src/Asset/png-icons/Search.png'
 import { IoFilterOutline } from 'react-icons/io5'
 import { getAllStaff, type StaffInterface } from 'src/api/api'
-import { toast } from 'react-toastify'
-// import { IoMailUnreadOutline } from 'react-icons/io5'
-// <IoMailUnreadOutline />
+// import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+
+import { useAuthState } from '../Context/AuthContext'
 const AllStaffList: React.FC = () => {
+  const navigate = useNavigate()
   const [staff, setStaff] = useState<StaffInterface[]>([])
+  const { user } = useAuthState()
 
   useEffect(() => {
+    if (user?.type !== 'SUPERADMIN') {
+      navigate('/app/staffpage/current', { replace: true }); return
+    }
     handleGet()
   }, [])
   const handleGet = async (): Promise<void> => {
     try {
       const res = await getAllStaff()
-      console.log(res.data.data)
       setStaff(res?.data.data)
     } catch (error: any) {
       console.log(error)
-      toast.error(`${(Boolean((error?.response?.data?.message))) || (Boolean((error?.response?.data?.error))) || error?.message}`)
+      // toast.error(`${(Boolean((error?.response?.data?.message))) || (Boolean((error?.response?.data?.error))) || error?.message}`)
     }
   }
+  const handleView = (id: string): void => {
+    navigate(`/app/staffpage/${id}`)
+  }
+
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-2xl'>
-      <div className="flex justify-between items-center mb-2 ">
+      <div className="flex justify-between items-center mb-3 ">
         <span className='text-left capitalize font-medium text-xl text-neutral-500 '>Welcome John</span>
-        <div className="inline-flex space-x-4 ">
-          <img src={unit} className='after:bg-green-800 after:text-white after:content-["12"]' width={20} height={20} />
-          <img src={email} className='after:bg-green-800 after:text-white after:content-["12"]' width={20} height={20} />
-          <span className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-neutral-600 rounded-3xl text-neutral-600">Add New Staff</span>
+        <div className="inline-flex justify-center items-center space-x-4 ">
+          <div className='ring-[1px] rounded-full p-1 ring-white  relative bg-white'>
+            <GoShield className='text-neutral-700' size={20} />
+            <span className='bg-red-600 rounded-full text-white text-[8px] pt-0.5 px-0.5 absolute -right-1 -top-1 animate-pulse '>12</span>
+          </div>
+          <div className='ring-[1px] rounded-full p-1 ring-white  relative bg-white'>
+            <img src={email} className='text-neutral-700' width={20} height={20} />
+            <span className='bg-red-600 rounded-full text-white text-[8px] pt-0.5 px-0.5 absolute -right-1 -top-1 animate-pulse '>40</span>
+          </div>
+          <div className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-white rounded-3xl text-neutral-600 bg-white">Add New Staff</div>
         </div>
       </div>
       <div className="grid gap-x-3 justify-between items-center sm:grid-cols-2 md:grid-cols-3 mb-2 ">
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#00AF50] rounded-lg' color='white' />
-          <span className='text-lg ml-1'>Total staff</span>
+          <span className='text-sm ml-1'>Total staff</span>
           <span className='ml-auto text-lg font-semibold'>8,307</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#E7EE87] rounded-lg' color='black' />
-          <span className='text-lg ml-1'>Total Verified Staff</span>
+          <span className='text-sm ml-1'>Total Verified Staff</span>
           <span className='ml-auto text-lg font-semibold'>6,002</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex items-center justify-between">
           <div className="flex items-center">
             <GoShield size={24} color='#ffb300' className='p-1 bg-[#ffe8cc] rounded-full' />
-            <span className='text-lg ml-1'>Un-Verified Staff</span>
+            <span className='text-sm ml-1'>Un-Verified Staff</span>
           </div>
           <span className='ml-auto text-lg font-semibold'>2,305</span>
         </div>
@@ -95,10 +110,10 @@ const AllStaffList: React.FC = () => {
                 {staff.length > 0
                   ? (staff.map((item, index) => (
                     <tr key={index} className=''>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm">{item.firstname + ' ' + item.lastname}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm">{item.designation}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm">{item.email}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm">{item.department}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname + ' ' + item.lastname}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.designation}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm ">{item.email}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.department}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate ">
                         {item.verified
                           ? (
@@ -106,10 +121,26 @@ const AllStaffList: React.FC = () => {
                           : (
                             <span className='bg-[#eebe87] py-1 px-2 rounded-xl'>Pending</span>)}
                       </td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white'>View</span></td>
-
+                      <td className="px-2 py-3 whitespace-nowrap truncate  "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item._id) }}>View</span></td>
                     </tr>)))
-                  : (<h4 className='text-center text-2xl'>No User Available</h4>)
+                  : (<>
+                    <tr className=' mx-2'>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300 ">
+                      </td>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300 ">
+                      </td>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300">
+                        Wait
+                      </td>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300 ">
+                        Loading....
+                      </td>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300">
+                      </td>
+                      <td className="px-2 py-3 text-sm capitalize animate-pulse w-full m-2 bg-neutral-300 ">
+                      </td>
+                    </tr>
+                  </>)
                 }
               </tbody>
             </table>
@@ -119,7 +150,7 @@ const AllStaffList: React.FC = () => {
           {/* pagination */}
           <div className='w-full flex justify-end items-center p-4'>
             <div className="inline-flex gap-3">
-              <span className='px-2.5 p-0.5 border rounded-full bg-[#E7EE87]/60'>1</span>
+              <span className='px-2.5 p-0.5 border rounded-full bg-[#E7EE87]/60  font-bold'>1</span>
               <span className='px-2.5 p-0.5 border rounded-full'>2</span>
               <span className='px-2.5 p-0.5 border rounded-full'>3</span>
             </div>
