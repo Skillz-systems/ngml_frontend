@@ -1,4 +1,5 @@
 import ComposeInternalLayouts from 'src/Components/Hoc/ComposeInternalLayout'
+import AllStaffList from 'src/Pages/AllStaffList'
 import CommunicationPage from 'src/Pages/CommunicationPage'
 import FormBuilderScreen from 'src/Pages/FormBuilder/FormBuilderScreen'
 import HomePageInfo from 'src/Pages/HomePage'
@@ -26,6 +27,12 @@ export const PrivateRoutes = [
     title: 'Staff',
     path: '/app/staffpage',
     component: ComposeInternalLayouts(Staffpage),
+    exact: true
+  },
+  {
+    title: 'Staff',
+    path: '/app/staffpage/lists',
+    component: ComposeInternalLayouts(AllStaffList),
     exact: true
   },
   {

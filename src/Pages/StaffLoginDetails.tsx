@@ -42,7 +42,11 @@ const StaffLoginDetails: React.FC = () => {
       setBearerToken(res.data.data.token)
       toast.success(`${res?.data?.message}`)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
-      navigate('/app/staffpage', { replace: true })
+      if (res.data.data.user.type === 'SUPERADMIN') {
+        navigate('/app/staffpage/lists', { replace: true })
+      } else {
+        navigate('/app/staffpage', { replace: true })
+      }
       setValues({
         password: '',
         email: ''
@@ -51,10 +55,9 @@ const StaffLoginDetails: React.FC = () => {
       setLoading(false)
       console.log(error, 'dkkddk')
       toast.error(
-        `${
-          Boolean(error?.response?.data?.message) ||
-          Boolean(error?.response?.data?.error) ||
-          error?.message
+        `${Boolean(error?.response?.data?.message) ||
+        Boolean(error?.response?.data?.error) ||
+        error?.message
         }`
       )
       console.error('Error submitting form:', error)
@@ -76,7 +79,7 @@ const StaffLoginDetails: React.FC = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          flexDirection: 'column',
+          flexDirection: 'column'
           // border: '2px solid red'
         }}
       >
