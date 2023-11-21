@@ -1,4 +1,5 @@
 import React from 'react'
+import LeftArrow from 'src/Asset/png-icons/LeftArrow.png'
 
 const CustomerEoiPage: React.FC = () => {
   return (
@@ -7,7 +8,8 @@ const CustomerEoiPage: React.FC = () => {
         <div className="justify-start items-center gap-3 flex">
           <div className="w-8 h-8 bg-slate-200 rounded-2xl justify-center items-center gap-2.5 flex">
             <div className="w-6 h-6 justify-center items-center flex">
-              <div className="w-6 h-6 relative flex-col justify-start items-start flex"></div>
+              {/* <div className="w-6 h-6 relative flex-col justify-start items-start flex"></div> */}
+              <img src={LeftArrow} />
             </div>
           </div>
           <div className="text-center text-slate-600 text-[32px] font-semibold font-['Mulish'] leading-loose">Dangote Cement</div>
