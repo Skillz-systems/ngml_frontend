@@ -45,9 +45,9 @@ const StaffLoginDetails: React.FC = () => {
       toast.success(`${res?.data?.message}`)
       authDispatch({ type: 'CURRENTUSER', payload: res.data.data.user })
       if (res.data.data.user.type === 'SUPERADMIN') {
-        navigate('/app/staffpage', { replace: true })
+        navigate('/app/customerpage', { replace: true })
       } else {
-        navigate('/app/staffpage', { replace: true })
+        navigate('/app/customerpage', { replace: true })
       }
       setValues({
         password: '',
