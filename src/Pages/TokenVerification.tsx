@@ -49,11 +49,20 @@ const TokenVerification = (): JSX.Element => {
             draggable: false
           }
         )
+
+        console.log(response, 'responseresponse', response.data.data.user)
         authDispatch({ type: 'CURRENTUSER', payload: response.data.data.user })
-        if (response?.data?.data?.user.eoiStarted !== true) {
-          navigate('/customer/customerhomepage', { replace: true })
+
+        if (response.data.data.user.type === 'SUPERADMIN') {
+          navigate('/app/staffpage', { replace: true })
+        } else if (response?.data?.data?.user.type === 'CUSTOMER') {
+          if (response?.data?.data?.user.eoiStarted !== true) {
+            navigate('/customer/customerhomepage', { replace: true })
+          } else {
+            navigate('/customer/customerprofilepage', { replace: true })
+          }
         } else {
-          navigate('/customer/customerprofilepage', { replace: true })
+          navigate('/app/staffpage', { replace: true })
         }
       } catch (error: any) {
         setLoading(false)

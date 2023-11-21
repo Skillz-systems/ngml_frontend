@@ -12,7 +12,7 @@ const EOIForm: React.FC = () => {
   const { user } = useAuthState()
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<EOIInterface>({
-    email: '',
+    email: user?.email ?? '',
     phoneNumber: '',
     companyName: '',
     reason: ''
@@ -31,6 +31,7 @@ const EOIForm: React.FC = () => {
     e.preventDefault()
     setLoading(true)
     try {
+      values.email = user?.email ?? '';
       const res = await postEOI(values)
       setLoading(false)
       console.log(res)
@@ -99,11 +100,9 @@ const EOIForm: React.FC = () => {
     // }
   }, [email])
 
-  console.log(values, 'sshhshsh')
-
   return (
     <>
-      <div className="">
+      <div className="w-[100%]">
         <div className="bg-white/40 flex-1 m-5 p-5 overflow-x-hidden rounded-xl">
           <div className="flex justify-between mb-3">
             <h3 className='text-left capitalize font-semibold text-xl text-neutral-500'>Expression of Interest Form</h3>
@@ -131,8 +130,8 @@ const EOIForm: React.FC = () => {
                     type="email"
                     className=""
                     error=""
-                    value={values?.email}
-
+                    value={values?.email ?? user?.email}
+                    disabled={true}
                     onChange={handleChange}
                   />
                   <CustomInput name='phoneNumber' required

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react'
@@ -10,24 +11,25 @@ import { useAuthState } from 'src/Context/AuthContext'
 // eslint-disable-next-line react/prop-types, @typescript-eslint/explicit-function-return-type
 const Sidebar = ({ SideBarLinks }) => {
   const { user } = useAuthState()
-  const [name, setName] = useState('John Okafor')
-  const [designation, setDesignation] = useState('D.MANAGER')
+  const [name, setName] = useState(user?.firstname || user?.companyName || 'John Okafor')
+  const [designation, setDesignation] = useState(user?.designation ?? 'D.MANAGER')
   const [zone, setZone] = useState('SS. Zone')
 
+  console.log(user, 'useruser')
   useEffect(() => {
     if (user !== null) {
       // const acc = JSON.parse(localStorage.getItem('user'))
-      setName(user.firstname + ' ' + user.lastname)
-      setDesignation(user.designation)
-      setZone(user.operation + ' Zone')
+      setName(user?.firstname || user?.companyName + ' ' + (user?.companyName || user?.lastname))
+      setDesignation(user?.designation)
+      setZone((user?.operation || 'Customer') + ' Zone')
     }
-  }, [])
+  }, [user?.firstname, user?.companyName])
   const communicationProfileSettings = SideBarLinks.slice(5, SideBarLinks.length)
   return (
     <>
       <div className='fixed top-10 h-screen'
         style={{
-          border: '0.5px solid red',
+          // border: '0.5px solid red',
           width: '220px',
           // padding: '18px',
           overflowY: 'auto',
