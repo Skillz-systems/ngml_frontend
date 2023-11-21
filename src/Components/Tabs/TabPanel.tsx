@@ -8,7 +8,8 @@ import StaffInformation from '../StaffInformationForms/StaffInformation'
 import PortalDetailPage from '../Portaldetail/PortalDetailPage'
 import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
 import StaffEmploymentDetails from '../Staffemploymentdetails/StaffEmploymentDetails'
-import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
+// import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
+import Uploads from '../StaffInformationForms/Uploads'
 
 interface TabPanelProps {
   activeTab: string
@@ -17,36 +18,31 @@ interface TabPanelProps {
 
 const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
   return (
-    <div className='w-full h-full '>
+    <div style={{ border: '2px solid blue', width: '100%' }} className=''>
       {activeTab === 'staffinformation' && (
-        <div className='flex-1  w-full'>
+        <div className='flex-1 w-full'>
           <StaffInformation />
-          {/* <PersonnelDetails />
-          <NextOfKin />
-          <EducationDetails />
-          <PensionDetails />
-          <TaxDetails />
-          <div className="mt-6">
-          </div> */}
         </div>
       )}
       {activeTab === 'employment' && (
-        <div className='flex-1  w-full'>
+        <div className='flex-1 w-full'>
           <StaffEmploymentDetails />
         </div>
       )}
       {activeTab === 'uploads' && (
-        <div className="flex-1  w-full">
-          <StaffDocumentUpload />
+        <div className="flex-1 w-full">
+          {/* <StaffDocumentUpload /> */}
+          <Uploads />
         </div>)}
       {activeTab === 'portal' && (
-        <div className="">
+        <div className="flex-1 w-full">
           <PortalDetailPage />
         </div>)}
       {activeTab === 'summary' && (
-        <div className="">
+        <div className="flex-1 w-full">
           <StaffsummaryPage />
-        </div>)}
+        </div>)
+        }
     </div>
   )
 }

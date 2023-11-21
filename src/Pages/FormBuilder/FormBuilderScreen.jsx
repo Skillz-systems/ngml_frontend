@@ -163,7 +163,7 @@ export default function FormBuilderScreen () {
   }
 
   return (
-    <div className='' style={{ overflowX: 'auto', height: '100vh' }}>
+    <div className='' style={{ overflowX: 'auto', height: '100vh', width: '100%', border: '2px solid red' }}>
       <div className='flex justify-center mb-10'>
         <input
           placeholder="Enter form title"

@@ -40,14 +40,14 @@
 }
 
 .active-nav {
-	font-weight: 900 !important;
+	font-weight: 700 !important;
 	color: #050505;
-	font-size: 20px;
+	font-size: 13px;
 	background-color: #f6fdec;
 }
 .inactive-nav {
-	color: #49526a;
-	font-size: 18px;
+	color: #49526A;
+	font-size: 13px;
 }
 
 /* //Form Buider Style */
@@ -114,4 +114,35 @@ button:hover {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+/* //form builder style */
+h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+	line-height: 1.2;
+	color: #49526A !important;
+	text-align: left !important;
+	font-family: Mulish !important;
+font-size: 14px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: 100% !important; 
+}
+
+.form-control {
+	border-radius:  12px !important;
+	height: 48px !important;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+	color: #fff;
+	background-color: #00AF50 !important;
+	border-color: #00AF50 !important;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #00AF50 !important;
+	border-color: #00AF50 !important;
 }

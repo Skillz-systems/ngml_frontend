@@ -8,6 +8,7 @@ import Reporticon from '../Asset/png-icons/Reports.png'
 import Communicationicon from '../Asset/png-icons/Communication.png'
 import Profileicon from '../Asset/png-icons/Profile.png'
 import Settingsicon from '../Asset/png-icons/Settings.png'
+import Customericon from '../Asset/png-icons/Customers.png'
 
 export const SideBarLinks = [
   { id: 1, name: 'Home', to: '/app/homepageinfo', icon: Homeicon },
@@ -15,8 +16,9 @@ export const SideBarLinks = [
   { id: 3, name: 'Staff', to: '/app/staffpage', icon: Stafficon },
   { id: 4, name: 'Records', to: '/app/recordspage', icon: Recordsicon },
   { id: 5, name: 'Report', to: '/app/reportpage', icon: Reporticon },
-  { id: 6, name: 'Communication', to: '/app/communicationpage', icon: Communicationicon },
-  { id: 7, name: 'Profile', to: '/app/profilepage', icon: Profileicon },
-  { id: 8, name: 'Settings', to: '/app/settingspage', icon: Settingsicon },
-  { id: 4, name: 'Form Builder', to: '/app/formbuilder', icon: Recordsicon }
+  { id: 6, name: 'Customers', to: '/app/customerpage', icon: Customericon },
+  { id: 7, name: 'Communication', to: '/app/communicationpage', icon: Communicationicon },
+  { id: 8, name: 'Profile', to: '/app/profilepage', icon: Profileicon },
+  { id: 9, name: 'Settings', to: '/app/settingspage', icon: Settingsicon },
+  { id: 10, name: 'Form Builder', to: '/app/formbuilder', icon: Recordsicon }
 ]

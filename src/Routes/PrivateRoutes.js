@@ -10,6 +10,8 @@ import ReportPage from 'src/Pages/ReportsPage'
 import SettingsPage from 'src/Pages/SettingsPage'
 import Staffpage from 'src/Pages/StaffPage'
 import SingleStaff from 'src/Pages/SingleStaff'
+import AllCustomerList from 'src/Pages/AllCustomerList'
+import CustomerEoiPage from 'src/Pages/Customer/CustomerEoiPage'
 
 export const PrivateRoutes = [
   {
@@ -25,7 +27,7 @@ export const PrivateRoutes = [
     exact: true
   },
   {
-    title: 'Staff',
+    title: 'StaffID',
     path: '/app/staffpage/:id',
     component: ComposeInternalLayouts(SingleStaff),
     exact: true
@@ -37,7 +39,7 @@ export const PrivateRoutes = [
     exact: true
   },
   {
-    title: 'All Staff',
+    title: 'AllStaff',
     path: '/app/staffpage',
     component: ComposeInternalLayouts(AllStaffList),
     exact: true
@@ -76,5 +78,17 @@ export const PrivateRoutes = [
     title: 'Form Builder',
     path: '/app/formbuilder',
     component: ComposeInternalLayouts(FormBuilderScreen)
+  },
+  {
+    title: 'All Customer',
+    path: '/app/customerPage',
+    component: ComposeInternalLayouts(AllCustomerList),
+    exact: true
+  },
+  {
+    title: 'Customer',
+    path: '/app/customerpage/:id',
+    component: ComposeInternalLayouts(CustomerEoiPage),
+    exact: true
   }
 ]
