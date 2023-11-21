@@ -18,7 +18,7 @@ interface TabPanelProps {
 
 const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
   return (
-    <div className='w-full h-full '>
+    <div style={{ border: '2px solid blue', width: '100%' }} className=''>
       {activeTab === 'staffinformation' && (
         <div className='flex-1 w-full'>
           <StaffInformation />
@@ -35,13 +35,14 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
           <Uploads />
         </div>)}
       {activeTab === 'portal' && (
-        <div className="">
+        <div className="flex-1 w-full">
           <PortalDetailPage />
         </div>)}
       {activeTab === 'summary' && (
-        <div className="">
+        <div className="flex-1 w-full">
           <StaffsummaryPage />
-        </div>)}
+        </div>)
+        }
     </div>
   )
 }

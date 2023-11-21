@@ -1,13 +1,13 @@
 import React from 'react'
-import CompanyLogo from 'src/Asset/CompanyLogo.png'
-import guy from 'src/Asset/guy.jpeg'
-import qrcode from 'src/Asset/bi_qr-code.png'
+// import CompanyLogo from 'src/Asset/CompanyLogo.png'
+// import guy from 'src/Asset/guy.jpeg'
+// import qrcode from 'src/Asset/bi_qr-code.png'
 
 const StaffsummaryPage: React.FC = () => {
   return (
-    <div className="w-[892px] h-[1409px] bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">
-      <div className="w-[860px] h-[1277px] relative bg-white border-2">
-        <div className="left-[262.95px] top-[29px] absolute flex-col justify-end items-center gap-2 inline-flex">
+    <div className="h-[1409px] bg-white rounded-xl flex-col justify-start items-start">
+      {/* <div className="w-[100%] h-[1277px] relative bg-white border-2">
+        <div className="flex-col justify-end items-center gap-2 inline-flex">
           <div className="w-16 h-16 rounded-[200px] justify-center items-center inline-flex">
             <img className="w-16 h-16 rounded-full" src={CompanyLogo} alt="Company Logo" />
           </div>
@@ -19,18 +19,18 @@ const StaffsummaryPage: React.FC = () => {
         <div className="p-[15.17px] left-[327.50px] top-[1224.67px] absolute justify-center items-center gap-[15.17px] inline-flex">
           <div className="text-center text-neutral-400 text-base font-medium font-['Red Hat Display'] mt-[130px]">Powered by John Okor</div>
         </div>
-        <div className="p-5 left-[1px] top-[175px] absolute rounded-lg border border-gray-200 flex-col justify-start items-start gap-4 inline-flex">
+        <div style={{ border: '6px solid green' }} className="p-5 rounded-lg border border-gray-200 flex-col justify-start items-start gap-4 inline-flex">
           <div className="w-[500px] justify-between items-start inline-flex">
             <div className="h-10 px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 flex">
               <div className="text-white text-base font-bold font-['Mulish']">Personal Information</div>
             </div>
           </div>
-          <div className="w-[800px] justify-between items-start inline-flex">
+          <div className="justify-between items-start inline-flex">
             <div className="h-[130px] justify-between items-start flex">
-              <img className="w-[130px] h-[130px]" src={guy} alt="Guy picture" />
-              <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
+              <img className="w-[120px] h-[130px]" src={guy} alt="Guy picture" />
+              <div className=" flex-col justify-start items-start gap-0.5 inline-flex">
                 <div className="flex-col justify-center items-start gap-1 flex">
-                  <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                  <div className=" pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                     <div className="w-[100px] text-slate-400 pr-[42px] text-xs font-bold font-['Mulish'] uppercase">Title:</div>
                   </div>
                   <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -38,7 +38,7 @@ const StaffsummaryPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex-col justify-center items-start gap-1 flex">
-                  <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                  <div className=" pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                     <div className="w-[100px] text-slate-400 text-xs font-bold font-['Mulish']">FIRST NAME:</div>
                   </div>
                   <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -46,7 +46,7 @@ const StaffsummaryPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex-col justify-center items-start gap-1 flex">
-                  <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                  <div className="pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                     <div className="text-slate-400 text-xs pl-[12px] font-bold font-['Mulish'] uppercase">PHONE NUMBER: </div>
                   </div>
                   <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -55,13 +55,13 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="h-[130px] justify-between items-start flex">
-              <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
+            <div style={{ width: '100%' }} className="h-[130px] justify-between items-start flex">
+              <div className="flex-col justify-start items-start gap-0.5 inline-flex">
                 <div className="flex-col justify-center items-start gap-1 flex">
                   <div className="px-1 justify-center items-start gap-2.5 inline-flex">
                     <div className="text-zinc-950 text-xs font-bold font-['Mulish']">Mr.</div>
                   </div>
-                  <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                  <div className="pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                     <div className="w-[100px] text-zinc-950 text-xs pr-[42px] font-bold font-['Mulish'] uppercase">Abraham</div>
                   </div>
                 </div>
@@ -87,11 +87,11 @@ const StaffsummaryPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-[800px] px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 inline-flex">
+          <div className=" px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 inline-flex">
             <div className="text-white text-base font-bold font-['Mulish']">Other Personal Information</div>
           </div>
           <div className="px-1 flex-col justify-start items-start gap-[3px] flex">
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div style={{ columnGap: '20px' }} className="flex justify-start items-start w-[100%]">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">Verification No:</div>
@@ -125,7 +125,7 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className="justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">DOB:</div>
@@ -159,7 +159,7 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className=" justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">State:</div>
@@ -193,22 +193,22 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className=" justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
-                <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
+                <div className="h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">Address:</div>
                 </div>
-                <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
+                <div className="h-[22px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-[800px] px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 inline-flex">
+          <div className=" px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 inline-flex">
             <div className="text-white text-base font-bold font-['Mulish']">Employee Work Information</div>
           </div>
           <div className="px-1 flex-col justify-start items-start gap-[3px] flex">
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className=" justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">Designation:</div>
@@ -242,7 +242,7 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className=" justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">Employment Status:</div>
@@ -276,7 +276,7 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className="justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">PFA:</div>
@@ -310,7 +310,7 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[785px] justify-start items-start gap-20 inline-flex">
+            <div className=" justify-start items-start gap-10 inline-flex">
               <div className="w-[129px] flex-col justify-start items-start inline-flex">
                 <div className="w-[391px] h-[33px] justify-start items-center gap-[25px] inline-flex">
                   <div className="text-slate-400 text-sm font-normal font-['Mulish']">Secret File:</div>
@@ -337,7 +337,7 @@ const StaffsummaryPage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-[800px] justify-between items-start inline-flex">
+          <div className="w-[100%] justify-between items-start inline-flex">
             <div className="h-10 px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 flex">
               <div className="text-white text-base font-bold font-['Mulish']">Education Information</div>
             </div>
@@ -426,7 +426,7 @@ const StaffsummaryPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

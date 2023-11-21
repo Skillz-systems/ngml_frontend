@@ -71,7 +71,7 @@ const Tabs: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
   }
   return (
     <>
-      <div className="flex flex-1 mt-4">
+      <div style={{ border: '5px solid green' }} className="flex flex-1 mt-4">
         <TabList tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
 
         <TabPanel activeTab={activeTab} panelName={panelName} />

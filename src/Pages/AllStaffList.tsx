@@ -26,7 +26,7 @@ const AllStaffList: React.FC = () => {
     }
     handleGet()
     const total = staff.length
-    const verified = staff.filter((count) => count.verified).length
+    const verified = staff.filter((count) => count.verified === 'approved').length
     const unverified = total - verified
 
     setTotalStaffCount(total)
@@ -46,6 +46,7 @@ const AllStaffList: React.FC = () => {
     navigate(`/app/staffpage/${id}`)
   }
 
+  console.log(staff, 'staffstaffstaff')
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-2xl'>
       <div className="flex justify-between items-center mb-3 ">
@@ -125,7 +126,7 @@ const AllStaffList: React.FC = () => {
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm ">{item.email}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.department}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate ">
-                        {item.verified
+                        {item.verified === 'approved'
                           ? (
                             <span className='bg-[#87ee87] py-1 px-2 rounded-xl'>Approved</span>)
                           : (

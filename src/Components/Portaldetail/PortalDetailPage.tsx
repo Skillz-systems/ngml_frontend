@@ -1,8 +1,10 @@
 import React from 'react'
+import { useAuthState } from 'src/Context/AuthContext'
 const PortalDetailPage: React.FC = () => {
+  const { user } = useAuthState()
   return (
     <>
-      <div className="w-[892px] h-[294px] p-4 bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">
+      <div className="w-[100%] h-[294px] p-4 bg-white rounded-xl flex-col justify-start items-start inline-flex">
         <div className="self-stretch h-[262px] p-6 rounded-xl border border-green-600 flex-col justify-start items-start gap-6 flex">
           <div className="text-slate-600 text-base font-bold font-['Mulish'] leading-none">PORTAL LOGIN DETAILS</div>
           <div className="self-stretch h-[179px] flex-col justify-start items-end gap-4 flex">
@@ -28,7 +30,7 @@ const PortalDetailPage: React.FC = () => {
                 </div>
                 <div className="self-stretch px-4 py-2 bg-slate-50 rounded-xl border border-green-900 justify-start items-center gap-[9px] inline-flex">
                   <div className="justify-start items-center gap-3 flex">
-                    <div className="text-zinc-950 text-sm font-medium font-['Mulish'] leading-[14px]">okor.john@ngml.gov.ng</div>
+                    <div className="text-zinc-950 text-sm font-medium font-['Mulish'] leading-[14px]">{user?.email ?? 'okor.john@ngml.gov.ng'}</div>
                   </div>
                 </div>
               </div>
@@ -38,7 +40,7 @@ const PortalDetailPage: React.FC = () => {
                 </div>
                 <div className="self-stretch px-4 py-2 bg-slate-50 rounded-xl border border-green-900 justify-start items-center gap-[9px] inline-flex">
                   <div className="justify-start items-center gap-3 flex">
-                    <div className="text-zinc-950 text-sm font-medium font-['Mulish'] leading-[14px]">123456789</div>
+                    <div className="text-zinc-950 text-sm font-medium font-['Mulish'] leading-[14px]">password</div>
                   </div>
                 </div>
               </div>
@@ -47,7 +49,7 @@ const PortalDetailPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-[892px] h-14 mt-2 p-3 bg-white rounded-xl justify-end items-center gap-4 inline-flex">
+      <div className="w-[100%] h-14 mt-2 p-3 bg-white rounded-xl justify-end items-center gap-4 inline-flex">
         <div className="w-[186px] px-8 py-[13px] rounded-[32px] border border-gray-300 justify-center items-center gap-2.5 flex">
           <div className="text-slate-600 text-sm font-normal font-['Mulish'] leading-[14px]">Save and Close</div>
         </div>

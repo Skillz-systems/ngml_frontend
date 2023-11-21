@@ -27,10 +27,12 @@ const Sidebar = ({ SideBarLinks }) => {
     <>
       <div className='fixed top-10 h-screen'
         style={{
-          // borderRight: '0.5px solid #ccc',
-          width: '350px',
-          padding: '18px',
-          overflowY: 'auto'
+          border: '0.5px solid red',
+          width: '220px',
+          // padding: '18px',
+          overflowY: 'auto',
+          marginTop: '32px',
+          marginLeft: '16px'
 
         }}
       >
@@ -67,7 +69,7 @@ const Sidebar = ({ SideBarLinks }) => {
                 <div
                   style={{
                     color: '#050505',
-                    fontSize: '16px',
+                    fontSize: '12px',
                     fontWeight: '600',
                     fontFamily: 'Mulish'
                   }}
@@ -85,7 +87,7 @@ const Sidebar = ({ SideBarLinks }) => {
                   <div
                     style={{
                       color: '#828DA9',
-                      fontSize: '12px',
+                      fontSize: '10px',
                       fontWeight: '600',
                       fontFamily: 'Mulish',
                       lineHeight: '20px'
@@ -98,7 +100,7 @@ const Sidebar = ({ SideBarLinks }) => {
                     className='uppercase'
                     style={{
                       color: '#828DA9',
-                      fontSize: '12px',
+                      fontSize: '10px',
                       fontWeight: '600',
                       fontFamily: 'Mulish',
                       lineHeight: '20px'
@@ -157,7 +159,7 @@ const Sidebar = ({ SideBarLinks }) => {
                 <span
                   style={{
                     fontWeight: 400,
-                    fontSize: '20px',
+                    fontSize: '15px',
                     fontFamily: 'Mulish'
                   }}
                 >

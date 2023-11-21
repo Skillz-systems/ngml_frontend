@@ -11,7 +11,7 @@ const Staffpage: FC = () => {
   }, [activeTab])
 
   return (
-    <div className="m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-xl">
+    <div className="m-5 bg-white/40 flex-1 p-4 overflow-x-hidden rounded-xl">
       <div className="flex justify-between">
         <div> <h3 className="text-left capitalize font-semibold text-3xl text-neutral-600">
           Staff page

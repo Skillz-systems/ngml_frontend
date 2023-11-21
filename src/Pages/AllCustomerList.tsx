@@ -7,7 +7,7 @@ import { HiOutlineUserCircle } from 'react-icons/hi2'
 import { GoShield } from 'react-icons/go'
 import Search from 'src/Asset/png-icons/Search.png'
 import { IoFilterOutline } from 'react-icons/io5'
-import { getAllStaff, type StaffInterface } from 'src/api/api'
+import { getAllCustomers, type StaffInterface } from 'src/api/api'
 // import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
@@ -27,7 +27,8 @@ const AllStaffList: React.FC = () => {
   }, [])
   const handleGet = async (): Promise<void> => {
     try {
-      const res = await getAllStaff()
+      const res = await getAllCustomers()
+      console.log(res, 'resresres')
       setStaff(res?.data.data)
     } catch (error: any) {
       console.log(error)
@@ -51,7 +52,7 @@ const AllStaffList: React.FC = () => {
             <img src={email} className='text-neutral-700' width={20} height={20} />
             <span className='bg-red-600 rounded-full text-white text-[8px] pt-0.5 px-0.5 absolute -right-1 -top-1 animate-pulse '>40</span>
           </div>
-          <div className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-white rounded-3xl text-neutral-600 bg-white">Add New Staff</div>
+          <div className="px-4 py-1 border cursor-pointer hover:text-neutral-700 ease-in-out duration-300 transition-all border-white rounded-3xl text-neutral-600 bg-white">Add New Customer</div>
         </div>
       </div>
       <div className="grid gap-x-3 justify-between items-center sm:grid-cols-2 md:grid-cols-3 mb-2 ">
@@ -107,7 +108,7 @@ const AllStaffList: React.FC = () => {
       <div>
         <div className='w-full flex-1 bg-white rounded-xl h-full mt-4'>
           <div className="flex justify-between items-center p-4">
-            <span className='italics text-sm text-neutral-600'>Showing 20 of 8307 Staff Records</span>
+            <span className='italics text-sm text-neutral-600'>Showing 20 of 8307 Customer Records</span>
             <div className="relative ml-auto">
               <input
                 type="text"
@@ -144,10 +145,10 @@ const AllStaffList: React.FC = () => {
                 {staff.length > 0
                   ? (staff.map((item, index) => (
                     <tr key={index} className=''>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{index + 1}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname}</td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.designation}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{Array.from({ length: 4 }, () => item._id[Math.floor(Math.random() * item._id.length)]).join('')}</td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{(Math.floor(Math.random() * 100000) + 1).toLocaleString()}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm ">{item.email}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.department}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate ">
@@ -157,7 +158,7 @@ const AllStaffList: React.FC = () => {
                           : (
                             <span className='bg-[#eebe87] py-1 px-2 rounded-xl'>Pending</span>)}
                       </td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate  "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item._id) }}>View</span></td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate  "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item.email) }}>View</span></td>
                     </tr>)))
                   : (<>
                     <tr className=' mx-2'>

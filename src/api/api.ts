@@ -52,7 +52,7 @@ export interface EOIInterface {
 
 export interface StaffInterface {
   eoiStarted: boolean
-  verified: boolean
+  verified: string
   _id: string
   firstname: string
   lastname: string
@@ -124,6 +124,16 @@ export const getAllStaff = async (
 ): Promise<AxiosResponse<any>> => {
   try {
     const response = await axiosInstance.get('/staff')
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+
+export const getAllCustomers = async (
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.get('/admin/all-customers')
     return response
   } catch (error: any) {
     return await Promise.reject(error)
