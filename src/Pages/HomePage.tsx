@@ -1,4 +1,5 @@
 import React from 'react'
+import ResponseModal from 'src/Components/ResponseComponent/ResponseModal'
 
 const HomePageInfo: React.FC = () => {
   return (
@@ -10,7 +11,15 @@ const HomePageInfo: React.FC = () => {
       {/* delete below  */}
       <div>
         <div className='w-full flex-1 bg-white rounded-xl h-96 p-5'>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corporis, vitae culpa omnis minus labore molestiae unde? Non unde architecto aliquam sequi error. Pariatur aperiam quasi rerum sint laboriosam est?
+          {/* Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Quibusdam corporis, vitae culpa omnis minus labore molestiae
+           unde? Non unde architecto aliquam sequi error.
+            Pariatur aperiam quasi rerum sint laboriosam est? */}
+        </div>
+        <div>
+          <ResponseModal
+          type="success"
+          />
         </div>
       </div>
 
