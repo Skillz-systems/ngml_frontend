@@ -40,6 +40,7 @@ interface InputProps {
    * Function to handle onChange event.
    */
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  disabled?: boolean
 }
 
 /**
@@ -56,7 +57,8 @@ const CustomInput: FC<InputProps> = ({
   error,
   value,
   onChange,
-  name
+  name,
+  disabled
 }) => {
   // const [focused, setFocused] = useState<boolean>(false)
   // const handleFocus = (): void => {
@@ -80,6 +82,7 @@ const CustomInput: FC<InputProps> = ({
         required={required}
         value={value}
         onChange={onChange}
+        disabled={disabled}
       // onBlur={handleFocus}
       // eslint-disable-next-line react/no-unknown-property
       // focused={focused.toString()}
