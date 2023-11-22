@@ -8,6 +8,7 @@ interface TextAreaProps {
   error?: string
   value?: string
   name: string
+  disabled?: boolean
   onChange?: (event: ChangeEvent<HTMLTextAreaElement>) => void
 }
 
@@ -19,23 +20,25 @@ const CustomTextArea: FC<TextAreaProps> = ({
   error,
   value,
   onChange,
-  name
+  name,
+  disabled = false
 }) => {
   return (
     <div className={`mb-1 w-full ${className}`}>
-      {(label != null) && <label className="block text-left text-sm font-medium text-gray-500 capitalize">{label}
+      {(label != null) && <label className="block text-sm font-medium text-left text-gray-500 capitalize">{label}
         <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span></label>}
       <textarea
         placeholder={placeholder}
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 p-2 border rounded-md w-full focus:outline-none disabled:text-gray-400 focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
+        defaultValue={value}
         required={required}
-        value={value}
+        // value={value}
         onChange={onChange}
-        name={name}
+        name={name} disabled={disabled}
       />
       {((error ?? '').length > 0) && (
-        <p className="text-left text-red-500 text-xs mt-1">{error}</p>
+        <p className="mt-1 text-xs text-left text-red-500">{error}</p>
       )}
     </div>
   )

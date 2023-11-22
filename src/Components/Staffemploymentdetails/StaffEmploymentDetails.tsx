@@ -1,12 +1,25 @@
-import React, { type ChangeEvent, useState } from 'react'
+import React, { type ChangeEvent, useState, useEffect } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 // import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-// import { useAuthState } from 'src/Context/AuthContext'
+import { useStaffState } from 'src/Context/StaffDataContext'
+import { useAuthState } from 'src/Context/AuthContext'
 const StaffEmploymentDetails: React.FC = () => {
   // const { user } = useAuthState()
   const [values, setValues] = useState({})
+  const { user } = useAuthState()
+  const { staff } = useStaffState()
+  const [disable, setDisable] = useState(false)
+
+  useEffect(() => {
+    // if (user?.type === 'SUPERADMIN') {
+    //   setDisable(true)
+    // }
+    if (user?.type === 'SUPERADMIN' && user._id !== staff?._id) {
+      setDisable(true)
+    }
+  }, [])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -29,6 +42,7 @@ const StaffEmploymentDetails: React.FC = () => {
               type="text"
               className=''
               error=''
+              disabled={disable}
               onChange={handleChange}
             />
             <CustomInput name='dateofappointment' required
@@ -37,6 +51,7 @@ const StaffEmploymentDetails: React.FC = () => {
               type="date"
               className=""
               error=""
+              disabled={disable}
               onChange={handleChange}
             />
             <CustomInput name='gradelevel' required
@@ -45,11 +60,13 @@ const StaffEmploymentDetails: React.FC = () => {
               type="text"
               className=''
               error=''
+              disabled={disable}
               onChange={handleChange}
             />
             <CustomSelect
               name='departmentofappointment'
               label="Department of Appointmment"
+              disabled={disable}
               options={[
                 { value: 'Business Service', label: 'Business Service' },
                 { value: 'Hercules', label: 'Hercules' },
@@ -59,6 +76,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomSelect
               name='zoneofemployment'
               label="Zone of Employment"
+              disabled={disable}
               options={[
                 { value: 'south south zone', label: 'south south zone' },
                 { value: 'north central zone', label: 'north central zone' },
@@ -68,6 +86,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomSelect
               name='unitofemployment'
               label="Unit of Employment"
+              disabled={disable}
               options={[
                 { value: 'Human Resources', label: 'Human Resources' },
                 { value: 'Manager', label: 'Manager' },
@@ -77,6 +96,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomSelect
               name='designation'
               label="Designation"
+              disabled={disable}
               options={[
                 { value: 'Officer', label: 'Officer' },
                 { value: 'Comrade', label: 'Comrade' },
@@ -86,6 +106,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomSelect
               name='salarygrade'
               label="Salary Grade"
+              disabled={disable}
               options={[
                 { value: 'basic', label: 'basic' },
                 { value: 'supervisor', label: 'supervisor' },
@@ -102,6 +123,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomSelect
               name='bank'
               label="Bank"
+              disabled={disable}
               options={[
                 { value: 'zenith bank', label: 'zenith bank' },
                 { value: 'uba bank', label: 'uba bank' },
@@ -111,6 +133,7 @@ const StaffEmploymentDetails: React.FC = () => {
             <CustomInput name='accountnumber' required
               label="Account Number"
               placeholder="2400306489"
+              disabled={disable}
               type="text"
               className=""
               error=''

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 // import unit from '../Asset/svg-icons/Unitngml.svg'
 // import designation from '../Asset/svg-icons/Designationngml.svg'
 import email from '../Asset/svg-icons/Emailngml.svg'
@@ -20,10 +20,14 @@ const AllStaffList: React.FC = () => {
   const [unverifiedStaffCount, setUnverifiedStaffCount] = useState(0)
   const { user } = useAuthState()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (user?.type !== 'SUPERADMIN') {
-      navigate('/app/staffpage/current', { replace: true }); return
+      // navigate('/app/staffpage/', { replace: true })
+      navigate(`/app/staffpage/${user?._id}`, { replace: true })
     }
+  }, [])
+
+  useEffect(() => {
     handleGet()
     const total = staff.length
     const verified = staff.filter((count) => count.verified === 'approved').length
@@ -46,7 +50,7 @@ const AllStaffList: React.FC = () => {
     navigate(`/app/staffpage/${id}`)
   }
 
-  console.log(staff, 'staffstaffstaff')
+  // console.log(staff, 'staffstaffstaff')
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-2xl'>
       <div className="flex justify-between items-center mb-3 ">

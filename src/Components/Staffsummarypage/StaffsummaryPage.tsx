@@ -1,12 +1,12 @@
 import React from 'react'
-// import CompanyLogo from 'src/Asset/CompanyLogo.png'
-// import guy from 'src/Asset/guy.jpeg'
-// import qrcode from 'src/Asset/bi_qr-code.png'
+import CompanyLogo from 'src/Asset/CompanyLogo.png'
+import guy from 'src/Asset/guy.jpeg'
+import qrcode from 'src/Asset/bi_qr-code.png'
 
 const StaffsummaryPage: React.FC = () => {
   return (
     <div className="h-[1409px] bg-white rounded-xl flex-col justify-start items-start">
-      {/* <div className="w-[100%] h-[1277px] relative bg-white border-2">
+      <div className="w-[100%] h-[1277px] relative bg-white border-2">
         <div className="flex-col justify-end items-center gap-2 inline-flex">
           <div className="w-16 h-16 rounded-[200px] justify-center items-center inline-flex">
             <img className="w-16 h-16 rounded-full" src={CompanyLogo} alt="Company Logo" />
@@ -426,7 +426,7 @@ const StaffsummaryPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

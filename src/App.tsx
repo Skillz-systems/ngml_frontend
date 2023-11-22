@@ -5,6 +5,7 @@ import './App.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AuthProvider } from './Context/AuthContext'
+import { StaffProvider } from './Context/StaffDataContext'
 
 // eslint-disable-next-line @typescript-eslint/space-before-function-paren
 function App(): JSX.Element {
@@ -50,14 +51,15 @@ function App(): JSX.Element {
     <div className="App">
       <ToastContainer />
       <AuthProvider>
-
-        <BrowserRouter>
-          <Routes>
-            {authRoutes}
-            {PrivateRoutes}
-            {CustomerRoutes}
-          </Routes>
-        </BrowserRouter>
+        <StaffProvider>
+          <BrowserRouter>
+            <Routes>
+              {authRoutes}
+              {PrivateRoutes}
+              {CustomerRoutes}
+            </Routes>
+          </BrowserRouter>
+        </StaffProvider>
       </AuthProvider>
       {/* </ToastContainer> */}
 

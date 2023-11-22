@@ -37,6 +37,7 @@ interface SelectProps {
    * Function to handle onChange event.
    */
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
+  disabled?: boolean
 }
 
 /**
@@ -52,23 +53,26 @@ const CustomSelect: FC<SelectProps> = ({
   error,
   value,
   onChange,
-  name
+  name,
+  disabled = false
 }) => {
   return (
     <div className={`mb-1 w-full flex flex-col justify-start ${className}`}>
       {label !== null && (
-        <label className="block text-sm font-medium text-gray-500 text-left capitalize">
+        <label className="block text-sm font-medium text-left text-gray-500 capitalize">
           {label}
           <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span>
         </label>
       )}
       <select
-        className={`mt-1 p-2 border rounded-md focus:outline-none focus:border-green-500 w-full uppercase ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        disabled={disabled}
+        className={`mt-1 p-2 disabled:text-gray-400 border rounded-md focus:outline-none focus:border-green-500 w-full uppercase ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
-        value={value}
+        // value={value}
         onChange={onChange}
         name={name}
+        defaultValue={value}
       >
         {options.map((option) => (
           <option key={option.value} value={option.value} className="uppercase">
@@ -77,7 +81,7 @@ const CustomSelect: FC<SelectProps> = ({
         ))}
       </select>
       {((error ?? '').length > 0) && (
-        <p className="text-left text-red-500 text-xs mt-1">{error}</p>
+        <p className="mt-1 text-xs text-left text-red-500">{error}</p>
       )}
     </div>
   )

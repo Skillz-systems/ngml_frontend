@@ -139,3 +139,14 @@ export const getAllCustomers = async (
     return await Promise.reject(error)
   }
 }
+
+export const verifyStaff = async (
+  staffId: string
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.post(`/admin/staffs/verification/${staffId}`)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
