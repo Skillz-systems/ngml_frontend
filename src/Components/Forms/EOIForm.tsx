@@ -31,7 +31,7 @@ const EOIForm: React.FC = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      values.email = user?.email ?? '';
+      values.email = user?.email ?? ''
       const res = await postEOI(values)
       setLoading(false)
       console.log(res)

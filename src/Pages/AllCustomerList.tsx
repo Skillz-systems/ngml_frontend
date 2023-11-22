@@ -152,13 +152,13 @@ const AllStaffList: React.FC = () => {
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm ">{item.email}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.department}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate ">
-                        {item.verified
+                        {item.verified !== ''
                           ? (
                             <span className='bg-[#87ee87] py-1 px-2 rounded-xl'>Approved</span>)
                           : (
                             <span className='bg-[#eebe87] py-1 px-2 rounded-xl'>Pending</span>)}
                       </td>
-                      <td className="px-2 py-3 whitespace-nowrap truncate  "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item.email) }}>View</span></td>
+                      <td className="px-2 py-3 whitespace-nowrap truncate"><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item.email) }}>View</span></td>
                     </tr>)))
                   : (<>
                     <tr className=' mx-2'>
