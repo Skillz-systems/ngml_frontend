@@ -77,7 +77,6 @@ const StaffLoginDetails: React.FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column'
-          // border: '2px solid red'
         }}
       >
         <div
