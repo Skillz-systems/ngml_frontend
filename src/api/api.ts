@@ -150,3 +150,49 @@ export const verifyStaff = async (
     return await Promise.reject(error)
   }
 }
+
+//! UNIVERSAL POST DATA
+export const storeData = async (
+  url: string, data: any
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.post(`/${url}`, data)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+
+//! UNIVERSAL PUT DATA
+export const updateData = async (
+  url: string, data: any, id: string
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.put(`/${url}/${id}`, data)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+//! UNIVERSAL DELETE DATA
+export const destroyData = async (
+  url: string, id: string
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.delete(`/${url}/${id}`)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+//! UNIVERSAL GET BY ID DATA
+export const getDataBYIdOrEmail = async (
+  url: string, id: string
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.get(`/${url}/${id}`)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}

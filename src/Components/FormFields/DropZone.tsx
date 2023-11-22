@@ -8,11 +8,12 @@ interface DropZoneInterface {
   description?: string
   helper?: string
   helper2?: string
+  required?: boolean
   documentName: string | null
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const DropZone: React.FC<DropZoneInterface> = ({ onChange, description = 'Drag and drop or browse', name, helper2, helper, documentName, title }) => {
+const DropZone: React.FC<DropZoneInterface> = ({ onChange, description = 'Drag and drop or browse', name, helper2, helper, documentName, title, required = true }) => {
   return (
     <div>
 
@@ -26,7 +27,7 @@ const DropZone: React.FC<DropZoneInterface> = ({ onChange, description = 'Drag a
               {documentName ?? description}
             </span>
           </label>
-          <input type="file" name={name} id={name} className='' hidden onChange={onChange} />
+          <input type="file" name={name} id={name} className='' hidden onChange={onChange} required={required} />
         </div>
         <div className="flex flex-col justify-start">
 

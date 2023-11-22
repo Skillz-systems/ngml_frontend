@@ -1,15 +1,11 @@
 import React, { type FC } from 'react'
-// import PersonnelDetails from '../StaffInformationForms/PersonnelDetails'
-// import NextOfKin from '../StaffInformationForms/NextOfKin'
-// import EducationDetails from '../StaffInformationForms/EducationDetails'
-// import PensionDetails from '../StaffInformationForms/PensionDetails'
-// import TaxDetails from '../StaffInformationForms/TaxDetails'
+import EducationDetails from '../StaffInformationForms/EducationDetails'
+
+import PortalDetails from '../StaffInformationForms/PortalDetails'
 import StaffInformation from '../StaffInformationForms/StaffInformation'
-import PortalDetailPage from '../Portaldetail/PortalDetailPage'
-import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
-import StaffEmploymentDetails from '../Staffemploymentdetails/StaffEmploymentDetails'
-// import StaffDocumentUpload from '../Staffdocumentupload/StaffDocumentUpload'
 import Uploads from '../StaffInformationForms/Uploads'
+// import SummaryInformation from '../StaffInformationForms/SummaryInformation'
+import StaffsummaryPage from '../Staffsummarypage/StaffsummaryPage'
 
 interface TabPanelProps {
   activeTab: string
@@ -26,7 +22,7 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
       )}
       {activeTab === 'employment' && (
         <div className='flex-1 w-full'>
-          <StaffEmploymentDetails />
+          <EducationDetails />
         </div>
       )}
       {activeTab === 'uploads' && (
@@ -36,13 +32,14 @@ const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
         </div>)}
       {activeTab === 'portal' && (
         <div className="flex-1 w-full">
-          <PortalDetailPage />
+          <PortalDetails />
         </div>)}
       {activeTab === 'summary' && (
         <div className="flex-1 w-full">
+          {/* <SummaryInformation /> */}
           <StaffsummaryPage />
         </div>)
-        }
+      }
     </div>
   )
 }

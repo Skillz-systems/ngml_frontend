@@ -8,12 +8,18 @@ import { useAuthState } from 'src/Context/AuthContext'
 const Uploads: React.FC = () => {
   const [documentNames, setDocumentNames] = useState<Record<string, string | any>>({})
   const { user } = useAuthState()
+  const [values, setValues] = useState({})
 
   const handleDropZoneChange = (name: string, documentName: string | any): void => {
     setDocumentNames((prevDocumentNames) => ({
       ...prevDocumentNames,
       [name]: documentName
     }))
+  }
+  const handleSubmit = (e: { preventDefault: () => void }): void => {
+    e.preventDefault()
+    console.log(values)
+    // setLoading(false)
   }
   return (
     <div>
@@ -84,11 +90,17 @@ const Uploads: React.FC = () => {
               {/* admin */}
             </>)
           : (
-            <>
+            <form onSubmit={handleSubmit} className='space-y-4'>
 
-              <DropZone name='passport' helper2='Maximum file size: 5MB' helper='Scan the copy of your original document (pdf,png,jpg)' onChange={(event: ChangeEvent<HTMLInputElement>) => { handleDropZoneChange('passport', event.target.files?.[0]?.name) }} documentName={documentNames.passport} title='Passport Photograph' />
+              <DropZone name='passport' helper2='Maximum file size: 5MB' helper='Scan the copy of your original document (pdf,png,jpg)' onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                handleDropZoneChange('passport', event.target.files?.[0]?.name)
+                setValues({ ...values, [event.target.name]: event.target.files?.[0] })
+              }} documentName={documentNames.passport} title='Passport Photograph' />
 
-              <DropZone name='nysc' helper2='Maximum file size: 5MB' helper='Scan the copy of your original document (pdf,png,jpg)' onChange={(event: ChangeEvent<HTMLInputElement>) => { handleDropZoneChange('nysc', event.target.files?.[0]?.name) }} documentName={documentNames.nysc} title='NYSC Certificate' />
+              <DropZone name='nysc' helper2='Maximum file size: 5MB' helper='Scan the copy of your original document (pdf,png,jpg)' onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                handleDropZoneChange('nysc', event.target.files?.[0]?.name)
+                setValues({ ...values, [event.target.name]: event.target.files?.[0] })
+              }} documentName={documentNames.nysc} title='NYSC Certificate' />
 
               <div className="flex justify-end flex-1 w-full  mt-4  rounded-xl">
                 <ButtonComponent
@@ -117,7 +129,7 @@ const Uploads: React.FC = () => {
                   }}
                 > Save and Continue</ButtonComponent>
               </div>
-            </>)}
+            </form>)}
       </div>
     </div>
   )

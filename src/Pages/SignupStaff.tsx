@@ -197,7 +197,7 @@ const SignupStaff = (): JSX.Element => {
         </form>
       </section>
 
-      <div className="w-full mx-4 mt-5 mb-5 rounded-full bg-white/40 md:mx-0 md:w-4/5 ">
+      <div className="w-full mx-4 mb-5 rounded-full bg-white/40 md:mx-0 md:w-4/5 mt-auto ">
 
         <footer className='px-2 py-1 text-sm text-center truncate sm:text-xs'> This Portal is a Property of NNPC Gas Marketing Limited</footer>
       </div>

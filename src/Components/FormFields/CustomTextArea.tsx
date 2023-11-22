@@ -29,7 +29,7 @@ const CustomTextArea: FC<TextAreaProps> = ({
         <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span></label>}
       <textarea
         placeholder={placeholder}
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none disabled:text-gray-400 focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 p-2 border rounded-md w-full focus:outline-none text-neutral-700  disabled:text-gray-400 focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         defaultValue={value}
         required={required}
