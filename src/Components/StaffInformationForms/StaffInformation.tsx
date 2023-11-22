@@ -5,11 +5,15 @@ import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
 import { useAuthState } from 'src/Context/AuthContext'
 import { useStaffState } from 'src/Context/StaffDataContext'
+import ResponseModal from '../ResponseComponent/ResponseModal'
+import AppModal from '../AppModal'
+
 const StaffInformation: React.FC = () => {
   const { user } = useAuthState()
   const { staff } = useStaffState()
   const [values, setValues] = useState({})
   const [disable, setDisable] = useState(false)
+  const [modalIsOpen, setIsOpen] = React.useState(false)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -30,6 +34,26 @@ const StaffInformation: React.FC = () => {
 
   return (
     <form className="" onSubmit={handleSubmit}>
+      <AppModal
+          height="499px"
+          width="466px"
+          modalIsOpen={modalIsOpen}
+          setIsOpen={setIsOpen}
+        >
+          <ResponseModal
+            text='Are you sure you want to approve?'
+            subText="Staff would be onboarded into the platform!!"
+            type="error"
+            action={() => {
+              console.log()
+              setIsOpen(false)
+            }}
+            continueAction={() => {
+              console.log()
+              setIsOpen(false)
+            }}
+          />
+        </AppModal>
       <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
         {/* personal */}
         <div className='w-full p-4 border-2 border-dashed border-slate-400 rounded-xl ' id='personal'>
@@ -349,7 +373,7 @@ const StaffInformation: React.FC = () => {
                 fontSize='14px'
                 marginRight=''
                 onClick={() => {
-
+                  setIsOpen(true)
                 }}
               > Approved</ButtonComponent>
             </>)
