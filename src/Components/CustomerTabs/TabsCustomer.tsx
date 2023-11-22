@@ -17,7 +17,7 @@ interface TabsProps {
 }
 
 const TabsCustomer: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
-  const [panelName, setPanelName] = useState<string>('overview')
+  const [panelName, setPanelName] = useState<string>('eoirequest')
 
   const tablist: TabListInterface[] = [
     {

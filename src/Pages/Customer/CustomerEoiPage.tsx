@@ -11,7 +11,7 @@ const CustomerEoiPage: React.FC = () => {
 
   console.log(error, 'errorerror')
 
-  const [activeTab, setActiveTab] = useState<string>('staffinformation')
+  const [activeTab, setActiveTab] = useState<string>('eoirequest')
   const navigate = useNavigate()
   useEffect(() => {
 
@@ -26,7 +26,7 @@ const CustomerEoiPage: React.FC = () => {
               <img onClick={() => { navigate(-1) }} src={LeftArrow} />
             </div>
           </div>
-          <div className="text-center text-slate-600 text-[32px] font-semibold font-['Mulish'] leading-loose">{data?.data?.companyName}</div>
+          <div className="text-center text-slate-600 text-[32px] font-semibold font-['Mulish'] leading-loose">{data?.data?.companyName ?? 'Dangote Cement'}</div>
         </div>
         <div className="justify-end items-center gap-4 flex">
           <div className="w-8 h-8 p-2.5 rounded-[40px] border border-gray-300 flex-col justify-center items-center gap-2.5 inline-flex">
