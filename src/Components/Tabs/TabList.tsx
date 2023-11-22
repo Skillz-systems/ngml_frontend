@@ -20,7 +20,7 @@ interface TabListProps {
 const TabList: FC<TabListProps> = ({ tablist, onTabChange, activeTab }) => {
   // console.log(tablist)
   return (
-    <div className='w-1/4 flex flex-col items-start justify-start space-y-2 mr-3 ' style={{ border: '5px solid pink' }}>
+    <div className='w-1/4 flex flex-col items-start justify-start space-y-2 mr-3'>
       {tablist.map((tab, index) => (
         <div key={tab.ref} className="flex flex-col  w-full space-y-2 border border-slate-900" onClick={() => { onTabChange(tab) }}>
           <div className="flex justify-between items-center gap-x-2 cursor-pointer capitalize">

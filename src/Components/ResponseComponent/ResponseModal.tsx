@@ -19,6 +19,7 @@ interface ResponseModalProps {
   showCloseButton?: boolean
   action?: () => void
   continueAction?: () => void
+  subText?: string
 }
 
 const ResponseModal: React.FC<ResponseModalProps> = ({
@@ -27,7 +28,9 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
   height = '265px',
   backgroundColor = '#FFFFFF',
   action,
-  continueAction
+  continueAction,
+  text = 'Are you sure you want to cancel?',
+  subText = 'All changes will be lost'
 }) => {
   return (
     <div
@@ -188,7 +191,7 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
                     color: '#49526A'
                   }}
                 >
-                  Are you sure you want to cancel?
+                  {text}
                 </div>
                 <div
                   style={{
@@ -199,7 +202,7 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
                     color: '#828DA9'
                   }}
                 >
-                  All changes will be lost
+                  {subText}
                 </div>
               </div>
             )}
