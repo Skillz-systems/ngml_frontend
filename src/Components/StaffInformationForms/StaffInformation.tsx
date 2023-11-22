@@ -8,6 +8,8 @@ import { useAuthState } from 'src/Context/AuthContext'
 import { useStaffState } from 'src/Context/StaffDataContext'
 import { toast } from 'react-toastify'
 import { storeData } from 'src/api/api'
+import ResponseModal from '../ResponseComponent/ResponseModal'
+import AppModal from '../AppModal'
 // import { type StaffInfoInterface } from 'src/api/types'
 const StaffInformation: React.FC = () => {
   const { user } = useAuthState()
@@ -15,7 +17,7 @@ const StaffInformation: React.FC = () => {
   const [values, setValues] = useState({})
   const [loading, setLoading] = useState(false)
   const [disable, setDisable] = useState(false)
-
+  const [modalIsOpen, setIsOpen] = React.useState(false)
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
@@ -62,7 +64,26 @@ const StaffInformation: React.FC = () => {
 
   return (
     <>
-
+      <AppModal
+        height="500px"
+        width="500px"
+        modalIsOpen={modalIsOpen}
+        setIsOpen={setIsOpen}
+      >
+        <ResponseModal
+          text='Are you sure you want to approve?'
+          subText="Staff would be onboarded into the platform!!"
+          type="error"
+          action={() => {
+            console.log('got here')
+            setIsOpen(false)
+          }}
+          continueAction={() => {
+            console.log('continue')
+            setIsOpen(false)
+          }}
+        />
+      </AppModal>
       <form className="" onSubmit={handleSubmit}>
         <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
           {/* personal */}
@@ -397,7 +418,7 @@ const StaffInformation: React.FC = () => {
               fontSize='14px'
               marginRight=''
               color="#49526A"
-              onClick={() => { }}
+              onClick={() => { setIsOpen(true) }}
             > Reject and Continue</ButtonComponent>
             <ButtonComponent
               border="none"

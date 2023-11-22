@@ -17,7 +17,7 @@ interface TabsProps {
 }
 
 const TabsCustomer: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
-  const [panelName, setPanelName] = useState<string>('overview')
+  const [panelName, setPanelName] = useState<string>('eoirequest')
 
   const tablist: TabListInterface[] = [
     {
@@ -69,7 +69,7 @@ const TabsCustomer: FC<TabsProps> = ({ activeTab, setActiveTab }) => {
   }
   return (
     <>
-      <div style={{ border: '1px solid gray' }} className="flex flex-1 mt-4">
+      <div style={{ border: '1px solid gray p-5' }} className="flex flex-1 mt-4">
         <TabListCustomer tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
 
         <TabPanelCustomer activeTab={activeTab} panelName={panelName} />

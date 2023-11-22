@@ -26,13 +26,8 @@ code {
 		);
 	}
 	.gradient {
-		background: linear-gradient(
-			135deg,
-			#0ff8ba 0%,
-			#e7ee87 31%,
-			#e7ee87 71%,
-			#8baf8f 100%
-		); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)
+		 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	}
 	.gradient-two {
 		background: linear-gradient(

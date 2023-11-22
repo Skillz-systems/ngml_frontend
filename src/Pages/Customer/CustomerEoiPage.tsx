@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import TabsCustomer from 'src/Components/CustomerTabs/TabsCustomer'
-import ArrowActionoutline from 'src/Asset/png-icons/ArrowsActionoutline.png'
 import LeftArrow from 'src/Asset/png-icons/LeftArrow.png'
+import { useNavigate, useParams } from 'react-router-dom'
+import useDataFetcher from 'src/api/swr'
 
 const CustomerEoiPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('staffinformation')
+  const { id } = useParams()
 
+  const { data, error } = useDataFetcher({ url: `/customer/eoi/${id}` })
+
+  console.log(error, 'errorerror')
+
+  const [activeTab, setActiveTab] = useState<string>('eoirequest')
+  const navigate = useNavigate()
   useEffect(() => {
 
   }, [activeTab])
@@ -16,10 +23,10 @@ const CustomerEoiPage: React.FC = () => {
           <div className="w-8 h-8 bg-slate-200 rounded-2xl justify-center items-center gap-2.5 flex">
             <div className="w-6 h-6 justify-center items-center flex">
               {/* <div className="w-6 h-6 relative flex-col justify-start items-start flex"></div> */}
-              <img src={LeftArrow} />
+              <img onClick={() => { navigate(-1) }} src={LeftArrow} />
             </div>
           </div>
-          <div className="text-center text-slate-600 text-[32px] font-semibold font-['Mulish'] leading-loose">Dangote Cement</div>
+          <div className="text-center text-slate-600 text-[32px] font-semibold font-['Mulish'] leading-loose">{data?.data?.companyName ?? 'Dangote Cement'}</div>
         </div>
         <div className="justify-end items-center gap-4 flex">
           <div className="w-8 h-8 p-2.5 rounded-[40px] border border-gray-300 flex-col justify-center items-center gap-2.5 inline-flex">

@@ -15,6 +15,14 @@ export const setBearerToken = (token: string | null): void => {
   }
 }
 
+export const revalidateBearerToken = (): void => {
+  const token = localStorage.getItem('token')
+  if (token != null) {
+    localStorage.setItem('token', token)
+    axiosInstance.defaults.headers.common.Authorization = token
+  }
+}
+
 // axiosInstance.interceptors.request.use(
 //   (config) => {
 //     const token = localStorage.getItem('token')

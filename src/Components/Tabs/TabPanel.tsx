@@ -14,7 +14,7 @@ interface TabPanelProps {
 
 const TabPanel: FC<TabPanelProps> = ({ activeTab, panelName }) => {
   return (
-    <div style={{ border: '2px solid blue', width: '100%' }} className=''>
+    <div style={{ width: '100%' }} className=''>
       {activeTab === 'staffinformation' && (
         <div className='flex-1 w-full'>
           <StaffInformation />
