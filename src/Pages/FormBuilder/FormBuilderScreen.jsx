@@ -100,7 +100,7 @@ export const toolbarItems = [
 
 // NOTE: You can edit the name and the icon (FontAwesome classes) fields but **do not** change the key.
 
-export default function FormBuilderScreen() {
+export default function FormBuilderScreen () {
   const [form, setForm] = useState({})
   const [title, setTitle] = useState('')
   const [error, setError] = useState(false)

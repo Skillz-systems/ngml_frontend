@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import TabsCustomer from 'src/Components/CustomerTabs/TabsCustomer'
-import ArrowActionoutline from 'src/Asset/png-icons/ArrowsActionoutline.png'
 import LeftArrow from 'src/Asset/png-icons/LeftArrow.png'
 
 const CustomerEoiPage: React.FC = () => {
