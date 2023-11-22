@@ -58,7 +58,7 @@ const CustomInput: FC<InputProps> = ({
   value,
   onChange,
   name,
-  disabled
+  disabled = false
 }) => {
   // const [focused, setFocused] = useState<boolean>(false)
   // const handleFocus = (): void => {
@@ -67,7 +67,7 @@ const CustomInput: FC<InputProps> = ({
   return (
     <div className={`mb-1 w-full flex flex-col justify-start ${className}`}>
       {label !== null && (
-        <label className="block text-left text-sm font-medium text-gray-500 capitalize">
+        <label className="block text-sm font-medium text-left text-gray-500 capitalize">
           {label}
           <span className={` text-xl ${required ? 'text-red-600' : 'text-transparent'}`}>*</span>
         </label>
@@ -76,11 +76,12 @@ const CustomInput: FC<InputProps> = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        // className='mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 border-gray-300 error-input'
-        className={`mt-1 p-2 border rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        defaultValue={value}
+        // className='w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 error-input'
+        className={`mt-1 p-2 border disabled:text-gray-400 rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
-        value={value}
+        // value={value}
         onChange={onChange}
         disabled={disabled}
       // onBlur={handleFocus}
@@ -88,10 +89,10 @@ const CustomInput: FC<InputProps> = ({
       // focused={focused.toString()}
       />
 
-      {/* <span className="text-left text-transparent text-xs">{error}</span> */}
+      {/* <span className="text-xs text-left text-transparent">{error}</span> */}
 
       {((error ?? '').length > 0) && (
-        <p className="text-left text-red-500 text-xs mt-1">{error}</p>
+        <p className="mt-1 text-xs text-left text-red-500">{error}</p>
       )}
     </div>
   )

@@ -8,7 +8,7 @@ import ProfilePage from 'src/Pages/ProfilePage'
 import RecordsPage from 'src/Pages/RecordsPage'
 import ReportPage from 'src/Pages/ReportsPage'
 import SettingsPage from 'src/Pages/SettingsPage'
-import Staffpage from 'src/Pages/StaffPage'
+// import Staffpage from 'src/Pages/StaffPage'
 import SingleStaff from 'src/Pages/SingleStaff'
 import AllCustomerList from 'src/Pages/AllCustomerList'
 import CustomerEoiPage from 'src/Pages/Customer/CustomerEoiPage'
@@ -32,12 +32,12 @@ export const PrivateRoutes = [
     component: ComposeInternalLayouts(SingleStaff),
     exact: true
   },
-  {
-    title: 'Staff',
-    path: '/app/staffpage/current',
-    component: ComposeInternalLayouts(Staffpage),
-    exact: true
-  },
+  // {
+  //   title: 'Staff',
+  //   path: '/app/staffpage/current',
+  //   component: ComposeInternalLayouts(Staffpage),
+  //   exact: true
+  // },
   {
     title: 'AllStaff',
     path: '/app/staffpage',

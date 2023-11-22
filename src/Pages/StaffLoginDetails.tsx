@@ -47,8 +47,9 @@ const StaffLoginDetails: React.FC = () => {
       if (res.data.data.user.type === 'SUPERADMIN') {
         navigate('/app/staffpage', { replace: true })
       } else {
-        navigate('/app/staffpage', { replace: true })
+        navigate(`/app/staffpage/${res?.data?.data?.user?._id}`, { replace: true })
       }
+      // navigate('/app/homepageinfo')
       setValues({
         password: '',
         email: ''
