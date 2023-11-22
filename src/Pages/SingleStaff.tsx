@@ -127,19 +127,19 @@ const SingleStaff: FC = () => {
                 style={{ whiteSpace: 'nowrap' }}
                 className="w-[157px] px-[20px] py-[13px] rounded-[32px] border border-gray-300 justify-center items-center gap-2 flex"
               >
-                <div className="flex items-center justify-center w-4 h-4">
+                <span className="flex items-center justify-center w-4 h-4">
                   <img src={AltDownArrow} />
-                </div>
-                <div className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
+                </span>
+                <span className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
                   Download as PDF
-                </div>
+                </span>
               </div>
-              <div className="w-8 h-8 p-2.5 rounded-[40px] border border-gray-300 flex-col justify-center items-center gap-2.5 inline-flex">
+              <span className="w-8 h-8 p-2.5 rounded-[40px] border border-gray-300 flex-col justify-center items-center gap-2.5 inline-flex">
                 <div className="inline-flex items-center justify-center w-4 h-4">
                   ...
                   <div className="relative flex flex-col items-start justify-start w-4 h-4"></div>
                 </div>
-              </div>
+              </span>
             </div>
           )}
         </div>

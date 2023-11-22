@@ -78,7 +78,7 @@ const CustomInput: FC<InputProps> = ({
         placeholder={placeholder}
         defaultValue={value}
         // className='w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:border-green-500 error-input'
-        className={`mt-1 p-2 border disabled:text-gray-400 rounded-md w-full focus:outline-none focus:border-green-500 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 p-2 border disabled:text-gray-400 rounded-md w-full focus:outline-none focus:border-green-500  text-neutral-700 ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
         // value={value}

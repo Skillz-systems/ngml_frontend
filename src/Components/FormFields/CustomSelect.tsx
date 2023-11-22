@@ -66,7 +66,7 @@ const CustomSelect: FC<SelectProps> = ({
       )}
       <select
         disabled={disabled}
-        className={`mt-1 p-2 disabled:text-gray-400 border rounded-md focus:outline-none focus:border-green-500 w-full uppercase ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
+        className={`mt-1 px-2 disabled:text-gray-400 border rounded-md focus:outline-none  text-neutral-700 focus:border-green-500 w-full py-2.5 uppercase ${((error ?? '').length > 0) ? 'border-red-500' : 'border-gray-300'
           }`}
         required={required}
         // value={value}

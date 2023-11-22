@@ -1,141 +1,192 @@
-import React, { useState, type ChangeEvent } from 'react'
-
-import ButtonComponent from '../ButtonComponent'
+import React, { type ChangeEvent, useState, useEffect } from 'react'
 import CustomInput from '../FormFields/CustomInput'
-// import { useAuthState } from 'src/Context/AuthContext'
 import CustomSelect from '../FormFields/CustomSelect'
-
+// import CustomTextArea from '../FormFields/CustomTextArea'
+import ButtonComponent from '../ButtonComponent'
+import { useStaffState } from 'src/Context/StaffDataContext'
+import { useAuthState } from 'src/Context/AuthContext'
 const EducationDetails: React.FC = () => {
   // const { user } = useAuthState()
   const [values, setValues] = useState({})
+  const { user } = useAuthState()
+  const { staff } = useStaffState()
+  const [disable, setDisable] = useState(false)
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    // if (user?.type === 'SUPERADMIN') {
+    //   setDisable(true)
+    // }
+    if (user?.type === 'SUPERADMIN' && user._id !== staff?._id) {
+      setDisable(true)
+    }
+  }, [])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
-  // const handleSubmit = (e: { preventDefault: () => void }): void => {
-  //   e.preventDefault()
-  //   console.log(values)
-  // }
+  const handleSubmit = (e: { preventDefault: () => void }): void => {
+    e.preventDefault()
+    console.log(values)
+    setLoading(false)
+  }
 
   return (
-    <div className="">
-      {/* Education */}
-      <div>
-        <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-3xl'>
-          <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
-            <h3 className='text-lg font-medium text-left uppercase text-neutral-500'>Education</h3>
-
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <CustomInput name='employeeNumber' required
-                label="Employee Number"
-                placeholder="Enter detail"
+    <>
+      <form className="" onSubmit={handleSubmit}>
+        <div className='flex-1 bg-white w-full p-4 space-y-8  rounded-xl'>
+          {/* personal */}
+          <div className='border-2 border-green-400 border-dashed rounded-xl w-full p-4 ' id='personal'>
+            <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>EMPLOYMENT DETAILS</h3>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
+              <CustomInput name='employmentnumber' required
+                label="Employment Number"
+                placeholder="..."
                 type="text"
                 className=''
                 error=''
-                value=''
+                disabled={disable}
                 onChange={handleChange}
               />
-              <CustomInput name='dateOfAppointment' required
-                label="date Of Appointment"
-                placeholder="Enter your detail"
+              <CustomInput name='dateofappointment' required
+                label="date of birth"
+                placeholder="22/11/23"
                 type="date"
-                className=''
-                error=''
-                value=''
+                className=""
+                error=""
+                disabled={disable}
                 onChange={handleChange}
               />
-              <CustomInput name='gradeLevel' required
-                label="grade Level"
-                placeholder="Enter your detail"
+              <CustomInput name='gradelevel' required
+                label="Grade Level"
+                placeholder="05"
                 type="text"
                 className=''
                 error=''
-                value=''
+                disabled={disable}
                 onChange={handleChange}
               />
               <CustomSelect
-                name='departmentOfAppointment'
-                label="department OF Appointment"
+                name='departmentofappointment'
+                label="Department of Appointmment"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'Business Service', label: 'Business Service' },
+                  { value: 'Hercules', label: 'Hercules' },
+                  { value: 'commercial', label: 'commercia' }
                 ]}
                 onChange={handleChange} />
               <CustomSelect
-                name='zoneOfEmployment'
+                name='zoneofemployment'
                 label="Zone of Employment"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'south south zone', label: 'south south zone' },
+                  { value: 'north central zone', label: 'north central zone' },
+                  { value: 'south east zone', label: 'south east zone' }
                 ]}
                 onChange={handleChange} />
               <CustomSelect
-                name='zoneOfEmployment'
+                name='unitofemployment'
                 label="Unit of Employment"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'Human Resources', label: 'Human Resources' },
+                  { value: 'Manager', label: 'Manager' },
+                  { value: 'Director', label: 'Director' }
                 ]}
                 onChange={handleChange} />
               <CustomSelect
-                name='zoneOfEmployment'
+                name='designation'
                 label="Designation"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'Officer', label: 'Officer' },
+                  { value: 'Comrade', label: 'Comrade' },
+                  { value: 'Officer', label: 'Officer' }
                 ]}
                 onChange={handleChange} />
               <CustomSelect
-                name='zoneOfEmployment'
+                name='salarygrade'
                 label="Salary Grade"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'basic', label: 'basic' },
+                  { value: 'supervisor', label: 'supervisor' },
+                  { value: 'manager', label: 'manager' }
                 ]}
                 onChange={handleChange} />
             </div>
           </div>
-          <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
-            <h3 className='text-lg font-medium text-left uppercase text-neutral-500'>SALARY BANK DETAILS</h3>
-
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {/* personal end */}
+          {/* next of kin */}
+          <div className='border-2 border-green-400 border-dashed rounded-xl w-full p-4' id='nextofkin'>
+            <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>SALARY BANK DETAILS</h3>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
               <CustomSelect
-                name='zoneOfEmployment'
-                label="Bank Name"
+                name='bank'
+                label="Bank"
+                disabled={disable}
                 options={[
-                  { value: 'it', label: 'it' },
-                  { value: 'finance', label: 'finance' },
-                  { value: 'admin', label: 'admin' }
+                  { value: 'zenith bank', label: 'zenith bank' },
+                  { value: 'uba bank', label: 'uba bank' },
+                  { value: 'keystone bank', label: 'keystone bank' }
                 ]}
                 onChange={handleChange} />
-              <CustomInput name='employeeNumber' required
+              <CustomInput name='accountnumber' required
                 label="Account Number"
-                placeholder="Enter detail"
+                placeholder="2400306489"
+                disabled={disable}
                 type="text"
-                className=''
+                className=""
                 error=''
-                value=''
-                onChange={handleChange}
-              />
-              <CustomInput name='gradeLevel' required
-                label="NUBAN Name"
-                placeholder="Enter your detail"
-                type="text"
-                className=''
-                error=''
-                value=''
                 onChange={handleChange}
               />
             </div>
-          </div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-1 justify-start mt-4">
+              <CustomInput name='nubanname' required
+                label="NUBAN Name"
+                placeholder="John Aijirioghene Okor"
+                type="text"
+                className=""
+                error=""
+                onChange={handleChange}
+              />
+            </div>
 
-          {/* salary */}
-          <div className="flex justify-end flex-1 w-full mt-4 rounded-xl">
+          </div>
+          {/* end next of kin */}
+        </div>
+        {user?.type !== 'SUPERADMIN' &&
+          <>
+            <div className="flex justify-end flex-1 w-full mt-4 bg-white rounded-xl">
+              <ButtonComponent
+                border="1px solid #eee"
+                backgroundColor="white"
+                height="38px"
+                radius="100px"
+                width="170px"
+                fontSize='14px'
+                marginRight=''
+                color="#49526A"
+                onClick={() => { }}
+              > wait and Continue</ButtonComponent>
+              <ButtonComponent
+                border="none"
+                backgroundColor="#00AF50"
+                height="38px"
+                radius="100px"
+                width="170px"
+                fontSize='14px'
+                marginRight=''
+                onClick={() => {
+                }}
+              >{loading ? 'Submiting...' : 'Submit and Save'}</ButtonComponent>
+            </div>
+          </>}
+      </form>
+      {user?.type === 'SUPERADMIN' &&
+        <>
+          <div className="flex justify-end flex-1 w-full mt-4 bg-white rounded-xl">
             <ButtonComponent
               border="1px solid #eee"
               backgroundColor="white"
@@ -145,10 +196,8 @@ const EducationDetails: React.FC = () => {
               fontSize='14px'
               marginRight=''
               color="#49526A"
-              onClick={() => {
-
-              }}
-            > Save and close</ButtonComponent>
+              onClick={() => { }}
+            > Reject and Continue</ButtonComponent>
             <ButtonComponent
               border="none"
               backgroundColor="#00AF50"
@@ -158,15 +207,11 @@ const EducationDetails: React.FC = () => {
               fontSize='14px'
               marginRight=''
               onClick={() => {
-
               }}
-            > Save and Continue</ButtonComponent>
+            > Approve </ButtonComponent>
           </div>
-        </div>
-      </div>
-      {/* End Education */}
-      {/* Salary */}
-    </div>
+        </>}
+    </>
   )
 }
 
