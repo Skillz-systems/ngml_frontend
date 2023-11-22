@@ -78,7 +78,7 @@ const AllStaffList: React.FC = () => {
       <div className='flex justify-between'>
         <div>
           <div className="w-full rounded-t-lg h-[78px] p-8 bg-slate-200 border border-gray-200 justify-center items-center gap-4 inline-flex">
-            <div className="text-slate-400 text-xl font-bold font-['Mulish'] leading-tight">All-Time Scf Consumption</div>
+            <div className="text-slate-400 text-xl font-bold font-['Mulish'] leading-tight">All-Time Consumption (Scf)</div>
           </div>
           <div className="w-full bg-white h-[182px] p-8 flex-col justify-end items-center gap-10 inline-flex">
             <div className="text-center text-green-900 text-[32px] font-bold font-['Mulish'] leading-loose">472,593,854.00</div>
@@ -92,7 +92,7 @@ const AllStaffList: React.FC = () => {
         </div>
         <div>
           <div className="w-full h-[78px] rounded-t-lg p-8 bg-slate-200 border border-gray-200 justify-center items-center gap-4 inline-flex">
-            <div className="text-slate-400 text-xl font-bold font-['Mulish'] leading-tight">Yesterday’s Scf Consumption</div>
+            <div className="text-slate-400 text-xl font-bold font-['Mulish'] leading-tight">Yesterday’s Consumption (Scf)</div>
           </div>
           <div className="w-full bg-white h-[182px] p-8 flex-col justify-end items-center gap-10 inline-flex">
             <div className="text-center text-green-900 text-[32px] font-bold font-['Mulish'] leading-loose">793,854.00</div>
@@ -134,8 +134,8 @@ const AllStaffList: React.FC = () => {
                   <th className="py-3 px-2 uppercase">S/N</th>
                   <th className="py-3 px-2 uppercase">COMPANY NAME</th>
                   <th className="py-3 px-2 uppercase">Customer ID</th>
-                  <th className="py-3 px-2 uppercase">TOTAL CONSUMED SCUFF</th>
-                  <th className="py-3 px-2 uppercase">LAST SCUFF DATE</th>
+                  <th className="py-3 px-2 uppercase">TOTAL CONSUMED (Scf)</th>
+                  <th className="py-3 px-2 uppercase">LAST Scf DATE</th>
                   <th className="py-3 px-2 uppercase">LAST INVOICE ADVICE</th>
                   <th className="py-3 px-2 uppercase">Status</th>
                   <th className="py-3 px-2 uppercase">Action</th>

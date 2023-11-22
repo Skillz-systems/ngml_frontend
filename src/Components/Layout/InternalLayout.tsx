@@ -27,7 +27,7 @@ const InternalLayout: React.FC<InternalLayoutProps> = ({
   title,
   ...otherProps
 }) => (
-  <>
+  <div>
     <NavBar />
     <div
       style={{
@@ -48,7 +48,7 @@ const InternalLayout: React.FC<InternalLayoutProps> = ({
         </main>
       </div>
     </div>
-  </>
+  </div>
 )
 
 export default InternalLayout
