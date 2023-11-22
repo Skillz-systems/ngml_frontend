@@ -5,24 +5,27 @@ import React, { type ChangeEvent, useState, type FormEvent, useEffect } from 're
 import CustomInput from '../FormFields/CustomInput'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-import { type EOIInterface, postEOI, getEOIByCustomerEmail } from 'src/api/api'
+import { type EOIInterface, postEOI } from 'src/api/api'
 import { toast } from 'react-toastify'
 import { useAuthState } from 'src/Context/AuthContext'
+import useDataFetcher from 'src/api/swr'
+
 const EOIForm: React.FC = () => {
   const { user } = useAuthState()
+  const email = user?.email ?? ''
+  const { data, error } = useDataFetcher({ url: `/customer/eoi/${email}` })
+
   const [loading, setLoading] = useState(false)
   const [values, setValues] = useState<EOIInterface>({
     email: user?.email ?? '',
-    phoneNumber: '',
-    companyName: '',
-    reason: ''
+    phoneNumber: data?.data?.phoneNumber ?? '',
+    companyName: data?.data?.companyName ?? '',
+    reason: data?.data?.reason ?? ''
   })
 
   // const { email } = user
 
-  const email = user?.email ?? ''
-
-  console.log(user, 'useruser')
+  console.log(error, user, 'userusdataer', data)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -62,43 +65,10 @@ const EOIForm: React.FC = () => {
     }
   }
 
-  const fetchUserData = async () => {
-    try {
-      const res = await getEOIByCustomerEmail(email)
-      setValues(res?.data?.data)
-      setLoading(false)
-      console.log(res, 'dkdkkdk')
-      // toast.success(`${res?.data?.message}`, {
-      //   position: 'top-right',
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: 'light'
-      // })
-    } catch (error: any) {
-      setLoading(false)
-      // toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`, {
-      //   position: 'top-right',
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: 'light'
-      // })
-      console.error('Error submitting form:', error)
-    }
-  }
-
   useEffect(() => {
     // if (email !== '') {
-    fetchUserData()
     // }
-  }, [email])
+  }, [email, data?.data?.companyName])
 
   return (
     <>
@@ -112,16 +82,15 @@ const EOIForm: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <div className='flex-1 bg-white w-full h-full p-3 space-y-8  rounded-xl '>
               <div className='border-2 border-slate-400 border-dashed rounded-lg w-full p-4 ' id='personal'>
-                <h3 className='text-left text-lg  text-neutral-400 italic mb-2 '>Complete the form below an submit</h3>
+                <h3 style={{ fontWeight: 600 }} className='text-left text-lg text-neutral-400 italic mb-2 font-bold'>Complete the form below an submit</h3>
                 <div className="grid grid-cols-1 gap-3 justify-start">
-
                   <CustomInput name='companyName' required
                     label="Company Registered Name"
                     placeholder="Enter company name"
                     type="text"
                     className=""
                     error=""
-                    value={values?.companyName}
+                    value={data?.data?.companyName ?? values?.companyName}
                     onChange={handleChange}
                   />
                   <CustomInput name='email' required
@@ -130,7 +99,7 @@ const EOIForm: React.FC = () => {
                     type="email"
                     className=""
                     error=""
-                    value={values?.email ?? user?.email}
+                    value={data?.data?.email ?? values?.email}
                     disabled={true}
                     onChange={handleChange}
                   />
@@ -140,7 +109,7 @@ const EOIForm: React.FC = () => {
                     type="tel"
                     className=""
                     error=""
-                    value={values?.phoneNumber}
+                    value={data?.data?.phoneNumber ?? values?.phoneNumber}
                     onChange={handleChange}
                   />
                   <CustomTextArea name='reason' required={false}
@@ -148,7 +117,7 @@ const EOIForm: React.FC = () => {
                     onChange={handleChange}
                     placeholder="Type here"
                     className=""
-                    value={values?.reason}
+                    value={data?.data?.reason ?? values?.reason}
                     error="" />
                 </div>
               </div>
@@ -165,7 +134,7 @@ const EOIForm: React.FC = () => {
                 onClick={() => {
 
                 }}
-              > {loading ? 'Submiting....' : 'Submit Request'}</ButtonComponent>
+              > {loading ? 'Submiting....' : <>{data?.data?.reason == null ? 'Submit Request' : 'Submitted'}</>}</ButtonComponent>
             </div>
           </form>
         </div>
