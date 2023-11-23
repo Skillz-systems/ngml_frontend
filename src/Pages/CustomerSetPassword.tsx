@@ -8,15 +8,19 @@ import eyeIClosedcon from '../Asset/svg-icons/Eyeclosedngml.svg'
 import passwordIcon from '../Asset/svg-icons/Passwordngml.svg'
 
 import ButtonComponent from 'src/Components/ButtonComponent'
+import { useNavigate } from 'react-router-dom'
 
 const CustomerSetPassword = (): JSX.Element => {
   const [values, setValues] = useState({})
   const handleOnChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
+  const navigate = useNavigate()
+
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
     console.log(values)
+    navigate('/')
     try {
       setValues({})
     } catch (error) {

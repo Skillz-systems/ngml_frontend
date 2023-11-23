@@ -5,6 +5,7 @@ import emailIcon from '../Asset/emailIcons.png'
 import Footer from '../Components/Footer'
 import logo from '../Asset/CompanyLogo.png'
 import cancel from '../Asset/cancel.png'
+import { useNavigate } from 'react-router-dom'
 
 const screenBackground = {
   background: 'linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)'
@@ -19,11 +20,13 @@ const ForgotPasswordPage: React.FC = () => {
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState(false)
 
+  const navigate = useNavigate()
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(e.target.value)
   }
 
   const handleResetPassword = (): void => {
+    navigate('/')
     // Implement your password reset logic here
     // For demonstration purposes, just checking if email is not empty
     if (email.trim() === '') {
