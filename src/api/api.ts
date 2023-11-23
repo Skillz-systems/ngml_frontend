@@ -151,6 +151,18 @@ export const verifyStaff = async (
   }
 }
 
+//! SAVE STAFFDATA
+export const storeStaff = async (
+  url: string, id: any, data: any
+): Promise<AxiosResponse<any>> => {
+  try {
+    const response = await axiosInstance.post(`/${url}/${id}`, data)
+    return response
+  } catch (error: any) {
+    return await Promise.reject(error)
+  }
+}
+
 //! UNIVERSAL POST DATA
 export const storeData = async (
   url: string, data: any

@@ -137,7 +137,7 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your password here"
               error={false}
               onChange={handleOnChange}
-              icon={<img src={passwordIcon} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
+              icon={<img src={email} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
               iconHeight='24px'
               iconWidth='24px'
               backgroundColor='#D2F69E'
@@ -197,7 +197,7 @@ const SignupStaff = (): JSX.Element => {
         </form>
       </section>
 
-      <div className="w-full mx-4 mb-5 rounded-full bg-white/40 md:mx-0 md:w-4/5 mt-auto ">
+      <div className="w-full mx-4 mt-auto mb-5 rounded-full bg-white/40 md:mx-0 md:w-4/5 ">
 
         <footer className='px-2 py-1 text-sm text-center truncate sm:text-xs'> This Portal is a Property of NNPC Gas Marketing Limited</footer>
       </div>

@@ -6,7 +6,7 @@ import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
 import { useAuthState } from 'src/Context/AuthContext'
 import { toast } from 'react-toastify'
-import { storeData } from 'src/api/api'
+import { storeStaff, verifyStaff } from 'src/api/api'
 import ResponseModal from '../ResponseComponent/ResponseModal'
 import AppModal from '../AppModal'
 import { useParams } from 'react-router-dom'
@@ -29,7 +29,7 @@ const StaffInformation: React.FC = () => {
     setLoading(true)
     try {
       console.log(values)
-      const res = await storeData('', values)
+      const res = await storeStaff('staff/submit-data', id, values)
       setLoading(false)
       console.log(res)
       toast.success(`${res?.data?.message}`)
@@ -71,12 +71,28 @@ const StaffInformation: React.FC = () => {
   React.useEffect(() => {
     if (user?.type === 'SUPERADMIN' && user._id !== data?.data?._id) setDisable(true)
     // if (user?.type === 'SUPERADMIN' && user._id === data?.data?._id) setDisable(false)
+    console.log(data)
   }, [])
+  const handleApproval = async (id: any): Promise<void> => {
+    console.log('Here')
+    setIsOpen(false)
+    setLoading(true)
+    try {
+      const res = await verifyStaff(id)
+      console.log(res.data)
+      toast.success(`${res?.data?.message}`)
+      setLoading(false)
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.error(error)
+    }
+  }
 
   return (
     <>
       <AppModal
-        height="800px"
+        height="500px"
         width="500px"
         modalIsOpen={modalIsOpen}
         setIsOpen={setIsOpen}
@@ -86,12 +102,11 @@ const StaffInformation: React.FC = () => {
           subText="Staff would be onboarded into the platform!!"
           type="error"
           action={() => {
-            console.log('got here')
+            console.log('continue')
             setIsOpen(false)
           }}
           continueAction={() => {
-            console.log('continue')
-            setIsOpen(false)
+            void handleApproval(id)
           }}
         />
       </AppModal>
@@ -127,7 +142,7 @@ const StaffInformation: React.FC = () => {
                 placeholder="Enter your email"
                 type="email"
                 className=""
-                disabled={disable}
+                disabled={true}
                 error=""
                 value={data?.data?.email ?? ''}
                 onChange={handleChange}
@@ -197,6 +212,7 @@ const StaffInformation: React.FC = () => {
                 onChange={handleChange} />
               <CustomSelect
                 name='lga' disabled={disable}
+                value={data?.data?.lga ?? ''}
                 label=" LGA"
                 options={[
                   { value: 'fct', label: 'fct' },
@@ -206,6 +222,7 @@ const StaffInformation: React.FC = () => {
                 onChange={handleChange} />
               <CustomSelect
                 name='maritalstatus'
+                value={data?.data?.maritalstatus ?? ''}
                 label="marital status" disabled={disable}
                 options={[
                   { value: 'married', label: 'married' },
@@ -219,9 +236,11 @@ const StaffInformation: React.FC = () => {
                 type="tel"
                 className=""
                 error=""
+                disabled={disable}
+                value={data?.data?.phonenumber ?? ''}
                 onChange={handleChange}
               />
-              <CustomInput name='email' required
+              {/* <CustomInput name='email' required
                 label="email"
                 placeholder="Enter your email"
                 type="email"
@@ -230,10 +249,11 @@ const StaffInformation: React.FC = () => {
                 value={data?.data?.email ?? ''}
                 disabled={disable}
                 onChange={handleChange}
-              />
+              /> */}
               <CustomTextArea
                 onChange={handleChange}
                 name='address' required
+                value={data?.data?.address ?? ''}
                 label="address"
                 placeholder="Enter your address"
                 className=""
@@ -247,9 +267,10 @@ const StaffInformation: React.FC = () => {
             <h3 className='text-lg font-medium text-left uppercase text-neutral-500'>Next of Kin Details</h3>
             <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-2">
               <CustomSelect
-                name='title'
+                name='nexttitle'
                 label="Title"
                 disabled={disable}
+                value={data?.data?.nexttitle ?? ''}
                 options={[
                   { value: 'mr', label: 'mr' },
                   { value: 'mrs', label: 'mrs' },
@@ -262,6 +283,7 @@ const StaffInformation: React.FC = () => {
                 type="text"
                 className=""
                 error=''
+                value={data?.data?.nextfirstname ?? ''}
                 disabled={disable}
                 onChange={handleChange}
               />
@@ -271,11 +293,13 @@ const StaffInformation: React.FC = () => {
                 type="text"
                 className=""
                 error=""
+                value={data?.data?.nextlastname ?? ''}
                 disabled={disable}
                 onChange={handleChange}
               />
               <CustomSelect
                 name='nextgender'
+                value={data?.data?.nextgender ?? ''}
                 label="gender" disabled={disable}
                 options={[
                   { value: 'male', label: 'male' },
@@ -285,6 +309,7 @@ const StaffInformation: React.FC = () => {
                 onChange={handleChange} />
               <CustomSelect
                 name='nextrelationship'
+                value={data?.data?.nextrelationship ?? ''}
                 label="relationship" disabled={disable}
                 options={[
                   { value: 'father', label: 'father' },
@@ -295,6 +320,7 @@ const StaffInformation: React.FC = () => {
                 onChange={handleChange} />
               <CustomInput name='nextphonenumber' required
                 label="phone number"
+                value={data?.data?.nextphonenumber ?? ''}
                 placeholder="Enter your phone number"
                 type="tel"
                 className="" disabled={disable}
@@ -303,6 +329,7 @@ const StaffInformation: React.FC = () => {
               />
               <CustomTextArea name='nextofkinaddress' required
                 label="address"
+                value={data?.data?.nextofkinaddress ?? ''}
                 placeholder="Enter your address"
                 className="" disabled={disable}
                 onChange={handleChange}
@@ -317,6 +344,7 @@ const StaffInformation: React.FC = () => {
             <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-2">
               <CustomSelect
                 name='qualification'
+                value={data?.data?.qualification ?? ''}
                 label="qualification attained" disabled={disable}
                 options={[
                   { value: 'bsc', label: 'bsc' },
@@ -328,12 +356,14 @@ const StaffInformation: React.FC = () => {
                 label="year earned"
                 placeholder="Enter your earned it"
                 type="date"
+                value={data?.data?.year ?? ''}
                 className="" disabled={disable}
                 error=""
                 onChange={handleChange}
               />
               <CustomInput name='institution' required
                 label="institution attended"
+                value={data?.data?.institution ?? ''}
                 placeholder="Enter your name of institution"
                 type="tel"
                 className="" disabled={disable}
@@ -351,6 +381,7 @@ const StaffInformation: React.FC = () => {
               <CustomSelect
                 name='pensionprovider' disabled={disable}
                 label="pension provider"
+                value={data?.data?.pensionprovider ?? ''}
                 options={[
                   { value: 'premium', label: 'premium pension' },
                   { value: 'leadway', label: 'leadway pension' },
@@ -359,6 +390,7 @@ const StaffInformation: React.FC = () => {
                 onChange={handleChange} />
               <CustomInput name='pensionumber' required
                 label="pension identification number"
+                value={data?.data?.pensionumber ?? ''}
                 placeholder="Enter your PIN"
                 type="text"
                 className="" disabled={disable}
@@ -375,6 +407,7 @@ const StaffInformation: React.FC = () => {
             <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-2">
               <CustomSelect
                 name='taxstateofresidence'
+                value={data?.data?.taxstateofresidence ?? ''}
                 label="Tax state of residence" disabled={disable}
                 options={[
                   { value: 'fct', label: 'fct' },
@@ -385,7 +418,8 @@ const StaffInformation: React.FC = () => {
               <CustomInput name='tin' required
                 label="taxpayer identification number"
                 placeholder="Enter your TIN"
-                type="text" disabled={disable}
+                value={data?.data?.tin ?? ''}
+                type="number" disabled={disable}
                 className=""
                 error=""
                 onChange={handleChange}
@@ -435,7 +469,7 @@ const StaffInformation: React.FC = () => {
               fontSize='14px'
               marginRight=''
               color="#49526A"
-              onClick={() => { setIsOpen(true) }}
+              onClick={() => { }}
             > Reject and Continue</ButtonComponent>
             <ButtonComponent
               border="none"
@@ -445,9 +479,8 @@ const StaffInformation: React.FC = () => {
               width="170px"
               fontSize='14px'
               marginRight=''
-              onClick={() => {
-              }}
-            > Approve </ButtonComponent>
+              onClick={() => { setIsOpen(true) }}
+            > {loading ? 'Approving...' : 'Approve'} </ButtonComponent>
           </div>
         </>}
     </>
