@@ -88,8 +88,8 @@ const CustomerLogin = (): JSX.Element => {
 
       <section className='flex flex-col items-center px-3 py-8 mt-20 space-y-4 md:px-6 h-fit w-fit md:w-96 bg-white/40 rounded-3xl xl:mt-28'>
         <header className='relative flex flex-col items-center justify-center '>
-          <div className="p-3 bg-[#004010] rounded-full absolute -top-14 shadow-lg shadow-[#004010]/30 ">
-            <img src={nnpclogo} alt="ngml logo" className='w-6 h-6 ' />
+          <div className="p-3 bg-[#004010] rounded-full absolute-top-16 shadow-lg shadow-[#004010]/30 ">
+            <img src={nnpclogo} alt="ngml logo" className='w-6 h-6' />
           </div>
           <h2 className='text-lg antialiased font-bold uppercase xl:text-xl text-slate-700'>BUSINESS LOGIN</h2>
         </header>

@@ -27,7 +27,7 @@ const InternalLayout: React.FC<InternalLayoutProps> = ({
   title,
   ...otherProps
 }) => (
-  <div>
+  <div style={{ height: '100%' }}>
     <NavBar />
     <div
       style={{
