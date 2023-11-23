@@ -14,11 +14,13 @@ const fetcher = async (url: string) => {
   return data
 }
 
-const useDataFetcher = ({ url }: UseFetcherProps): { data: any, error: Error | null } => {
+const useDataFetcher = ({ url }: UseFetcherProps): { data: any, error: Error | null, loading: boolean } => {
   revalidateBearerToken()
-  const { data, error } = useSWR(url, fetcher)
-
-  return { data, error }
+  const { data, error, isLoading: loading } = useSWR(url, fetcher)
+  console.log(data)
+  console.log(data)
+  console.log(loading)
+  return { data, error, loading }
 }
 
 export default useDataFetcher

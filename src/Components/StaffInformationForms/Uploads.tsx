@@ -16,6 +16,12 @@ const Uploads: React.FC = () => {
       [name]: documentName
     }))
   }
+  // const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  //   const selectedFile = event.target.files?.[0]
+  //   handleDropZoneChange('passport', selectedFile?.name)
+  //   setValues({ ...values, [event.target.name]: selectedFile })
+  // }
+
   const handleSubmit = (e: { preventDefault: () => void }): void => {
     e.preventDefault()
     console.log(values)

@@ -1,19 +1,21 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { type ChangeEvent, useState, useEffect, type FormEvent } from 'react'
+import React, { type ChangeEvent, useState, type FormEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
 import { useAuthState } from 'src/Context/AuthContext'
-import { useStaffState } from 'src/Context/StaffDataContext'
 import { toast } from 'react-toastify'
 import { storeData } from 'src/api/api'
 import ResponseModal from '../ResponseComponent/ResponseModal'
 import AppModal from '../AppModal'
+import { useParams } from 'react-router-dom'
+import useDataFetcher from 'src/api/swr'
 // import { type StaffInfoInterface } from 'src/api/types'
 const StaffInformation: React.FC = () => {
   const { user } = useAuthState()
-  const { staff } = useStaffState()
+  const { id } = useParams()
+  // const { staff } = useStaffState()
   const [values, setValues] = useState({})
   const [loading, setLoading] = useState(false)
   const [disable, setDisable] = useState(false)
@@ -52,20 +54,29 @@ const StaffInformation: React.FC = () => {
   //     console.error('Error submitting form:', error)
   //   }
   // }
-  useEffect(() => {
-    // if (user?.type === 'SUPERADMIN') {
-    //   setDisable(true)
-    // }
-    console.log(staff)
-    if (user?.type === 'SUPERADMIN' && user._id !== staff?._id) {
-      setDisable(true)
-    }
+  //! old activate
+  // useEffect(() => {
+  //   // if (user?.type === 'SUPERADMIN') {
+  //   //   setDisable(true)
+  //   // }
+  //   console.log(staff)
+  //   if (user?.type === 'SUPERADMIN' && user._id !== staff?._id) {
+  //     setDisable(true)
+  //   }
+  // }, [])
+
+  //! new codes
+
+  const { data } = useDataFetcher({ url: `/staff/${id}` })
+  React.useEffect(() => {
+    if (user?.type === 'SUPERADMIN' && user._id !== data?.data?._id) setDisable(true)
+    // if (user?.type === 'SUPERADMIN' && user._id === data?.data?._id) setDisable(false)
   }, [])
 
   return (
     <>
       <AppModal
-        height="500px"
+        height="800px"
         width="500px"
         modalIsOpen={modalIsOpen}
         setIsOpen={setIsOpen}
@@ -94,6 +105,7 @@ const StaffInformation: React.FC = () => {
                 name='title'
                 label="Title"
                 disabled={disable}
+                value={data?.data?.title ?? ''}
                 options={[
                   { value: 'mr', label: 'mr' },
                   { value: 'mrs', label: 'mrs' },
@@ -107,7 +119,7 @@ const StaffInformation: React.FC = () => {
                 className=''
                 error=''
                 disabled={disable}
-                value={staff?.firstname ?? ''}
+                value={data?.data?.firstname ?? ''}
                 onChange={handleChange}
               />
               <CustomInput name='email' required
@@ -117,7 +129,7 @@ const StaffInformation: React.FC = () => {
                 className=""
                 disabled={disable}
                 error=""
-                value={(staff != null) ? staff.email : ''}
+                value={data?.data?.email ?? ''}
                 onChange={handleChange}
               />
               <CustomInput name='lastname' required
@@ -127,7 +139,7 @@ const StaffInformation: React.FC = () => {
                 disabled={disable}
                 className=""
                 error=""
-                value={staff?.lastname ?? ''}
+                value={data?.data?.lastname ?? ''}
                 onChange={handleChange}
               />
               <CustomInput name='othernames' required
@@ -136,6 +148,7 @@ const StaffInformation: React.FC = () => {
                 type="text"
                 className=""
                 error=""
+                value={data?.data?.othernames ?? ''}
                 disabled={disable}
                 onChange={handleChange}
               />
@@ -145,6 +158,7 @@ const StaffInformation: React.FC = () => {
                 type="date"
                 className=""
                 error=""
+                value={data?.data?.dateofbirth ?? ''}
                 disabled={disable}
                 onChange={handleChange}
               />
@@ -152,6 +166,7 @@ const StaffInformation: React.FC = () => {
                 name='gender'
                 label="gender"
                 disabled={disable}
+                value={data?.data?.gender ?? ''}
                 options={[
                   { value: 'male', label: 'male' },
                   { value: 'female', label: 'female' },
@@ -161,6 +176,7 @@ const StaffInformation: React.FC = () => {
               <CustomSelect
                 name='nationality'
                 label="nationality"
+                value={data?.data?.nationality ?? ''}
                 disabled={disable}
                 options={[
                   { value: 'nigerian', label: 'nigerian' },
@@ -171,6 +187,7 @@ const StaffInformation: React.FC = () => {
               <CustomSelect
                 name='stateoforigin'
                 label="state of origin"
+                value={data?.data?.stateoforigin ?? ''}
                 disabled={disable}
                 options={[
                   { value: 'imo', label: 'imo' },
@@ -210,7 +227,7 @@ const StaffInformation: React.FC = () => {
                 type="email"
                 className=""
                 error=""
-                value={staff?.email ?? ''}
+                value={data?.data?.email ?? ''}
                 disabled={disable}
                 onChange={handleChange}
               />

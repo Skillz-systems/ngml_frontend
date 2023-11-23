@@ -1,12 +1,15 @@
-import React, { useState, type FC, useEffect } from 'react'
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React, { useState, type FC } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import print from 'src/Asset/png-icons/print.png'
 import AltDownArrow from 'src/Asset/png-icons/AltDownArrow.png'
-import { type StaffInterface, getStaffById } from 'src/api/api'
+// import { type StaffInterface, getStaffById } from 'src/api/api'
+
 import TabList, { type TabListInterface } from 'src/Components/Tabs/TabList'
 import TabPanel from 'src/Components/Tabs/TabPanel'
-import { useStaffDispatch } from 'src/Context/StaffDataContext'
+// import { useStaffDispatch } from 'src/Context/StaffDataContext'
 import { useAuthState } from 'src/Context/AuthContext'
+import useDataFetcher from 'src/api/swr'
 
 const tablist: TabListInterface[] = [
   {
@@ -55,42 +58,43 @@ const tablist: TabListInterface[] = [
 ]
 
 const SingleStaff: FC = () => {
-  const { user } = useAuthState()
-  const staffDispatch = useStaffDispatch()
-  const [activeTab, setActiveTab] = useState<string>('staffinformation')
   const { id } = useParams()
-  const navigate = useNavigate()
-  const [staff, setStaff] = useState<StaffInterface>()
+  const { user } = useAuthState()
+  const [activeTab, setActiveTab] = useState<string>('staffinformation')
   const [panelName, setPanelName] = useState<string>('staffinformation')
+  const navigate = useNavigate()
 
-  // const [currentId, setCurrentId] = useState(id)
+  const { data } = useDataFetcher({ url: `/staff/${id}` })
 
-  // console.log(currentId)
-  const handleGet = async (): Promise<void> => {
-    try {
-      const res = await getStaffById(id)
-      console.log(id)
-      staffDispatch({ type: 'STAFF', payload: res?.data.data })
-      setStaff(res?.data.data)
-      console.log(staff)
-    } catch (error: any) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    // if (id === null) {
-    //   setCurrentId(user?._id)
-    // }
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const fetchData = async () => {
-      console.log(id)
-      await handleGet()
-      console.log(staff)
-    }
+  // const staffDispatch = useStaffDispatch()
+  // const [staff, setStaff] = useState<StaffInterface>()
+  // const handleGet = async (): Promise<void> => {
+  //   try {
+  //     const res = await getStaffById(id)
+  //     console.log(id)
+  //     staffDispatch({ type: 'STAFF', payload: res?.data.data })
+  //     setStaff(res?.data.data)
+  //     console.log(staff)
+  //   } catch (error: any) {
+  //     console.log(error)
+  //   }
+  // }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     console.log(id)
+  //     await handleGet()
+  //     console.log(staff)
+  //   }
 
-    void fetchData()
-  }, [])
-
+  //   void fetchData()
+  // }, [])
+  const generatePageTitle = (user: any, data: any) => (
+    user?.type === 'SUPERADMIN'
+      ? `${data?.data?.firstname} ${data?.data?.lastname}`
+      : 'Staff page'
+  )
+  const pageTitle = generatePageTitle(user, data)
+  console.log(pageTitle)
   const handleTabChange = (tab: TabListInterface): void => {
     setActiveTab(tab.ref)
     setPanelName(tab.name)
@@ -101,7 +105,8 @@ const SingleStaff: FC = () => {
       <div className="flex justify-between">
         <div>
           <p className="text-2xl font-medium text-left capitalize text-neutral-600">
-            {user?.type === 'SUPERADMIN' ? (staff?.firstname + ' ' + staff?.lastname) : ('Staff page')}
+            {/* {user?.type === 'SUPERADMIN' ? (data?.data?.firstname + ' ' + data?.data?.lastname) : ('Staff page')} */}
+            {pageTitle}
           </p>
         </div>
 
@@ -110,7 +115,7 @@ const SingleStaff: FC = () => {
           <p className="px-4 py-1 transition-all duration-300 ease-in-out border border-white cursor-pointer hover:text-neutral-700 rounded-3xl text-neutral-600" onClick={() => { navigate(-1) }}>  {user?.type === 'SUPERADMIN' ? ('Go Back') : ('Cancel')}
           </p>
           {activeTab === 'summary' && (
-            <div style={{ alignItems: 'center' }} className="flex items-center gap-4">
+            <div style={{ alignItems: 'center' }} className="flex items-center gap-3">
 
               <div className="">
 
@@ -145,7 +150,7 @@ const SingleStaff: FC = () => {
         </div>
       </div>
       <>
-        <div className="flex flex-1 mt-4">
+        <div style={{ border: '5px solid green' }} className="flex flex-1 mt-4">
           <TabList tablist={tablist} onTabChange={handleTabChange} activeTab={activeTab} />
           <TabPanel activeTab={activeTab} panelName={panelName} />
         </div>

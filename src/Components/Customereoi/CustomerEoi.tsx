@@ -7,7 +7,8 @@ const CustomerEoi: React.FC = () => {
   const { id } = useParams()
 
   const { data, error } = useDataFetcher({ url: `/customer/eoi/${id}` })
-  console.log(error, 'errorerror')
+  console.log(error)
+  console.log(data)
 
   return (
     <div className="w-full h-full p-4 bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">

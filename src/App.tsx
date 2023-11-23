@@ -48,7 +48,7 @@ function App(): JSX.Element {
 
   return (
 
-    <div className="App" style={{ border: '1px solid red' }}>
+    <div className="App">
       <ToastContainer />
       <AuthProvider>
         <StaffProvider>

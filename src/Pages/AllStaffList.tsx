@@ -7,17 +7,21 @@ import { HiOutlineUserCircle } from 'react-icons/hi2'
 import { GoShield } from 'react-icons/go'
 import Search from 'src/Asset/png-icons/Search.png'
 import { IoFilterOutline } from 'react-icons/io5'
-import { getAllStaff, type StaffInterface } from 'src/api/api'
+import { getAllStaff, verifyStaff, type StaffInterface } from 'src/api/api'
 // import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuthState } from '../Context/AuthContext'
+import { toast } from 'react-toastify'
+import AppModal from 'src/Components/AppModal'
+import ResponseModal from 'src/Components/ResponseComponent/ResponseModal'
 const AllStaffList: React.FC = () => {
   const navigate = useNavigate()
   const [staff, setStaff] = useState<StaffInterface[]>([])
   const [totalStaffCount, setTotalStaffCount] = useState(0)
   const [verifiedStaffCount, setVerifiedStaffCount] = useState(0)
   const [unverifiedStaffCount, setUnverifiedStaffCount] = useState(0)
+  const [modalIsOpen, setIsOpen] = useState(false)
   const { user } = useAuthState()
 
   useLayoutEffect(() => {
@@ -29,10 +33,11 @@ const AllStaffList: React.FC = () => {
 
   useEffect(() => {
     handleGet()
+  }, [])
+  useEffect(() => {
     const total = staff.length
     const verified = staff.filter((count) => count.verified === 'approved').length
     const unverified = total - verified
-
     setTotalStaffCount(total)
     setVerifiedStaffCount(verified)
     setUnverifiedStaffCount(unverified)
@@ -41,16 +46,30 @@ const AllStaffList: React.FC = () => {
     try {
       const res = await getAllStaff()
       setStaff(res?.data.data)
+      console.log('get Staff')
+      console.log(res?.data.data)
     } catch (error: any) {
       console.log(error)
-      // toast.error(`${(Boolean((error?.response?.data?.message))) || (Boolean((error?.response?.data?.error))) || error?.message}`)
     }
   }
   const handleView = (id: string): void => {
     navigate(`/app/staffpage/${id}`)
   }
 
-  // console.log(staff, 'staffstaffstaff')
+  const handleApproval = async (id: string): Promise<void> => {
+    console.log('Here')
+
+    try {
+      const res = await verifyStaff(id)
+      console.log(res.data)
+      handleGet()
+      toast.success(`${res?.data?.message}`)
+    } catch (error: any) {
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.error(error)
+    }
+  }
+
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-2xl'>
       <div className="flex justify-between items-center mb-3 ">
@@ -134,9 +153,27 @@ const AllStaffList: React.FC = () => {
                           ? (
                             <span className='bg-[#87ee87] py-1 px-2 rounded-xl'>Approved</span>)
                           : (
-                            <span className='bg-[#eebe87] py-1 px-2 rounded-xl'>Pending</span>)}
+                            <span className='bg-[#eebe87] py-1 px-2 rounded-xl cursor-pointer hover:bg-orange-500 hover:text-white' onClick={() => {
+                              setIsOpen(true)
+                            }}>Pending</span>)}
                       </td>
                       <td className="px-2 py-3 whitespace-nowrap truncate  "><span className='bg-neutral-400 py-1 px-2 rounded-xl text-white cursor-pointer hover:bg-slate-600' onClick={() => { handleView(item._id) }}>View</span></td>
+                      <AppModal
+                        height="499px"
+                        width="466px"
+                        modalIsOpen={modalIsOpen}
+                        setIsOpen={setIsOpen}
+                      >
+                        <ResponseModal
+                          type="success"
+                          action={() => {
+                            handleApproval(item._id)
+                          }}
+                          continueAction={() => {
+                            console.log('gothere')
+                          }}
+                        />
+                      </AppModal>
                     </tr>)))
                   : (<>
                     <tr className=' mx-2'>

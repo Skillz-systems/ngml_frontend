@@ -36,7 +36,7 @@ export interface StaffInfoInterface {
   tin: string
 }
 export interface StaffEmploymentInterface {
-
+  // ... (previous fields)
   // Employment Details
   employmentnumber: string
   dateofappointment: string
@@ -54,9 +54,12 @@ export interface StaffEmploymentInterface {
 }
 
 export interface StaffPortalInterface {
+  // ... (previous fields)
 
   // Access Control
-  accessControl: string// Update this type based on the actual
+  accessControl: string// Update this type based on the actual values
+
+  // Email and Password
   email: string
   password: string
 }
