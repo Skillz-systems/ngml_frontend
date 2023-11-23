@@ -39,7 +39,7 @@ const Uploads: React.FC = () => {
     } catch (error: any) {
       setLoading(false)
       toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
-      console.error(error)
+      console.log(error)
     }
   }
   return (
