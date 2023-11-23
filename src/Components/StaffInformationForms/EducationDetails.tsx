@@ -1,43 +1,94 @@
-import React, { type ChangeEvent, useState, useEffect } from 'react'
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { useState, useEffect, type FormEvent } from 'react'
 import CustomInput from '../FormFields/CustomInput'
 import CustomSelect from '../FormFields/CustomSelect'
 // import CustomTextArea from '../FormFields/CustomTextArea'
 import ButtonComponent from '../ButtonComponent'
-import { useStaffState } from 'src/Context/StaffDataContext'
 import { useAuthState } from 'src/Context/AuthContext'
+import useDataFetcher from 'src/api/swr'
+import { useParams } from 'react-router-dom'
+import { storeStaff, verifyStaff } from 'src/api/api'
+import { toast } from 'react-toastify'
+import AppModal from '../AppModal'
+import ResponseModal from '../ResponseComponent/ResponseModal'
+import { handleChange } from 'src/helpers/functions'
 const EducationDetails: React.FC = () => {
-  // const { user } = useAuthState()
+  const { id } = useParams()
+  const [modalIsOpen, setIsOpen] = useState(false)
   const [values, setValues] = useState({})
   const { user } = useAuthState()
-  const { staff } = useStaffState()
   const [disable, setDisable] = useState(false)
   const [loading, setLoading] = useState(false)
-  useEffect(() => {
-    // if (user?.type === 'SUPERADMIN') {
-    //   setDisable(true)
-    // }
-    if (user?.type === 'SUPERADMIN' && user._id !== staff?._id) {
-      setDisable(true)
-    }
-  }, [])
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
-    setValues({ ...values, [event.target.name]: event.target.value })
-  }
-  const handleSubmit = (e: { preventDefault: () => void }): void => {
+  // const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
+  //   setValues({ ...values, [event.target.name]: event.target.value })
+  // }
+
+  //* new code
+  // const { staff } = useStaffState()
+
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
-    console.log(values)
-    setLoading(false)
+    setLoading(true)
+    try {
+      console.log(values)
+      const res = await storeStaff('staff/submit-data', id, values)
+      setLoading(false)
+      console.log(res)
+      toast.success(`${res?.data?.message}`)
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.error('Error submitting form:', error)
+    }
+  }
+  const handleApproval = async (id: any): Promise<void> => {
+    console.log('Here')
+    setIsOpen(false)
+    setLoading(true)
+    try {
+      const res = await verifyStaff(id)
+      console.log(res.data)
+      toast.success(`${res?.data?.message}`)
+      setLoading(false)
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.error(error)
+    }
   }
 
+  const { data } = useDataFetcher({ url: `/staff/${id}` })
+  useEffect(() => {
+    if (user?.type === 'SUPERADMIN' && user._id !== data?.data?._id) setDisable(true)
+  }, [])
   return (
     <>
+      <AppModal
+        height="500px"
+        width="500px"
+        modalIsOpen={modalIsOpen}
+        setIsOpen={setIsOpen}
+      >
+        <ResponseModal
+          text='Are you sure you want to approve?'
+          subText="Staff would be onboarded into the platform!!"
+          type="error"
+          action={() => {
+            console.log('continue')
+            setIsOpen(false)
+          }}
+          continueAction={() => {
+            void handleApproval(id)
+          }}
+        />
+      </AppModal>
       <form className="" onSubmit={handleSubmit}>
-        <div className='flex-1 bg-white w-full p-4 space-y-8  rounded-xl'>
+        <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
           {/* personal */}
-          <div className='border-2 border-green-400 border-dashed rounded-xl w-full p-4 ' id='personal'>
-            <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>EMPLOYMENT DETAILS</h3>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
+          <div className='w-full p-4 border-2 border-green-400 border-dashed rounded-xl ' id='personal'>
+            <h3 className='text-lg font-medium text-left uppercase text-neutral-500'>EMPLOYMENT DETAILS</h3>
+            <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-2">
               <CustomInput name='employmentnumber' required
                 label="Employment Number"
                 placeholder="..."
@@ -45,7 +96,8 @@ const EducationDetails: React.FC = () => {
                 className=''
                 error=''
                 disabled={disable}
-                onChange={handleChange}
+                value={data?.data?.employmentnumber ?? ''}
+                onChange={(e) => { handleChange(e, values, setValues) }}
               />
               <CustomInput name='dateofappointment' required
                 label="date of birth"
@@ -53,8 +105,9 @@ const EducationDetails: React.FC = () => {
                 type="date"
                 className=""
                 error=""
+                value={data?.data?.dateofappointment ?? ''}
                 disabled={disable}
-                onChange={handleChange}
+                onChange={(e) => { handleChange(e, values, setValues) }}
               />
               <CustomInput name='gradelevel' required
                 label="Grade Level"
@@ -62,94 +115,104 @@ const EducationDetails: React.FC = () => {
                 type="text"
                 className=''
                 error=''
+                value={data?.data?.gradelevel ?? ''}
                 disabled={disable}
-                onChange={handleChange}
+                onChange={(e) => { handleChange(e, values, setValues) }}
               />
               <CustomSelect
                 name='departmentofappointment'
                 label="Department of Appointmment"
                 disabled={disable}
+                value={data?.data?.employmentnumber ?? ''}
                 options={[
                   { value: 'Business Service', label: 'Business Service' },
                   { value: 'Hercules', label: 'Hercules' },
                   { value: 'commercial', label: 'commercia' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
               <CustomSelect
                 name='zoneofemployment'
                 label="Zone of Employment"
                 disabled={disable}
+                value={data?.data?.zoneofemployment ?? ''}
                 options={[
                   { value: 'south south zone', label: 'south south zone' },
                   { value: 'north central zone', label: 'north central zone' },
                   { value: 'south east zone', label: 'south east zone' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
               <CustomSelect
                 name='unitofemployment'
                 label="Unit of Employment"
                 disabled={disable}
+                value={data?.data?.unitofemployment ?? ''}
                 options={[
                   { value: 'Human Resources', label: 'Human Resources' },
                   { value: 'Manager', label: 'Manager' },
                   { value: 'Director', label: 'Director' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
               <CustomSelect
                 name='designation'
                 label="Designation"
                 disabled={disable}
+                value={data?.data?.designation ?? ''}
                 options={[
                   { value: 'Officer', label: 'Officer' },
                   { value: 'Comrade', label: 'Comrade' },
                   { value: 'Officer', label: 'Officer' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
               <CustomSelect
                 name='salarygrade'
                 label="Salary Grade"
                 disabled={disable}
+                value={data?.data?.salarygrade ?? ''}
                 options={[
                   { value: 'basic', label: 'basic' },
                   { value: 'supervisor', label: 'supervisor' },
                   { value: 'manager', label: 'manager' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
             </div>
           </div>
           {/* personal end */}
           {/* next of kin */}
-          <div className='border-2 border-green-400 border-dashed rounded-xl w-full p-4' id='nextofkin'>
-            <h3 className='text-left text-lg uppercase font-medium text-neutral-500'>SALARY BANK DETAILS</h3>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 justify-start mt-4">
+          <div className='w-full p-4 border-2 border-green-400 border-dashed rounded-xl' id='nextofkin'>
+            <h3 className='text-lg font-medium text-left uppercase text-neutral-500'>SALARY BANK DETAILS</h3>
+            <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-2">
               <CustomSelect
                 name='bank'
                 label="Bank"
+                value={data?.data?.bank ?? ''}
                 disabled={disable}
                 options={[
                   { value: 'zenith bank', label: 'zenith bank' },
                   { value: 'uba bank', label: 'uba bank' },
                   { value: 'keystone bank', label: 'keystone bank' }
                 ]}
-                onChange={handleChange} />
+                onChange={(e) => { handleChange(e, values, setValues) }} />
               <CustomInput name='accountnumber' required
                 label="Account Number"
                 placeholder="2400306489"
+                value={data?.data?.accountnumber ?? ''}
                 disabled={disable}
                 type="text"
                 className=""
                 error=''
-                onChange={handleChange}
+                onChange={(e) => { handleChange(e, values, setValues) }}
               />
             </div>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-1 justify-start mt-4">
+            <div className="grid justify-start grid-cols-1 gap-3 mt-4 md:grid-cols-1">
               <CustomInput name='nubanname' required
                 label="NUBAN Name"
-                placeholder="John Aijirioghene Okor"
+                placeholder="Enter NUBAN"
+                disabled={disable}
+                value={data?.data?.nubanname ?? ''}
                 type="text"
                 className=""
                 error=""
-                onChange={handleChange}
+                onChange={(e) => { handleChange(e, values, setValues) }}
               />
             </div>
 
@@ -206,9 +269,8 @@ const EducationDetails: React.FC = () => {
               width="170px"
               fontSize='14px'
               marginRight=''
-              onClick={() => {
-              }}
-            > Approve </ButtonComponent>
+              onClick={() => { setIsOpen(true) }}
+            > {loading ? 'Approving...' : 'Approve'} </ButtonComponent>
           </div>
         </>}
     </>

@@ -59,7 +59,7 @@ const TokenVerification = (): JSX.Element => {
           if (response?.data?.data?.user.eoiStarted !== true) {
             navigate('/customer/customerhomepage', { replace: true })
           } else {
-            navigate('/customer/customerbusinesspage', { replace: true })
+            navigate('/customer/customerprofilepage', { replace: true })
           }
         } else {
           navigate('/app/staffpage', { replace: true })

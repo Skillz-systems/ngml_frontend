@@ -1,38 +1,59 @@
-import React, { useState, type ChangeEvent } from 'react'
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import { GrDocumentImage, GrDocumentNotes } from 'react-icons/gr'
 
 import DropZone from '../FormFields/DropZone'
 import ButtonComponent from '../ButtonComponent'
 import { useAuthState } from 'src/Context/AuthContext'
+import { storeStaff } from 'src/api/api'
+import { toast } from 'react-toastify'
+import { useParams } from 'react-router-dom'
 
 const Uploads: React.FC = () => {
+  const { id } = useParams()
   const [documentNames, setDocumentNames] = useState<Record<string, string | any>>({})
   const { user } = useAuthState()
   const [values, setValues] = useState({})
-
+  const [loading, setLoading] = useState(false)
   const handleDropZoneChange = (name: string, documentName: string | any): void => {
     setDocumentNames((prevDocumentNames) => ({
       ...prevDocumentNames,
       [name]: documentName
     }))
   }
-  const handleSubmit = (e: { preventDefault: () => void }): void => {
+  // const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  //   const selectedFile = event.target.files?.[0]
+  //   handleDropZoneChange('passport', selectedFile?.name)
+  //   setValues({ ...values, [event.target.name]: selectedFile })
+  // }
+
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
+    setLoading(true)
     console.log(values)
-    // setLoading(false)
+    try {
+      const res = await storeStaff('staff/submit-data', id, values)
+      setLoading(false)
+      console.log(res.data)
+      toast.success(`${res?.data?.message}`)
+    } catch (error: any) {
+      setLoading(false)
+      toast.error(`${(Boolean((error?.response?.data?.message))) || error?.message}`)
+      console.log(error)
+    }
   }
   return (
     <div>
-      <div className='flex-1 bg-white w-full p-4 space-y-8  rounded-xl'>
-        <h3 className='text-left text-lg uppercase font-medium text-neutral-500 -mb-2'>Document Uploads</h3>
+      <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
+        <h3 className='-mb-2 text-lg font-medium text-left uppercase text-neutral-500'>Document Uploads</h3>
 
         {user?.type === 'SUPERADMIN'
           ? (
             <>
               {/* admin */}
-              <div className="border-2 border-slate-400 border-dashed rounded-2xl w-full py-2 px-3">
-                <h4 className='text-left text-gray-600 text-sm capitalize -mb-1  '>passport </h4>
-                <div className="bg-slate-100 rounded-xl my-2 p-2 flex justify-between items-center space-x-2">
+              <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
+                <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>passport </h4>
+                <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
                   <span ><GrDocumentImage size={24} className='text-green-600' /></span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">passport.jpg</span>
                   <ButtonComponent
@@ -50,9 +71,9 @@ const Uploads: React.FC = () => {
                   > Reject</ButtonComponent>
                 </div>
               </div>
-              <div className="border-2 border-slate-400 border-dashed rounded-2xl w-full py-2 px-3">
-                <h4 className='text-left text-gray-600 text-sm capitalize -mb-1  '>NYSC certificate </h4>
-                <div className="bg-slate-100 rounded-xl my-2 p-2 flex justify-between items-center space-x-2">
+              <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
+                <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>NYSC certificate </h4>
+                <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
                   <span ><GrDocumentNotes size={24} className='text-green-600' /></span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">nysc-certificate.jpg</span>
                   <ButtonComponent
@@ -71,7 +92,7 @@ const Uploads: React.FC = () => {
                 </div>
               </div>
 
-              {/* <span className="flex justify-end   mt-4 bg-blue-500"> */}
+              {/* <span className="flex justify-end mt-4 bg-blue-500"> */}
               <ButtonComponent
                 border="none"
                 backgroundColor="#00AF50"
@@ -102,8 +123,8 @@ const Uploads: React.FC = () => {
                 setValues({ ...values, [event.target.name]: event.target.files?.[0] })
               }} documentName={documentNames.nysc} title='NYSC Certificate' />
 
-              <div className="flex justify-end flex-1 w-full  mt-4  rounded-xl">
-                <ButtonComponent
+              <div className="flex justify-end flex-1 w-full mt-4 rounded-xl">
+                {/* <ButtonComponent
                   border="1px solid #eee"
                   backgroundColor="white"
                   height="38px"
@@ -115,7 +136,7 @@ const Uploads: React.FC = () => {
                   onClick={() => {
 
                   }}
-                > Save and close</ButtonComponent>
+                > Save and close</ButtonComponent> */}
                 <ButtonComponent
                   border="none"
                   backgroundColor="#00AF50"
@@ -127,7 +148,7 @@ const Uploads: React.FC = () => {
                   onClick={() => {
 
                   }}
-                > Save and Continue</ButtonComponent>
+                > {loading ? 'Uploading...' : 'Save And Continue '}</ButtonComponent>
               </div>
             </form>)}
       </div>

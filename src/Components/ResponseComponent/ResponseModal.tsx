@@ -281,7 +281,7 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
                       continueAction && continueAction()
                     }}
                   >
-                    Continue
+                    Yes, Continue
                   </ButtonComponent>
                   <ButtonComponent
                     backgroundColor="#050505"
@@ -295,7 +295,7 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
                       action && action()
                     }}
                   >
-                    Yes, Cancel
+                    Cancel
                   </ButtonComponent>
                 </div>
               </div>
