@@ -22,7 +22,7 @@ const CustomerBusinessPage: React.FC = () => {
 
   return (
     <div className='m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-xl'>
-      <h3 className='text-left capitalize font-semibold text-2xl text-neutral-600' onClick={handleClick}>CustomerBusiness</h3>
+      <h3 className='text-left capitalize font-semibold text-2xl text-neutral-600' onClick={handleClick}>Customer Business</h3>
 
       {/* delete below  */}
       <div>
