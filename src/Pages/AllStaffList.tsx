@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 // import unit from '../Asset/svg-icons/Unitngml.svg'
@@ -7,15 +8,19 @@ import { HiOutlineUserCircle } from 'react-icons/hi2'
 import { GoShield } from 'react-icons/go'
 import Search from 'src/Asset/png-icons/Search.png'
 import { IoFilterOutline } from 'react-icons/io5'
-import { getAllStaff, type StaffInterface } from 'src/api/api'
+import { type StaffInterface } from 'src/api/api'
 // import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuthState } from '../Context/AuthContext'
+import useDataFetcher from 'src/api/swr'
 
 const AllStaffList: React.FC = () => {
+  const { data, error } = useDataFetcher({ url: '/staff' })
+
+  console.log(error, 'ddddkdkkdkddata', data)
   const navigate = useNavigate()
-  const [staff, setStaff] = useState<StaffInterface[]>([])
+  const [staff, setStaff] = useState<StaffInterface[]>(data?.data ?? [])
   const [totalStaffCount, setTotalStaffCount] = useState(0)
   const [verifiedStaffCount, setVerifiedStaffCount] = useState(0)
   const [unverifiedStaffCount, setUnverifiedStaffCount] = useState(0)
@@ -29,27 +34,28 @@ const AllStaffList: React.FC = () => {
     }
   }, [])
 
+  // useEffect(() => {
+  //   handleGet()
+  // }, [])
   useEffect(() => {
-    handleGet()
-  }, [])
-  useEffect(() => {
-    const total = staff.length
-    const verified = staff.filter((count) => count.verified === 'approved').length
+    const total = staff?.length
+    const verified = staff?.filter((count) => count.verified === 'approved')?.length
     const unverified = total - verified
     setTotalStaffCount(total)
     setVerifiedStaffCount(verified)
     setUnverifiedStaffCount(unverified)
   }, [staff])
-  const handleGet = async (): Promise<void> => {
-    try {
-      const res = await getAllStaff()
-      setStaff(res?.data.data)
-      console.log('get Staff')
-      console.log(res?.data.data)
-    } catch (error: any) {
-      console.log(error)
-    }
-  }
+
+  // const handleGet = async (): Promise<void> => {
+  //   try {
+  //     const res = await getAllStaff()
+  //     setStaff(res?.data.data)
+  //     console.log('get Staff')
+  //     console.log(res?.data.data)
+  //   } catch (error: any) {
+  //     console.log(error)
+  //   }
+  // }
   const handleView = (id: string): void => {
     navigate(`/app/staffpage/${id}`)
   }
@@ -139,10 +145,10 @@ const AllStaffList: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="text-gray-600 divide-y">
-                {staff.length > 0
+                {staff?.length > 0
                   ? (staff.map((item, index) => (
                     <tr key={index} className=''>
-                      <td className="px-2 py-3 text-sm capitalize truncate whitespace-nowrap">{item.firstname + ' ' + item.lastname}</td>
+                      <td className="px-4 py-3 text-sm capitalize truncate whitespace-nowrap">{item.firstname + ' ' + item.lastname}</td>
                       <td className="px-2 py-3 text-sm capitalize truncate whitespace-nowrap">{item.designation}</td>
                       <td className="px-2 py-3 text-sm truncate whitespace-nowrap ">{item.email}</td>
                       <td className="px-2 py-3 text-sm capitalize truncate whitespace-nowrap">{item.department}</td>

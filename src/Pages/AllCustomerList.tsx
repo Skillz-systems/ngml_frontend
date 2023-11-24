@@ -7,7 +7,7 @@ import { HiOutlineUserCircle } from 'react-icons/hi2'
 import { GoShield } from 'react-icons/go'
 import Search from 'src/Asset/png-icons/Search.png'
 import { IoFilterOutline } from 'react-icons/io5'
-import { getAllStaff, type StaffInterface } from 'src/api/api'
+import { getAllCustomers, type StaffInterface } from 'src/api/api'
 // import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 
@@ -20,10 +20,12 @@ const AllStaffList: React.FC = () => {
   const [unverifiedStaffCount, setUnverifiedStaffCount] = useState(0)
   const { user } = useAuthState()
 
+  console.log(user, 'useruserjsjs')
+
   useLayoutEffect(() => {
     if (user?.type !== 'SUPERADMIN') {
       // navigate('/app/staffpage/', { replace: true })
-      navigate(`/app/staffpage/${user?._id}`, { replace: true })
+      navigate(`/app/customerpage/${user?._id}`, { replace: true })
     }
   }, [])
 
@@ -39,7 +41,7 @@ const AllStaffList: React.FC = () => {
   }, [staff])
   const handleGet = async (): Promise<void> => {
     try {
-      const res = await getAllStaff()
+      const res = await getAllCustomers()
       setStaff(res?.data.data)
     } catch (error: any) {
       console.log(error)
@@ -70,18 +72,18 @@ const AllStaffList: React.FC = () => {
       <div className="grid gap-x-3 justify-between items-center sm:grid-cols-2 md:grid-cols-3 mb-2 ">
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#00AF50] rounded-lg' color='white' />
-          <span className='text-sm ml-1'>Total staff</span>
+          <span className='text-sm ml-1'>Total Customer</span>
           <span className='ml-auto text-lg font-semibold'>{totalStaffCount}</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex flex-1 justify-between items-center">
           <HiOutlineUserCircle size={24} className='p-1 bg-[#E7EE87] rounded-lg' color='black' />
-          <span className='text-sm ml-1'>Total Verified Staff</span>
+          <span className='text-sm ml-1'>Total Verified Customer</span>
           <span className='ml-auto text-lg font-semibold'>{verifiedStaffCount}</span>
         </div>
         <div className="bg-white rounded-xl p-3 flex items-center justify-between">
           <div className="flex items-center">
             <GoShield size={24} color='#ffb300' className='p-1 bg-[#ffe8cc] rounded-full' />
-            <span className='text-sm ml-1'>Un-Verified Staff</span>
+            <span className='text-sm ml-1'>Un-Verified Customer</span>
           </div>
           <span className='ml-auto text-lg font-semibold'>{unverifiedStaffCount}</span>
         </div>
@@ -90,7 +92,7 @@ const AllStaffList: React.FC = () => {
       <div>
         <div className='w-full flex-1 bg-white rounded-xl h-full mt-4'>
           <div className="flex justify-between items-center p-4">
-            <span className='italics text-xs text-neutral-600'>Showing {totalStaffCount} of {totalStaffCount} Staff Records</span>
+            <span className='italics text-xs text-neutral-600'>Showing {totalStaffCount} of {totalStaffCount} Customer Records</span>
             <div className="relative ml-auto">
               <input
                 type="text"
@@ -125,7 +127,7 @@ const AllStaffList: React.FC = () => {
                 {staff.length > 0
                   ? (staff.map((item, index) => (
                     <tr key={index} className=''>
-                      <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname + ' ' + item.lastname}</td>
+                      <td className="px-4 py-3 whitespace-nowrap truncate text-sm capitalize">{item.firstname + ' ' + item.lastname}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.designation}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm ">{item.email}</td>
                       <td className="px-2 py-3 whitespace-nowrap truncate text-sm capitalize">{item.department}</td>
