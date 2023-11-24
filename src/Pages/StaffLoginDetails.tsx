@@ -63,13 +63,14 @@ const StaffLoginDetails: React.FC = () => {
 
   return (
     <div
-      className="w-[100%] h-screen"
+      className="w-full h-full"
       style={{
         background:
           'linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'column'
       }}
     >
       <div
@@ -79,6 +80,7 @@ const StaffLoginDetails: React.FC = () => {
           alignItems: 'center',
           flexDirection: 'column'
         }}
+        className='mt-10 md:mt-28'
       >
         <div
           style={{
@@ -290,9 +292,10 @@ const StaffLoginDetails: React.FC = () => {
             </div>
           </div>
         </div>
-        <div>
-          <Footer />
-        </div>
+
+      </div>
+      <div className='mt-auto '>
+        <Footer />
       </div>
     </div>
   )

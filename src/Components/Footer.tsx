@@ -9,4 +9,4 @@ const Footer: FC = () => (
 
 export default Footer
 
-export {}
+export { }
