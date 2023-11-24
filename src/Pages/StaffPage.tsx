@@ -25,7 +25,6 @@ const Staffpage: FC = () => {
 
           {activeTab === 'summary' && (
             <div style={{ alignItems: 'center' }} className="items-center gap-4 flex">
-
               <div className="">
 
                 <div className="w-4 h-4 justify-center items-center inline-flex">

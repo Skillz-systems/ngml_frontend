@@ -234,7 +234,7 @@ const StaffsummaryPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className='text-center p-4'>Powered By John Okor</div>
+      <div className='text-center p-2'>Powered By John Okor</div>
     </div>
   )
 }
