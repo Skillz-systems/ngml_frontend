@@ -1,7 +1,11 @@
 html {
-		background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%);
-		padding: 0px !important;
-
+	background: linear-gradient(
+		108deg,
+		#aae4c5 -6.77%,
+		#efec80 45.65%,
+		#d2f69e 108.92%
+	);
+	padding: 0px !important;
 }
 body {
 	margin: 0;
@@ -33,8 +37,13 @@ code {
 		);
 	}
 	.gradient {
-		background: linear-gradient(108deg, #AAE4C5 -6.77%, #EFEC80 45.65%, #D2F69E 108.92%)
-		 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		background: linear-gradient(
+			108deg,
+			#aae4c5 -6.77%,
+			#efec80 45.65%,
+			#d2f69e 108.92%
+		);
+		/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	}
 	.gradient-two {
 		background: linear-gradient(
@@ -57,9 +66,9 @@ code {
 		@apply bg-white w-full rounded-full px-10 py-1.5 outline-transparent focus-within:outline-[#E7EE87] focus:outline-[#E7EE87] active:outline-none duration-300 ease-in-out transition-all group-hover:bg-[#E7EE87] group-hover:text-slate-900 group-hover:placeholder:text-slate-900 cursor-pointer;
 	}
 	.authentication-select {
-		@apply bg-gray-100 w-full px-10 py-[9px] duration-300 ease-in-out transition-all text-[##828DA9] cursor-pointer pl-[80px] rounded-[50px] border border-gray-300 italic;
+		@apply bg-gray-100 w-full px-10 py-[14px] duration-300 ease-in-out transition-all text-[##828DA9] cursor-pointer pl-[80px] rounded-[50px] border border-gray-300 italic;
 	}
 	.authentication-icons {
-		@apply absolute top-2 left-2 text-slate-800 p-1 bg-[#E7EE87] rounded-full duration-300 ease-in-out transition-all;
+		@apply absolute top-2.5 left-2 text-slate-800 p-1 bg-[#E7EE87] rounded-full duration-300 ease-in-out transition-all;
 	}
 }

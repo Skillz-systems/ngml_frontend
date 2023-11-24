@@ -59,20 +59,20 @@ const SignupStaff = (): JSX.Element => {
     }
   }
   return (
-    <main className="flex flex-col items-center justify-center w-screen h-screen gradient">
+    <main className="flex flex-col items-center justify-center w-screen h-full gradient overflow-hidden">
 
-      <header className='flex flex-col items-center justify-center mt-10 md:mt-20 '>
+      <header className='flex flex-col items-center justify-center mt-10 md:mt-14 '>
 
-        <h2 className='text-lg font-bold capitalize md:text-xl'>Staff Re-enrollment Form</h2>
-        <h4 className='text-sm text-justify'>we want to comfirm something</h4>
+        <p className='text-xl font-bold capitalize md:text-2xl'>Staff Re-enrollment Form</p>
+        <p className='text-base text-justify'>we want to comfirm something</p>
       </header>
       <section >
-        <form className='flex flex-col items-center justify-center w-full px-3 py-8 mt-3 space-y-4 md:px-6 h-fit md:w-96 bg-white/40 rounded-3xl' onSubmit={handleSubmit}>
+        <form className='flex flex-col items-center justify-center w-full px-3 py-8 my-3 space-y-4 md:px-6 h-fit md:w-96 bg-white/40 rounded-3xl' onSubmit={handleSubmit}>
 
           <div className="w-full">
             <TextInput
               width=''
-              height='40px'
+              height='49px'
               type="text"
               label="firstName"
               value={values.firstname}
@@ -80,18 +80,18 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your First Name"
               error={false}
               onChange={handleOnChange}
-              icon={<img src={name} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
-              iconHeight='24px'
-              iconWidth='24px'
+              icon={<img src={name} className='p-0.5 absolute top-0 left-0' width={30} height={30} />}
+              iconHeight='30px'
+              iconWidth='30px'
               backgroundColor='#D2F69E'
-              iconStyle='absolute top-2 left-2  rounded-full'
+              iconStyle='absolute top-2.5 left-3  rounded-full'
               divStyle='p-0 mb-0'
             />
           </div>
           <div className="w-full">
             <TextInput
               width=''
-              height='40px'
+              height='49px'
               type="text"
               label="lastName"
               value={values.lastname}
@@ -99,18 +99,18 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your last Name"
               error={false}
               onChange={handleOnChange}
-              icon={<img src={name} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
-              iconHeight='24px'
-              iconWidth='24px'
+              icon={<img src={name} className='p-0.5 absolute top-0 left-0' width={30} height={30} />}
+              iconHeight='30px'
+              iconWidth='30px'
               backgroundColor='#D2F69E'
-              iconStyle='absolute top-2 left-2  rounded-full'
+              iconStyle='absolute top-2.5 left-3  rounded-full'
               divStyle='p-0 mb-0'
             />
           </div>
           <div className="w-full">
             <TextInput
               width=''
-              height='39px'
+              height='49px'
               type="text"
               label="Email"
               value={values.email}
@@ -118,11 +118,11 @@ const SignupStaff = (): JSX.Element => {
               placeholder="Enter your email here"
               error={false}
               onChange={handleOnChange}
-              icon={<img src={email} className='p-0.5 absolute top-0.5 left-0.5' width={20} height={20} />}
-              iconHeight='24px'
-              iconWidth='24px'
+              icon={<img src={email} className='p-0.5 absolute top-0 left-0' width={30} height={30} />}
+              iconHeight='30px'
+              iconWidth='30px'
               backgroundColor='#D2F69E'
-              iconStyle='absolute top-2 left-2  rounded-full'
+              iconStyle='absolute top-2.5 left-3  rounded-full'
               divStyle='p-0 mb-0'
             />
           </div>
@@ -147,7 +147,7 @@ const SignupStaff = (): JSX.Element => {
           </div> */}
           <input type="text" hidden name='type' value="STAFF" onChange={handleOnChange} />
           <div className="relative w-full group">
-            <img src={zone} className='authentication-icons' width={24} height={24} alt='zone' />
+            <img src={zone} className='authentication-icons' width={30} height={30} alt='zone' />
             <select name="operation" id="operation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Choose your area of operation' required onChange={handleOnChange} value={values.operation}>
               <option>Choose your area of operation</option>
               <option value="se">Imo</option>
@@ -160,7 +160,7 @@ const SignupStaff = (): JSX.Element => {
             </select>
           </div>
           <div className="relative w-full group">
-            <img src={unit} className='authentication-icons' width={24} height={24} alt='unit' />
+            <img src={unit} className='authentication-icons' width={30} height={30} alt='unit' />
             <select name="department" id="department" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.department} >
               <option>Choose your department</option>
               <option value="it">IT</option>
@@ -170,7 +170,7 @@ const SignupStaff = (): JSX.Element => {
             </select>
           </div>
           <div className="relative w-full group">
-            <img src={designation} className='authentication-icons' width={24} height={24} alt='designation' />
+            <img src={designation} className='authentication-icons' width={30} height={30} alt='designation' />
             <select name="designation" id="designation" className='text-[#828DA9] border border-gray-300 authentication-select' placeholder='Enter your email' required onChange={handleOnChange} value={values.designation} >
               <option>Choose your designation</option>
               <option value="officer">Officer</option>
@@ -185,11 +185,12 @@ const SignupStaff = (): JSX.Element => {
           <ButtonComponent
             border="none"
             backgroundColor="#00AF50"
-            height="36px"
+            height="45px"
             radius="100px"
             width="100%"
             fontSize='14px'
             marginRight=''
+            marginLeft=''
             onClick={() => {
             }}
           >  {loading ? 'Registering....' : 'Submit'}</ButtonComponent>
@@ -197,7 +198,7 @@ const SignupStaff = (): JSX.Element => {
         </form>
       </section>
 
-      <div className="w-full mx-4 mt-auto mb-5 rounded-full bg-white/40 md:mx-0 md:w-4/5 ">
+      <div className="w-full mt-auto mb-2 rounded-full bg-white/40 md:mx-0 md:w-4/5 ">
 
         <footer className='px-2 py-1 text-sm text-center truncate sm:text-xs'> This Portal is a Property of NNPC Gas Marketing Limited</footer>
       </div>
