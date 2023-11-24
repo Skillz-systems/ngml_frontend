@@ -308,17 +308,3 @@ const ResponseModal: React.FC<ResponseModalProps> = ({
 }
 
 export default ResponseModal
-
-{
-  /* <div className='w-[100%] h-screen' style={{ backgroundColor: '#f5f5eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ height, width, backgroundColor, borderRadius: '8px' }}>
-        {showCloseButton && <button onClick={handleClose} style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '18px' }}>&times;</button>}
-        {icon && <img src={icon} alt="icon" style={{ marginBottom: '10px' }} />}
-        {type === 'success' && <div style={{ marginTop: '60px' }}>
-            <div style={{ fontWeight: '700', fontSize: '32px', lineHeight: '32px' }}>Congratulations</div>
-            <div style={{ fontWeight: '500', fontSize: '16px', lineHeight: '32px', letterSpacing: '0.8%', color: '#828DA9' }}>This Record has been successfully accepted.</div>
-         </div>}
-        {type === 'error' && <p style={{ color: 'red' }}>Error occurred. Please try again.</p>}
-      </div>
-    </div> */
-}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable new-cap */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
@@ -108,7 +109,7 @@ const SingleStaff: FC = () => {
   const generatePDF = async () => {
     const divToCapture = document.getElementById('StaffSummaryDataPrintOut') // Replace 'divId' with your div's ID
 
-    console.log(divToCapture,'sjsjsjs')
+    console.log(divToCapture, 'sjsjsjs')
     if (divToCapture) {
       try {
         const contentElement = divToCapture
