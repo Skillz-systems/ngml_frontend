@@ -9,6 +9,8 @@ import { useAuthState } from 'src/Context/AuthContext'
 import { storeStaff } from 'src/api/api'
 import { toast } from 'react-toastify'
 import { useParams } from 'react-router-dom'
+import useDataFetcher from 'src/api/swr'
+import { handleDownload } from 'src/helpers/functions'
 
 interface FormValues {
   passport: string | Blob
@@ -58,6 +60,8 @@ const Uploads: React.FC = () => {
       console.log(error)
     }
   }
+
+  const { data } = useDataFetcher({ url: `/staff/${id}` })
   return (
     <div>
       <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
@@ -70,7 +74,7 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>passport </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span ><GrDocumentImage size={24} className='text-green-600' /></span>
+                  <span ><GrDocumentImage size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.passport, 'passport') }} /></span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">passport.jpg</span>
                   <ButtonComponent
                     border='1px solid #ff8787'
@@ -90,7 +94,7 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>NYSC certificate </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span ><GrDocumentNotes size={24} className='text-green-600' /></span>
+                  <span ><GrDocumentNotes size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.nysc, 'nysc') }} /></span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">nysc-certificate.jpg</span>
                   <ButtonComponent
                     border='1px solid #ff8787'
