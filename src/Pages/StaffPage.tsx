@@ -1,7 +1,14 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable new-cap */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React, { useState, type FC, useEffect } from 'react'
 import Tabs from 'src/Components/Tabs/Tabs'
 import print from 'src/Asset/png-icons/print.png'
 import AltDownArrow from 'src/Asset/png-icons/AltDownArrow.png'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
+import { toast } from 'react-toastify'
 
 const Staffpage: FC = () => {
   const [activeTab, setActiveTab] = useState<string>('staffinformation')
@@ -9,6 +16,40 @@ const Staffpage: FC = () => {
   useEffect(() => {
 
   }, [activeTab])
+
+  const generatePDF = async () => {
+    alert('llll')
+    const divToCapture = document.getElementById('StaffSummaryDataPrintOut') // Replace 'divId' with your div's ID
+    console.log(divToCapture, 'divToCapturedivToCapture')
+    // if (divToCapture) {
+    //   try {
+    //     const canvas = await html2canvas(divToCapture)
+    //     const imgData = canvas.toDataURL('image/png')
+
+    //     const pdf = new jsPDF()
+    //     const imgHeight = (canvas.height * 208) / canvas.width
+    //     pdf.addImage(imgData, 'PNG', 0, 0, 208, imgHeight)
+    //     pdf.save('div_snapshot.pdf')
+    //   } catch (error) {
+    //     console.error('Error generating PDF:', error)
+    //   }
+    // }
+    const contentElement = divToCapture
+
+    if (contentElement) {
+      const canvas = await html2canvas(contentElement) // Capture the content as a canvas
+      const imgData = canvas.toDataURL('image/png') // Convert the canvas to base64-encoded image data
+      const pdf = new jsPDF() // Create a new PDF document
+      const imgWidth = pdf.internal.pageSize.getWidth() // Get the page width
+      const imgHeight = pdf.internal.pageSize.getHeight() // Get the page height
+      const ratio = Math.min(imgWidth / canvas.width, imgHeight / canvas.height) // Calculate the scaling ratio
+      const imgX = (imgWidth - canvas.width * ratio) / 2 // Calculate the horizontal offset
+      const imgY = 30 // Adjust the vertical position as needed
+      pdf.addImage(imgData, 'PNG', imgX, imgY, canvas.width * ratio, canvas.height * ratio) // Add the image to the PDF
+      pdf.save('snapshot.pdf')
+      toast.success('Successful!!')
+    }
+  }
 
   return (
     <div className="m-5 bg-white/40 flex-1 p-4 overflow-x-hidden rounded-xl">
@@ -45,7 +86,7 @@ const Staffpage: FC = () => {
                   {/* <div className="w-4 h-4 relative rounded-[5px] flex-col justify-start items-start flex"></div> */}
                   <img src={AltDownArrow} />
                 </div>
-                <div className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
+                <div style={{ cursor: 'pointer' }} onClick={() => { generatePDF() }} className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
                   Download as PDF
                 </div>
               </div>
