@@ -7,7 +7,7 @@ const HomePageInfo: React.FC = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false)
 
   return (
-    <div className="m-5 bg-white/40 flex-1 p-5 overflow-x-hidden rounded-xl">
+    <div className="m-5  flex-1 p-5 overflow-x-hidden rounded-xl">
       <div className="flex justify-between">
         <h3 className="text-left capitalize font-semibold text-3xl text-neutral-600">
           Home Page
@@ -18,7 +18,7 @@ const HomePageInfo: React.FC = () => {
       </div>
       {/* delete below  */}
       <div>
-        <div className="w-full flex-1 bg-white rounded-xl h-96 p-5">
+        <div style={{ height: '300px', width: '800px', backgroundColor: '#f43331' }}>
           <div
             onClick={() => {
               setIsOpen(true)

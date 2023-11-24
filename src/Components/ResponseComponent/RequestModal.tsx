@@ -5,7 +5,7 @@ import ButtonComponent from '../ButtonComponent'
 import polygonicon from '../../Asset/png-icons/Polygon.png'
 
 interface ResponseModalProps {
-  type?: 'success' | 'error'
+  // type?: 'success' | 'error'
   width?: string
   height?: string
   text?: string
@@ -18,48 +18,73 @@ interface ResponseModalProps {
   subText?: string
 }
 
-const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
+const RequestModal: React.FC<ResponseModalProps> = ({
+  // type = 'success',
+  width = '500px',
+  height = '310px',
+  backgroundColor = '#FFFFFF',
+  action,
+  continueAction,
+  text = 'Adjustment Form',
+  subText = 'Include the field that requires adjustment and the reasons for'
+}) => {
   return (
-    <div className='bg-[#FFFFFF]' style={{ width: '100%' }}>
-      <div style={{ borderRadius: '14px', padding: '10px', display: 'flex', backgroundColor: '#FFFFFF', height: '265px', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+    <div style={{ width: '100%' }}>
+      <div style={{ backgroundColor, height, width, borderRadius: '14px', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '20px' }}>
           <div
             style={{
               fontWeight: '700',
               fontSize: '20px',
-              lineHeight: '32px'
+              lineHeight: '20px',
+              marginTop: '22px'
+
             }}
           >
-            Adjustment Form
+           {text}
           </div>
           <div
             style={{
-              fontWeight: '500',
-              fontSize: '14px',
-              lineHeight: '32px',
+              fontWeight: '400',
+              fontSize: '12px',
+              lineHeight: '12px',
               letterSpacing: '0.8%',
-              color: '#828DA9'
+              color: '#828DA9',
+              marginLeft: '4px',
+              textAlign: 'center',
+              marginTop: '8px'
             }}
           >
-            Include the field that requires adjustment and the reasons for  each in the box below
+            {subText}
+          </div>
+          <div
+          style={{
+            fontWeight: '400',
+            fontSize: '12px',
+            lineHeight: '12px',
+            letterSpacing: '0.8%',
+            color: '#828DA9',
+            marginLeft: '4px',
+            textAlign: 'center',
+            marginTop: '8px'
+          }}>
+           each in the box below
           </div>
         </div>
-        <div >
-          <div style={{ fontSize: '16px', fontWeight: '500' }}>Reasons for Adjustment *</div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+          <div style={{ fontSize: '14px', fontWeight: '500', color: '#49526A', lineHeight: '18px', marginRight: '280px' }}>Reasons for Adjustment *</div>
           <div>
             <textarea
               style={{
-                width: '100%',
+                width: '436px',
                 border: '1px solid rgba(208, 213, 221, 1)',
                 borderRadius: '8px',
-                padding: '20px',
+                padding: '8px',
                 fontSize: '12px',
-                lineHeight: '38px',
                 fontWeight: '400',
                 fontFamily: ' inter',
                 marginTop: '8px',
-                marginBottom: '20px'
-                // height: '40px'
+                height: '150px'
               }}
               placeholder="Type the fields and your reasons for adjustment is needed"
               rows={10}
@@ -70,12 +95,12 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
           </div>
         </div>
       </div>
-      <div className='mt-5'>
+      <div>
         <div
           style={{
             position: 'absolute',
-            left: '45%',
-            top: '284px',
+            left: '40%',
+            top: '370px',
             zIndex: 100000
           }}
         >
@@ -84,19 +109,20 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
       </div>
       <div
         style={{
-          height: '120px',
-          // width: '500px',
+          height: '100px',
+          width: '500px',
           backgroundColor: '#00AF50',
           boxShadow: '#0000000D',
           borderBottomRightRadius: '20px',
           borderBottomLeftRadius: '20px',
-          bottom: '50px',
+          // bottom: '50px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          position: 'relative'
+          position: 'relative',
+          flexDirection: 'column'
         }}
-      >
+       >
         <div style={{ display: 'flex' }}>
           <ButtonComponent
             backgroundColor="#00AF50"
@@ -127,6 +153,7 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
             Confirm
           </ButtonComponent>
         </div>
+          <div style={{ fontWeight: '500', fontSize: '12px', lineHeight: '12px', letterSpacing: '0.8%', top: '20px', marginBottom: '20px', color: '#FFFFFF' }}>The Staff will be notified with the adjustment comments you make. </div>
       </div>
     </div>
   )
