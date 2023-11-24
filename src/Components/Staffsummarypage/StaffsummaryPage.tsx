@@ -1,6 +1,5 @@
 import React from 'react'
 import CompanyLogo from 'src/Asset/CompanyLogo.png'
-import guy from 'src/Asset/guy.jpeg'
 import qrcode from 'src/Asset/bi_qr-code.png'
 import useDataFetcher from 'src/api/swr'
 import { useParams } from 'react-router-dom'
@@ -8,6 +7,7 @@ import { useParams } from 'react-router-dom'
 const StaffsummaryPage: React.FC = () => {
   const { id } = useParams()
   const { data } = useDataFetcher({ url: `/staff/${id}` })
+  const imageUrl = `data:image/png;base64,${data?.data?.passport}`
   return (
     <div className="h-[1409px] bg-white rounded-xl flex-col justify-start items-start">
       <div className="w-[892px] h-[1309px] p-4 bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">
@@ -32,7 +32,7 @@ const StaffsummaryPage: React.FC = () => {
             </div>
             <div className="w-[800px] justify-between items-start inline-flex">
               <div className="h-[130px] justify-between items-start flex">
-                <img className="w-[130px] h-[130px] rounded" src={guy} />
+                <img className="w-[130px] h-[130px] rounded" src={imageUrl ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
                 <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
                   <div className="flex flex-col items-start justify-center gap-1">
                     <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
@@ -64,26 +64,27 @@ const StaffsummaryPage: React.FC = () => {
                 <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
                   <div className="flex flex-col items-start justify-center gap-1">
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
-                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.title ?? 'MR'}</div>
+                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.title ?? ''}</div>
                     </div>
                     <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
-                      <div className="w-[100px] text-zinc-950 text-xs font-bold font-['Mulish'] uppercase pr-[60px]">{data?.data?.firstname ?? 'Abraham'}</div>
+                      <div className="w-[100px] text-zinc-950 text-xs font-bold font-['Mulish'] uppercase pr-[60px]">{data?.data?.firstname ?? ''}</div>
                     </div>
                   </div>
                   <div className="flex flex-col items-start justify-center gap-1">
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
-                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.lastname ?? 'Bako'}</div>
+                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.lastname ?? ''}</div>
                     </div>
                     <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
-                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.othernames ?? 'CLEMENT'}</div>
+                      <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.othernames ?? ''}
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col items-start justify-center gap-1">
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
-                      <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.phonenumber ?? '0803430480340'}</div>
+                      <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.phonenumber ?? ''}</div>
                     </div>
                     <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
-                      <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.email ?? 'email@example.com'}</div>
+                      <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.email ?? ''}</div>
                     </div>
                   </div>
                 </div>
@@ -104,7 +105,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Verification No:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">9375829948</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] uppercase">{data?.data?.employmentnumber ?? ''}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -112,7 +113,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">PSN:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">1665201239428</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -138,7 +139,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">DOB:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">1985-01-01</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.dateofbirth ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -146,7 +147,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">BVN DOB:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-medium font-['Mulish']">1983-01-01</div>
+                    <div className="text-zinc-950 text-sm font-medium font-['Mulish']">{data?.data?.dateofbirth ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -154,7 +155,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Marital Status:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Single</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.maritalstatus ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -162,7 +163,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Gender:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Male</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.gender ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
@@ -172,7 +173,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">State:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Abia</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.stateoforigin ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -180,7 +181,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Lga:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Aba South</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.lga ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -188,7 +189,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">City:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Aba</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -196,7 +197,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Nationality:</div>
                   </div>
                   <div className="w-[129px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Nigeria</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.nationality ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
@@ -206,7 +207,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Address:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.address ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
@@ -221,7 +222,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Designation:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.designation ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -245,7 +246,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Department:</div>
                   </div>
                   <div className="w-[129px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.department ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
@@ -289,7 +290,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">PFA:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.pensionprovider ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -305,7 +306,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Pension Number:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.pensionumber ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -359,7 +360,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Qualification Type:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.qualification ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="h-[47px] flex-col justify-start items-start flex">
@@ -367,7 +368,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Institution Attended :</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">N/A</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] capitalize">{data?.data?.institution ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="h-[47px] flex-col justify-start items-start flex">
@@ -383,7 +384,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Year of graduation:</div>
                   </div>
                   <div className="w-[129px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">0000-00-00</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.year ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
@@ -393,7 +394,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Account Name:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">ABENGOWE CLEMENT CHUKWUEMEKA</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish'] uppercase">{data?.data?.nationality ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="w-[387px] justify-between items-start inline-flex">
@@ -402,7 +403,7 @@ const StaffsummaryPage: React.FC = () => {
                       <div className="text-slate-400 text-sm font-normal font-['Mulish']">Account Number:</div>
                     </div>
                     <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                      <div className="text-zinc-950 text-sm font-bold font-['Mulish']">0091003515</div>
+                      <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.bank ?? 'N/A'}</div>
                     </div>
                   </div>
                   <div className="w-[129px] flex-col justify-start items-start inline-flex">
@@ -419,7 +420,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Bank:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">Kuda Bank</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.accountnumber ?? 'N/A'}</div>
                   </div>
                 </div>
                 <div className="h-[47px] flex-col justify-start items-start flex">
@@ -427,7 +428,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="text-slate-400 text-sm font-normal font-['Mulish']">Name Returned On Bank Account Validation:</div>
                   </div>
                   <div className="w-[391px] h-[22px] justify-start items-center gap-[25px] inline-flex">
-                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">ROSELY CLARA OBIORA</div>
+                    <div className="text-zinc-950 text-sm font-bold font-['Mulish']">{data?.data?.firstname + ' ' + data?.data?.lastname ?? 'N/A'}</div>
                   </div>
                 </div>
               </div>
