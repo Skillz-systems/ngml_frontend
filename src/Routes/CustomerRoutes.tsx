@@ -8,13 +8,13 @@ export const CustomerRoutes = [
   {
     title: 'Customer Home page',
     path: '/customer/customerhomepage',
-    component: CustomerInternalLayout(CustomerHome),
+    component: CustomerInternalLayout(CustomerBusinessPage),
     exact: true
   },
   {
     title: 'Customer Business Page',
     path: '/customer/customerbusinesspage',
-    component: CustomerInternalLayout(CustomerBusinessPage),
+    component: CustomerInternalLayout(CustomerHome),
     exact: true
   },
   {
