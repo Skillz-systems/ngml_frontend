@@ -20,8 +20,8 @@ interface ResponseModalProps {
 
 const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
   return (
-    <div className='bg-[#FFFFFF]' style={{ border: '2px solid red', width: '100%' }}>
-      <div style={{ borderRadius: '14px', padding: '10px', display: 'flex', backgroundColor: '#fff5', height: '265px', width: '500px', flexDirection: 'column' }}>
+    <div className='bg-[#FFFFFF]' style={{ width: '100%' }}>
+      <div style={{ borderRadius: '14px', padding: '10px', display: 'flex', backgroundColor: '#FFFFFF', height: '265px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
           <div
             style={{
@@ -44,7 +44,7 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
             Include the field that requires adjustment and the reasons for  each in the box below
           </div>
         </div>
-        <div>
+        <div >
           <div style={{ fontSize: '16px', fontWeight: '500' }}>Reasons for Adjustment *</div>
           <div>
             <textarea
@@ -57,7 +57,8 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
                 lineHeight: '38px',
                 fontWeight: '400',
                 fontFamily: ' inter',
-                marginTop: '8px'
+                marginTop: '8px',
+                marginBottom: '20px'
                 // height: '40px'
               }}
               placeholder="Type the fields and your reasons for adjustment is needed"
@@ -69,7 +70,7 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
           </div>
         </div>
       </div>
-      <div>
+      <div className='mt-5'>
         <div
           style={{
             position: 'absolute',
@@ -84,7 +85,7 @@ const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
       <div
         style={{
           height: '120px',
-          width: '500px',
+          // width: '500px',
           backgroundColor: '#00AF50',
           boxShadow: '#0000000D',
           borderBottomRightRadius: '20px',

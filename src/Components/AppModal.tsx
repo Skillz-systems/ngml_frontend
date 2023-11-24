@@ -30,19 +30,17 @@ const AppModal: FC<ModalomponentProps> = ({
   height = '60vh',
   width = '466px'
 }) => {
-  // let subtitle: string = ''
-
   const customStyles = {
     content: {
       top: '50%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      marginRight: '-50%',
+      // marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      overflow: 'auto',
-      height,
-      width,
+      // overflow: 'auto',
+      // height,
+      // width,
       border: 'none',
       background: 'none'
     }
@@ -58,7 +56,7 @@ const AppModal: FC<ModalomponentProps> = ({
   }
 
   return (
-    <div>
+    <div >
       <Modal
         isOpen={modalIsOpen ?? false}
         onAfterOpen={afterOpenModal}
