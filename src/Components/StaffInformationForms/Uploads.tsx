@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
 import { GrDocumentImage, GrDocumentNotes } from 'react-icons/gr'
@@ -9,11 +10,21 @@ import { storeStaff } from 'src/api/api'
 import { toast } from 'react-toastify'
 import { useParams } from 'react-router-dom'
 
+interface FormValues {
+  passport: string | Blob
+  nysc: string | Blob
+}
+
+const initialFormValues: FormValues = {
+  passport: '',
+  nysc: ''
+}
+
 const Uploads: React.FC = () => {
   const { id } = useParams()
   const [documentNames, setDocumentNames] = useState<Record<string, string | any>>({})
   const { user } = useAuthState()
-  const [values, setValues] = useState({})
+  const [values, setValues] = useState<FormValues>(initialFormValues)
   const [loading, setLoading] = useState(false)
   const handleDropZoneChange = (name: string, documentName: string | any): void => {
     setDocumentNames((prevDocumentNames) => ({
@@ -30,9 +41,14 @@ const Uploads: React.FC = () => {
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
     setLoading(true)
-    console.log(values)
+
+    const data = new FormData()
+
+    data.append('passport', values.passport)
+    data.append('nysc', values.nysc)
+
     try {
-      const res = await storeStaff('staff/submit-data', id, values)
+      const res = await storeStaff('staff/submit-data', id, data)
       setLoading(false)
       console.log(res.data)
       toast.success(`${res?.data?.message}`)
