@@ -108,7 +108,7 @@ const SingleStaff: FC = () => {
   const generatePDF = async () => {
     const divToCapture = document.getElementById('StaffSummaryDataPrintOut') // Replace 'divId' with your div's ID
 
-    console.log(divToCapture,'sjsjsjs')
+    console.log(divToCapture, 'sjsjsjs')
     if (divToCapture) {
       try {
         const contentElement = divToCapture
@@ -168,7 +168,7 @@ const SingleStaff: FC = () => {
                 <span className="flex items-center justify-center w-4 h-4">
                   <img src={AltDownArrow} />
                 </span>
-                <span style={{ cursor: 'pointer' }} onClick={() => { generatePDF() }} className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
+                <span style={{ cursor: 'pointer' }} onClick={() => { void generatePDF() }} className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
                   Download as PDF
                 </span>
               </div>
