@@ -34,7 +34,7 @@ const HomePageInfo: React.FC = () => {
 
         <AppModal
           height="499px"
-          width="466px"
+          width="100%"
           modalIsOpen={modalIsOpen}
           setIsOpen={setIsOpen}
         >
