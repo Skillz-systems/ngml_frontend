@@ -1,6 +1,7 @@
 import React from 'react'
 import AppModal from 'src/Components/AppModal'
-import ResponseModal from 'src/Components/ResponseComponent/ResponseModal'
+import RequestModal from 'src/Components/ResponseComponent/RequestModal'
+// import ResponseModal from 'src/Components/ResponseComponent/ResponseModal'
 
 const HomePageInfo: React.FC = () => {
   const [modalIsOpen, setIsOpen] = React.useState(false)
@@ -37,7 +38,8 @@ const HomePageInfo: React.FC = () => {
           modalIsOpen={modalIsOpen}
           setIsOpen={setIsOpen}
         >
-          <ResponseModal
+          <RequestModal/>
+          {/* <ResponseModal
             type="error"
             action={() => {
               console.log()
@@ -45,7 +47,7 @@ const HomePageInfo: React.FC = () => {
             continueAction={() => {
               console.log()
             }}
-          />
+          /> */}
         </AppModal>
       </div>
     </div>
