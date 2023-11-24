@@ -81,13 +81,13 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>passport </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span >
+                  <span className='cursor-pointer' onClick={() => { handleDownload(data?.data?.passport, 'passport') }}>
                     {data?.data?.passport !== null
-                      ? <> <img className="w-[130px] h-[130px] rounded" src={imageUrl ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
-</>
-                      : <>                    <GrDocumentImage size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.passport, 'passport') }} />
+                      ? <> <img className="w-[130px] h-[130px] rounded cursor-pointer" src={imageUrl ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
+                      </>
+                      : <>                    <GrDocumentImage size={24} className='text-green-600 cursor-pointer' />
                       </>}
-                    </span>
+                  </span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">
                     passport.jpg</span>
                   <ButtonComponent
@@ -108,14 +108,14 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>NYSC certificate </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span >
+                  <span className='cursor-pointer' onClick={() => { handleDownload(data?.data?.nysc, 'nysc') }}>
 
                     {data?.data?.nysc !== null
                       ? <> <img className="w-[130px] h-[130px] rounded" src={imageUrlNysc ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
-</>
-                      : <><GrDocumentNotes size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.nysc, 'nysc') }} />
+                      </>
+                      : <><GrDocumentNotes size={24} className='text-green-600 cursor-pointer' />
                       </>}
-                    </span>
+                  </span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">nysc-certificate.jpg</span>
                   <ButtonComponent
                     border='1px solid #ff8787'
