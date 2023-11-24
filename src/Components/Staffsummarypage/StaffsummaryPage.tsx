@@ -9,8 +9,8 @@ const StaffsummaryPage: React.FC = () => {
   const { data } = useDataFetcher({ url: `/staff/${id}` })
   const imageUrl = `data:image/png;base64,${data?.data?.passport}`
   return (
-    <div className="h-[1409px] bg-white rounded-xl flex-col justify-start items-start">
-      <div className="w-[892px] h-[1309px] p-4 bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">
+    <div id='StaffSummaryDataPrintOut' className="h-[1409px] bg-white rounded-xl flex-col justify-start items-start">
+      <div className="w-[892px] h-[1309px] bg-white rounded-xl flex-col justify-start items-start gap-6 inline-flex">
         <div className="w-[860px] h-[1277px] relative bg-white border-2">
           <div className="left-[262.95px] top-[29px] absolute flex-col justify-end items-center gap-2 inline-flex">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full">
@@ -18,13 +18,13 @@ const StaffsummaryPage: React.FC = () => {
             </div>
             <div className="flex-col justify-center items-center gap-[4.58px] flex">
               <div className="text-zinc-800 text-2xl font-bold font-['Mulish']">NNPC Gas Marketing Limited</div>
-              <div className="text-zinc-800 text-base font-bold font-['Mulish']">STAFF PRINTOUT</div>
+              <div className="text-zinc-800 text-base font-bold font-['Mulish']">STAFF- PRINTOUT</div>
             </div>
           </div>
           <div className="p-[15.17px] left-[327.50px] top-[1224.67px] absolute justify-center items-center gap-[15.17px] inline-flex">
             <div className="text-center text-neutral-400 text-base font-medium font-['Red Hat Display'] pt-20">Powered by Skillz Team</div>
           </div>
-          <div className="p-5 left-[10px] top-[182px] absolute rounded-lg border border-gray-200 flex-col justify-start items-start gap-4 inline-flex">
+          <div className="p-[5px] left-[10px] top-[182px] absolute rounded-lg border border-gray-200 flex-col justify-start items-start gap-4 inline-flex">
             <div className="w-[800px] justify-between items-start inline-flex">
               <div className="h-10 px-[19px] py-2.5 bg-green-600 rounded justify-start items-center gap-2.5 flex">
                 <div className="text-white text-base font-bold font-['Mulish']">Personal Information</div>
@@ -33,9 +33,9 @@ const StaffsummaryPage: React.FC = () => {
             <div className="w-[800px] justify-between items-start inline-flex">
               <div className="h-[130px] justify-between items-start flex">
                 <img className="w-[130px] h-[130px] rounded" src={imageUrl ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
-                <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
+                <div className="w-[204px] flex-col justify-start items-start gap-0.5 inline-flex">
                   <div className="flex flex-col items-start justify-center gap-1">
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="w-[100px] text-slate-400 text-xs font-bold font-['Mulish'] uppercase pr-[50px]">Title:</div>
                     </div>
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -43,7 +43,7 @@ const StaffsummaryPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-start justify-center gap-1">
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="w-[100px] text-slate-400 text-xs font-bold font-['Mulish'] uppercase pr-[10px]">FIRST Name:</div>
                     </div>
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -51,7 +51,7 @@ const StaffsummaryPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-start justify-center gap-1">
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="text-slate-400 text-xs font-bold font-['Mulish'] uppercase pl-2">PHONE NUMBER: </div>
                     </div>
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
@@ -61,12 +61,12 @@ const StaffsummaryPage: React.FC = () => {
                 </div>
               </div>
               <div className="h-[130px] justify-between items-start flex">
-                <div className="w-[234px] flex-col justify-start items-start gap-0.5 inline-flex">
+                <div className="w-[204px] flex-col justify-start items-start gap-0.5 inline-flex">
                   <div className="flex flex-col items-start justify-center gap-1">
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
                       <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.title ?? ''}</div>
                     </div>
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="w-[100px] text-zinc-950 text-xs font-bold font-['Mulish'] uppercase pr-[60px]">{data?.data?.firstname ?? ''}</div>
                     </div>
                   </div>
@@ -74,7 +74,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
                       <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.lastname ?? ''}</div>
                     </div>
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="text-zinc-950 text-xs font-bold font-['Mulish'] uppercase">{data?.data?.othernames ?? ''}
                       </div>
                     </div>
@@ -83,7 +83,7 @@ const StaffsummaryPage: React.FC = () => {
                     <div className="px-1 justify-center items-start gap-2.5 inline-flex">
                       <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.phonenumber ?? ''}</div>
                     </div>
-                    <div className="w-[234px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
+                    <div className="w-[204px] pl-1 py-1 bg-slate-50 rounded justify-start items-center gap-2.5 inline-flex">
                       <div className="text-zinc-950 text-xs font-bold font-['Mulish']">{data?.data?.email ?? ''}</div>
                     </div>
                   </div>

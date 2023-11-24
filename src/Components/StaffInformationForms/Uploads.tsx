@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'
@@ -62,6 +63,12 @@ const Uploads: React.FC = () => {
   }
 
   const { data } = useDataFetcher({ url: `/staff/${id}` })
+  const imageUrl = `data:image/png;base64,${data?.data?.passport}`
+  const imageUrlNysc = `data:image/png;base64,${data?.data?.nysc}`
+
+  const reject = () => {
+    toast.success('Document Rejected, Notification sent to staff.')
+  }
   return (
     <div>
       <div className='flex-1 w-full p-4 space-y-8 bg-white rounded-xl'>
@@ -74,8 +81,15 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>passport </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span ><GrDocumentImage size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.passport, 'passport') }} /></span>
-                  <span className="mr-auto text-sm font-semibold text-neutral-600">passport.jpg</span>
+                  <span >
+                    {data?.data?.passport !== null
+                      ? <> <img className="w-[130px] h-[130px] rounded" src={imageUrl ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
+</>
+                      : <>                    <GrDocumentImage size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.passport, 'passport') }} />
+                      </>}
+                    </span>
+                  <span className="mr-auto text-sm font-semibold text-neutral-600">
+                    passport.jpg</span>
                   <ButtonComponent
                     border='1px solid #ff8787'
                     backgroundColor="#ff8787"
@@ -86,7 +100,7 @@ const Uploads: React.FC = () => {
                     marginRight=''
                     color="#fff"
                     onClick={() => {
-
+                      reject()
                     }}
                   > Reject</ButtonComponent>
                 </div>
@@ -94,7 +108,14 @@ const Uploads: React.FC = () => {
               <div className="w-full px-3 py-2 border-2 border-dashed border-slate-400 rounded-2xl">
                 <h4 className='-mb-1 text-sm text-left text-gray-600 capitalize '>NYSC certificate </h4>
                 <div className="flex items-center justify-between p-2 my-2 space-x-2 bg-slate-100 rounded-xl">
-                  <span ><GrDocumentNotes size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.nysc, 'nysc') }} /></span>
+                  <span >
+
+                    {data?.data?.nysc !== null
+                      ? <> <img className="w-[130px] h-[130px] rounded" src={imageUrlNysc ?? ''} alt={data?.data?.firstname + ' ' + data?.data?.lastname ?? 'staff photo'} />
+</>
+                      : <><GrDocumentNotes size={24} className='text-green-600 cursor-pointer' onClick={() => { handleDownload(data?.data?.nysc, 'nysc') }} />
+                      </>}
+                    </span>
                   <span className="mr-auto text-sm font-semibold text-neutral-600">nysc-certificate.jpg</span>
                   <ButtonComponent
                     border='1px solid #ff8787'
@@ -106,7 +127,7 @@ const Uploads: React.FC = () => {
                     marginRight=''
                     color="#fff"
                     onClick={() => {
-
+                      reject()
                     }}
                   > Reject</ButtonComponent>
                 </div>

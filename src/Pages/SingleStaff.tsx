@@ -1,3 +1,5 @@
+/* eslint-disable new-cap */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState, type FC } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -10,6 +12,9 @@ import TabPanel from 'src/Components/Tabs/TabPanel'
 // import { useStaffDispatch } from 'src/Context/StaffDataContext'
 import { useAuthState } from 'src/Context/AuthContext'
 import useDataFetcher from 'src/api/swr'
+import html2canvas from 'html2canvas'
+import jsPDF from 'jspdf'
+import { toast } from 'react-toastify'
 
 const tablist: TabListInterface[] = [
   {
@@ -100,6 +105,34 @@ const SingleStaff: FC = () => {
     setPanelName(tab.name)
   }
 
+  const generatePDF = async () => {
+    const divToCapture = document.getElementById('StaffSummaryDataPrintOut') // Replace 'divId' with your div's ID
+
+    console.log(divToCapture,'sjsjsjs')
+    if (divToCapture) {
+      try {
+        const contentElement = divToCapture
+
+        if (contentElement) {
+          const canvas = await html2canvas(contentElement) // Capture the content as a canvas
+          const imgData = canvas.toDataURL('image/png') // Convert the canvas to base64-encoded image data
+          const pdf = new jsPDF() // Create a new PDF document
+          const imgWidth = pdf.internal.pageSize.getWidth() // Get the page width
+          const imgHeight = pdf.internal.pageSize.getHeight() // Get the page height
+          const ratio = Math.min(imgWidth / canvas.width, imgHeight / canvas.height) // Calculate the scaling ratio
+          const imgX = (imgWidth - canvas.width * ratio) / 2 // Calculate the horizontal offset
+          const imgY = 30 // Adjust the vertical position as needed
+          pdf.addImage(imgData, 'PNG', imgX, imgY, canvas.width * ratio, canvas.height * ratio) // Add the image to the PDF
+          pdf.save(`${data?.data?.firstname ?? 'staff'}details.pdf`)
+        }
+
+        toast.success('Successful!!')
+      } catch (error) {
+        console.error('Error generating PDF:', error)
+      }
+    }
+  }
+
   return (
     <div className="flex-1 p-4 m-5 overflow-x-hidden bg-white/40 rounded-xl">
       <div className="flex justify-between">
@@ -135,7 +168,7 @@ const SingleStaff: FC = () => {
                 <span className="flex items-center justify-center w-4 h-4">
                   <img src={AltDownArrow} />
                 </span>
-                <span className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
+                <span style={{ cursor: 'pointer' }} onClick={() => { generatePDF() }} className="text-slate-600 text-xs font-normal font-['Mulish'] leading-3">
                   Download as PDF
                 </span>
               </div>
