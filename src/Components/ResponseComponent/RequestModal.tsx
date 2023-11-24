@@ -1,11 +1,26 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import ButtonComponent from '../ButtonComponent'
 import polygonicon from '../../Asset/png-icons/Polygon.png'
 
-const RequestModal: React.FC = () => {
+interface ResponseModalProps {
+  type?: 'success' | 'error'
+  width?: string
+  height?: string
+  text?: string
+  backgroundColor?: string
+  icon?: string
+  onClose?: () => void
+  showCloseButton?: boolean
+  action?: () => void
+  continueAction?: () => void
+  subText?: string
+}
+
+const RequestModal: React.FC<ResponseModalProps> = ({ action }) => {
   return (
-    <div style={{ border: '2px solid red', width: '880px' }}>
+    <div className='bg-[#FFFFFF]' style={{ border: '2px solid red', width: '100%' }}>
       <div style={{ borderRadius: '14px', padding: '10px', display: 'flex', backgroundColor: '#fff5', height: '265px', width: '500px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
           <div
@@ -42,11 +57,11 @@ const RequestModal: React.FC = () => {
                 lineHeight: '38px',
                 fontWeight: '400',
                 fontFamily: ' inter',
-                marginTop: '8px',
-                height: '40px'
+                marginTop: '8px'
+                // height: '40px'
               }}
               placeholder="Type the fields and your reasons for adjustment is needed"
-              rows={5}
+              rows={10}
               onChange={(e) => {
                 console.log(e)
               }}
@@ -90,7 +105,7 @@ const RequestModal: React.FC = () => {
             width="114px"
             fontSize="14px"
             onClick={() => {
-              alert('rrrrrr')
+              action !== null && action!()
               // continueAction && continueAction()
             }}
           >
